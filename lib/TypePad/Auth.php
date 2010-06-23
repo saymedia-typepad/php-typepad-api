@@ -124,8 +124,8 @@ class TPSession {
                 }
             }
             $url = TP_API_BASE . '/api-keys/' . TP_CONSUMER_KEY . '.json';
-            $handle = fopen($url, "rb");
-            $doc = json_decode(stream_get_contents($handle));
+            $request = new HttpRequest('GET', $url);
+            $doc = json_decode($request->getResponse()->getContent());
             
             $vars = get_object_vars($doc->owner);
             foreach (preg_grep('/Url$/', array_keys($vars)) as $key) {
