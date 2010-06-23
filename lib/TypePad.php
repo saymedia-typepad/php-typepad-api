@@ -20,7 +20,7 @@ function throwPropertyNotice($name) {
 }
 
 function _json_decode($str) {
-
+    $str = utf8_encode($str);
     if (!function_exists('json_decode')) {
         function json_decode($doc) {
             require_once 'json_lib.php';
@@ -126,7 +126,7 @@ EOT;
     
     static function makeUrl($path_chunks, $params = array()) {
         $url = (TP_CONSUMER_KEY ? self::baseSecure() : self::base())
-        	. implode('/', $path_chunks) . '.json';
+            . implode('/', $path_chunks) . '.json';
         if ($params) {
             $pairs = array();
             foreach ($params as $name => $value) {
@@ -201,8 +201,8 @@ EOT;
         }
         $request = new HttpRequest('GET', self::makeUrl($path_chunks, $params));
         if (TP_CONSUMER_KEY) {
-	        self::prepRequest($request);
-	    }
+            self::prepRequest($request);
+        }
         $response = $request->getResponse();
         try {
             $result = $this->resultOrError($request, $response, $result_type);
