@@ -1,7 +1,8 @@
 <?php
 
-$lib_dir = preg_replace('/TypePad.php$/', '', __FILE__);
-set_include_path(get_include_path() . PATH_SEPARATOR . $dir);
+$dir = preg_replace('/TypePad.php$/', '', __FILE__);
+$extdir = preg_replace('/lib\/$/', 'extlib/', $dir);
+set_include_path(implode(PATH_SEPARATOR, array(get_include_path(), $dir, $extdir)));
 
 require_once('BatchRequest.php');
 require_once('TypePad/Auth.php');
@@ -187,7 +188,7 @@ EOT;
         $responses = $this->batch->getResponses();
         foreach ($responses as $response) {
             $index = $response->getHeader('Multipart-Request-ID')-1;
-            if (!$response->isSuccess()) {
+            if ($response->isError()) {
                 throw new TPException($response, $this->batch->getRequest($index));
             }
             $this->requests[$index]->fulfill(_json_decode($response->getContent()), $this->result_types[$index]);
