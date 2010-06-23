@@ -267,9 +267,8 @@ class TPSession {
         // don't forget the verifier!
         $final_url .= 'oauth_verifier=' . $this->oauth_verifier;
                 
-        $handle = fopen($final_url, "rb");
-        $doc = stream_get_contents($handle);
-        fclose($handle);
+        $request = new HttpRequest('GET', $final_url);
+        $doc = $request->getResponse()->getContent();
         
         // Successful verification.
         if ($doc) {
@@ -403,8 +402,8 @@ class TPSession {
         */
         
         // and go ahead and execute the request.
-        $handle = fopen($final_url, "rb");
-        $doc = stream_get_contents($handle);     
+        $request = new HttpRequest('GET', $final_url);
+        $doc = $request->getResponse()->getContent();
         $response_array = explode("&", $doc);
         
         // TODO: Verbose error handling
