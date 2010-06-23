@@ -101,8 +101,15 @@ my $functions = '    function __get($name) { return $this->get($name, self::$pro
     static function propertyDocString($name) { return self::$properties[$name][0]; }
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
-
 ';
+
+# need to run through them all first so we can identify abstract classes
+for my $type (@{$types->{entries}}) {
+    my $class = "TP$type->{name}";
+    my $parent = $type->{parentType} ? "TP$type->{parentType}" : 'TPObject';
+    $children{$parent} ||= [];
+    push @{$children{$parent}}, $class;
+}
 
 for my $type (@{$types->{entries}}) {
     my $class = "TP$type->{name}";
@@ -145,6 +152,7 @@ $fulfill    }
 EOPHP
     }
     my $properties = join(",\n        ", map { "'$_' => array('$properties{$_}', '$prop_types{$_}')" } keys %properties);
+    my $abstract = $children{$class} ? 'true' : 'false';
     my $type_php = <<EOPHP;
 class $class extends $parent {
 
@@ -152,12 +160,13 @@ class $class extends $parent {
         $properties
     );
 
-$functions$fulfill}
+$functions
+    static function abstract { return $abstract; }
+
+$fulfill}
 
 EOPHP
     $types_php{$class} = $type_php;
-    $children{$parent} ||= [];
-    push @{$children{$parent}}, $class;
 }
 
 my $types_php;
