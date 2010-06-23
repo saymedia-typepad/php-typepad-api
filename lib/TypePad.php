@@ -303,12 +303,16 @@ class TPObject extends TPPromise {
     protected static $properties;
     
     function get($name, $properties) {
-        if (!isset($properties[$name])) return throwPropertyNotice($name);
+        if (TP_STRICT_PROPERTIES) {
+            if (!isset($properties[$name])) return throwPropertyNotice($name);
+        }
         return isset($this->data->$name) ? $this->data->$name : NULL;
     }
     
     function set($name, $value, $properties) {
-        if (!isset($properties[$name])) return throwPropertyNotice($name);
+        if (TP_STRICT_PROPERTIES) {
+            if (!isset($properties[$name])) return throwPropertyNotice($name);
+        }
         $this->data->$name = $value;
         return $this->data->$name;
     }
