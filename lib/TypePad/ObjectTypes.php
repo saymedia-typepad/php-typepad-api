@@ -12,7 +12,7 @@ class TPBase extends TPObject {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return true; }
+    static function isAbstract() { return true; }
 
 }
 
@@ -38,7 +38,7 @@ class TPAccount extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -55,7 +55,7 @@ class TPApiKey extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -98,7 +98,7 @@ class TPAsset extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return true; }
+    static function isAbstract() { return true; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -154,7 +154,7 @@ class TPAudio extends TPAsset {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -214,7 +214,7 @@ class TPComment extends TPAsset {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -274,7 +274,7 @@ class TPLink extends TPAsset {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -332,7 +332,7 @@ class TPPage extends TPAsset {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -393,7 +393,7 @@ class TPPhoto extends TPAsset {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -460,7 +460,7 @@ class TPPost extends TPAsset {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -528,7 +528,7 @@ class TPVideo extends TPAsset {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -571,7 +571,7 @@ class TPAssetExtendedContent extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -593,7 +593,7 @@ class TPAssetRef extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -618,7 +618,7 @@ class TPAssetSource extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -635,7 +635,7 @@ class TPAudioLink extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -652,7 +652,7 @@ class TPAuthToken extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -678,7 +678,7 @@ class TPBadge extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -708,7 +708,7 @@ class TPBlog extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -738,7 +738,7 @@ class TPBlogCommentingSettings extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -755,7 +755,7 @@ class TPBlogStats extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -772,7 +772,7 @@ class TPCommentTreeItem extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -799,7 +799,7 @@ class TPContainerRef extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -827,7 +827,7 @@ class TPEndpoint extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -862,7 +862,7 @@ class TPEntity extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return true; }
+    static function isAbstract() { return true; }
 
 }
 
@@ -889,7 +889,7 @@ class TPApplication extends TPEntity {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -912,7 +912,7 @@ class TPGroup extends TPEntity {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -946,7 +946,7 @@ class TPUser extends TPEntity {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -975,7 +975,7 @@ class TPEvent extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -1006,7 +1006,7 @@ class TPExternalFeedSubscription extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1026,7 +1026,7 @@ class TPFavorite extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -1055,7 +1055,7 @@ class TPFeedbackStatus extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1074,7 +1074,7 @@ class TPImageLink extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1092,7 +1092,7 @@ class TPObjectProperty extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1110,7 +1110,7 @@ class TPObjectType extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -1130,7 +1130,7 @@ class TPPostByEmailAddress extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1147,7 +1147,7 @@ class TPPublicationStatus extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1163,7 +1163,7 @@ class TPRelationshipStatus extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1180,7 +1180,7 @@ class TPUserBadge extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -1217,7 +1217,7 @@ class TPUserProfile extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);
@@ -1241,7 +1241,7 @@ class TPVideoLink extends TPBase {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
 }
 
@@ -1262,7 +1262,7 @@ class TPRelationship extends TPObject {
     static function propertyType($name) { return self::$properties[$name][1]; }
     function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
 
-    static function abstract { return false; }
+    static function isAbstract() { return false; }
 
     function fulfill($data) {
         parent::fulfill($data);

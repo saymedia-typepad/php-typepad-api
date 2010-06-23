@@ -161,7 +161,7 @@ class $class extends $parent {
     );
 
 $functions
-    static function abstract { return $abstract; }
+    static function isAbstract() { return $abstract; }
 
 $fulfill}
 
