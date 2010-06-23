@@ -205,6 +205,7 @@ class HttpResponse {
     protected $message;
     
     function __construct($raw_response) {
+        if (!$raw_response) return;
         $headers = array();
         list($head, $content) = preg_split("/\r?\n\r?\n/", $raw_response, 2);
         $i = 0;
