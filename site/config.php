@@ -47,6 +47,9 @@ define ('TP_INSECURE', false);
 // temporarily, and please report the API bug!
 define ('TP_STRICT_PROPERTIES', false);
 
-include_once('../lib/TypePad.php');
+// This path must be correct relative to the page being viewed, or absolute;
+// the TypePad library, once found, will add the lib directory to PHP's 
+// include_path, so this should be the only path you need to adjust.
+require_once('../lib/TypePad.php');
 
 ?>

@@ -1,63 +1,75 @@
 <?php
-function microtime_float()
-{
-    list($usec, $sec) = explode(" ", microtime());
-    return ((float)$usec + (float)$sec);
-}
+
+// These two lines are all that's required for a page to use the TypePad
+// API library. config.php contains some settings that must be filled in
+// in order to use certain features.
 
 include('config.php');
-
 $tp = new TypePad();
+
 ?>
 
 <head>
-<?php $tp->sessionSyncScriptTag(); ?>
-</head>
+<?php
+
+// This function is provided for use on sites that allow login via TypePad. 
+// it writes a <script> tag to the page that calls in a script file from 
+// typepad.com, allowing TypePad to recognize that the user is logged in
+// to TypePad and, if so, provide the user's information to your PHP application.
+// See http://www.typepad.com/services/apidocs/authentication for more details,
+// although you shouldn't have to worry about them beyond including this
+// function call in your page's <head>.
+
+$tp->sessionSyncScriptTag();
+
+?>
 
 <?php
 
-if (0) {
+// This tells TypePad to begin queuing requests for batch retrieval.
 $tp->openBatch();
-}
-if (1) {
-//$user = $tp->users->get('6p011e7c340484a5f8');
+
+// Any calls to API endpoint functions that come after an openBatch()
+// will not call the API yet, but will add them to the batch; when you've
+// queued all the subrequests you need to render the page, call 
+// $tp->runBatch().
+
+// Note that we don't need to wrap this in a try/catch block, because
+// no HTTP error will be thrown until the batch is run; if we were not
+// using a batch, we'd want to check for an exception on this get() call
+// itself.
 $user = $tp->users->get('@self');
-print_r($user);
-exit;
-}
-//$events = $tp->groups->getEvents('6p01229915440b12ef');
-//$user_group_events = $tp->users->getEventsByGroup(array('id' => '6p011e7c3404afa5f8', 'groupId' => '6p01229915440b12ef', 'limit' => 1));
 
-if (0) {
-$postme = new TPComment;
-$postme->content = 'Find This';
-$comment = $tp->assets->postToComments(array('id' => '6a011e7c3404afa5f8012fe0febfc6033a', 'payload' => $postme));
-}
+?>
 
-if (1) {
-$comment = $tp->assets->get('6a011e7c3404afa5f80137f3d74045033d');
-}
+</head>
 
-if (0) {
+<body>
+<?php
 try {
-$result = $tp->assets->delete('6a011e7c3404afa5f80137f3d74045033d');
-} catch (TPException $e) {
-print "AN ERROR OCCURRED: " . $e->getCode() .' '. $e->getMessage();
-}
-print_r($tp->lastResponse());
-}
 
-if (1) {
-try {
+	// This will throw a TPException if any of the batch's subrequests 
+	// returned a non-success HTTP status. In this case, since we made a
+	// request for the '@self' user, which will only succeed if the user is
+	// logged in, we want to catch a 404 Not Found response and present 
+	// the user with the option to log in.
 	$tp->runBatch();
+	print "Welcome, " . $user->displayName . "!";
+
 } catch (TPException $e) {
-	print "AN ERROR OCCURRED: " . $e->getCode() .' '. $e->getMessage() . " REQUEST WAS " . $e->getRequest()->getUri();
-	exit;
-}
-$comment = $comment->reclass();
-}
-if (1) {
-print_r($comment);
+
+	if ($e->getCode() == 404) {
+	    print <<<HTML
+You are not logged in. <a href="login.php">Click here</a> to log in.
+HTML;
+	} else {
+		// We're not expecting an error other than a 404, so just tell
+		// the user about it.
+		print "An error occurred: "
+			. $e->getCode() .' '. $e->getMessage()
+			. " (request was " . $e->getRequest()->getUri() . ")";
+	}
 }
 
 ?>
+</body>
