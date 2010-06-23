@@ -186,6 +186,9 @@ EOT;
             throw new TPException($response);
         }
         $responses = $this->batch->getResponses();
+        if (!$responses) {
+            throw new TPException($this->batch->getResponse());
+        }
         foreach ($responses as $response) {
             $index = $response->getHeader('Multipart-Request-ID')-1;
             if ($response->isError()) {
