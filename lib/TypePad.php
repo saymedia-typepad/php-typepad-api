@@ -351,7 +351,9 @@ class TPObject extends TPPromise {
     function reclass() {
         if ($this->data->objectType) {
             $class = 'TP' . $this->data->objectType;
-            return new $class($this->data);
+            if ($class->abstract) {
+                return new $class($this->data);
+            }
         }
         return $this;
     }

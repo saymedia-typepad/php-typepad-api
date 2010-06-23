@@ -278,6 +278,16 @@ class TPUsers extends TPNoun {
         return $this->typepad->get($path_chunks, $query_params, 'User');
     }
 
+    function getBadges($params) {
+        // Get a list of badges that the selected user has won.
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('users', $params['id'], 'badges');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<UserBadge>');
+    }
+
     function getBlogs($params) {
         // Get a list of blogs that the selected user has access to.
        if (!is_array($params)) $params = array('id' => $params);
@@ -452,6 +462,19 @@ class TPUsers extends TPNoun {
 }
 TypePad::addNoun('users');
 
+class TPBadges extends TPNoun {
+
+    function get($params) {
+        // Get basic information about the selected badge.
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('badges', $params['id']);
+        $query_params = array();
+        return $this->typepad->get($path_chunks, $query_params, 'Badge');
+    }
+
+}
+TypePad::addNoun('badges');
+
 class TPAssets extends TPNoun {
 
     function search($params) {
@@ -534,6 +557,16 @@ class TPAssets extends TPNoun {
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
         if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
         return $this->typepad->get($path_chunks, $query_params, 'List<Comment>');
+    }
+
+    function getExtendedContent($params) {
+        // Get the extended content for the asset, if any. Currently supported only for O<Post> assets that are posted within a blog.
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('assets', $params['id'], 'extended-content');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'AssetExtendedContent');
     }
 
     function getFavorites($params) {
@@ -671,10 +704,22 @@ class TPGroups extends TPNoun {
         return $this->typepad->get($path_chunks, $query_params, 'Group');
     }
 
+    function addMember($params) {
+        // Add a given user to the group (must be run by the user).
+        $path_chunks = array('groups', $params['id'], 'add-member');
+        return $this->typepad->post($path_chunks, $params['payload'], '');
+    }
+
     function postToAudioAssets($params) {
         // Create a new Audio asset within the selected group.
         $path_chunks = array('groups', $params['id'], 'audio-assets');
         return $this->typepad->post($path_chunks, $params['payload'], 'Audio');
+    }
+
+    function blockUser($params) {
+        // Remove a given user from the group, and block him or her from rejoining.
+        $path_chunks = array('groups', $params['id'], 'block-user');
+        return $this->typepad->post($path_chunks, $params['payload'], '');
     }
 
     function createExternalFeedSubscription($params) {
@@ -761,6 +806,18 @@ class TPGroups extends TPNoun {
         return $this->typepad->post($path_chunks, $params['payload'], 'Post');
     }
 
+    function removeMember($params) {
+        // Remove a given user from the group.
+        $path_chunks = array('groups', $params['id'], 'remove-member');
+        return $this->typepad->post($path_chunks, $params['payload'], '');
+    }
+
+    function unblockUser($params) {
+        // Remove any block status from the given user.
+        $path_chunks = array('groups', $params['id'], 'unblock-user');
+        return $this->typepad->post($path_chunks, $params['payload'], '');
+    }
+
     function postToVideoAssets($params) {
         // Create a new Video asset within the selected group.
         $path_chunks = array('groups', $params['id'], 'video-assets');
@@ -816,7 +873,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
     }
 
     function updateNotificationSettings($params) {
-        // Change the callback URL for the subscription.
+        // Change the callback URL and/or secret for the subscription.
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'update-notification-settings');
         return $this->typepad->post($path_chunks, $params['payload'], '');
     }
