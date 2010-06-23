@@ -1,5 +1,8 @@
 <?php
 
+$lib_dir = preg_replace('/TypePad.php$/', '', __FILE__);
+set_include_path(get_include_path() . PATH_SEPARATOR . $dir);
+
 require_once('BatchRequest.php');
 require_once('TypePad/Auth.php');
 require_once('TypePad/Nouns.php');
@@ -178,7 +181,7 @@ EOT;
             return;
         }
         $response = $this->batch->getResponse();
-        if (!$response->isSuccess()) {
+        if ($response->isError()) {
             throw new TPException($response);
         }
         $responses = $this->batch->getResponses();

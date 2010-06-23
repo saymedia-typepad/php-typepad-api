@@ -1,6 +1,6 @@
 <?php
-include_once ("../lib/oauth-php-98/library/OAuthStore.php");
-include_once ("../lib/oauth-php-98/library/OAuthRequester.php");
+include_once ("lib/oauth-php-98/library/OAuthStore.php");
+include_once ("lib/oauth-php-98/library/OAuthRequester.php");
 
 class TPSession {
     protected $store;
