@@ -4,6 +4,9 @@ require_once('BatchRequest.php');
 require_once('TypePad/Auth.php');
 require_once('TypePad/Nouns.php');
 require_once('TypePad/ObjectTypes.php');
+// Transparently replace the curl_* functions with command-line or pure-PHP
+// implementations if they're not compiled into the PHP we're running under. 
+require_once('libcurlemu/libcurlemu.inc.php');
 
 function throwPropertyNotice($name) {
     $trace = debug_backtrace();
