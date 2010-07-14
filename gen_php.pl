@@ -12,7 +12,16 @@ my $api_base = 'http://api.typepad.com.kshay-eng.dev.sixapart.com';
 my $php_dir = 'lib/TypePad';
 my $j = JSON->new;
 
-my $nouns_php;
+my $nouns_php = <<'EOPHP';
+/**
+ * Noun classes for the TypePad API.
+ *
+ * AUTO-GENERATED FILE - DO NOT EDIT
+ *
+ * @package TypePad-Nouns
+ */
+
+EOPHP
 
 my $raw_map = get("$api_base/client-library-helpers/method-mappings.json");
 my $map = $j->decode($raw_map);
@@ -20,7 +29,9 @@ my $map = $j->decode($raw_map);
 my $idget = "       if (!is_array(\$params)) \$params = array('id' => \$params);\n";
 for my $noun (keys %$map) {
     my $functions = '';
-    for my $endpoint (@{$map->{$noun}}) {
+    my $url_noun = lcfirst($noun);
+    $url_noun =~ s/([A-Z])/'-' . lc($1)/eg;
+    for my $endpoint (@{$map->{$noun}->{methods}}) {
         my $path_chunks = $endpoint->{pathChunks};
         my %path_params = reverse %{$endpoint->{pathParams}};
         
@@ -28,6 +39,9 @@ for my $noun (keys %$map) {
         my $php_chunks = join(', ', map {
             $i++;
             $_ ? "'$_'" : "\$params['$path_params{$i}']"
+        } @$path_chunks);
+        my $doc_path = join('/', map {
+            defined($_) ? $_ : '<id>'
         } @$path_chunks);
         
         my $query_params = '';
@@ -37,6 +51,7 @@ for my $noun (keys %$map) {
         }
         my $rot = $endpoint->{returnObjectType};
         my $return_type = '';
+        my $return;
         if ($rot && $rot->{name}) {
             $return_type = $rot->{name};
         } elsif ($rot) {
@@ -44,10 +59,7 @@ for my $noun (keys %$map) {
             # one property, we'll need to figure out how to support that
             my $prop = ($rot->{properties}->[0]);
             $return_type = "$prop->{name}:$prop->{type}";
-        }
-        if ($endpoint->{httpMethod} eq 'POST') {
-            # workaround for bug
-            $return_type =~ s/(List<)|>//g;
+            $return = "$prop->{type} $prop->{docString}";
         }
         my $lcmethod = lc($endpoint->{httpMethod});
         my $idcase = (
@@ -55,9 +67,24 @@ for my $noun (keys %$map) {
             && (scalar(keys %{$endpoint->{pathParams}}) == 1)
         ) ? $idget : '';
         $endpoint->{docString} ||= '';
+        $return ||= $return_type || '';
+        if ($return) {
+            if ($return =~ /List<(.)/) {
+                my $tp = ($1 =~ /[A-Z]/) ? 'TP' : '';
+                $return =~ s/List</TPList TPList of $tp/;
+                $return =~ s/>//;
+            } else {
+                $return = "TP$return";
+            }
+            $return = "\n     * \@return $return";
+        }
         $functions .= <<EOPHP;
+    /**
+     * $endpoint->{docString}
+     *
+     * \@link http://www.typepad.com/services/apidocs/endpoints/$doc_path$return
+     */
     function $endpoint->{methodName}(\$params) {
-        // $endpoint->{docString}
 $idcase        \$path_chunks = array($php_chunks);
 EOPHP
         if ($endpoint->{httpMethod} =~ /^POST|PUT$/) {
@@ -78,6 +105,10 @@ EOPHP
     }
     my $class = 'TP' . ucfirst($noun);
     $nouns_php .= <<EOPHP;
+/**
+ * \@package TypePad-Nouns
+ * \@subpackage $class
+ */
 class $class extends TPNoun {
 
 $functions}
@@ -153,7 +184,15 @@ EOPHP
     }
     my $properties = join(",\n        ", map { "'$_' => array('$properties{$_}', '$prop_types{$_}')" } keys %properties);
     my $abstract = $children{$class} ? 'true' : 'false';
+    my $a_n = ($type->{name} =~ /^[aeiou]/i) ? 'An' : 'A';
     my $type_php = <<EOPHP;
+/**
+ * $a_n $type->{name} object from the TypePad API.
+ *
+ * \@link http://www.typepad.com/services/apidocs/objecttypes/$type->{name}
+ * \@package TypePad-ObjectTypes
+ * \@subpackage $class
+ */
 class $class extends $parent {
 
     protected static \$properties = array(
@@ -169,7 +208,17 @@ EOPHP
     $types_php{$class} = $type_php;
 }
 
-my $types_php;
+my $types_php = <<'EOPHP';
+/**
+ * Object type classes for the TypePad API.
+ *
+ * AUTO-GENERATED FILE - DO NOT EDIT
+ *
+ * @package TypePad-ObjectTypes
+ */
+
+EOPHP
+
 # we need a flat list of classes such that a parent class will precede
 # its children in the source
 for my $class (@{children_flat('TPObject', \%children)}) {

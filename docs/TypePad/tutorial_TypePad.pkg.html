@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>The PHP TypePad API Library</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+
+<div><a name=""></a><div class="ref-title-box"><h1 class="ref-title">The PHP TypePad API Library</h1>
+  <h2 class="ref-purpose">Talking to TypePad with PHP</h2></div>
+ <div class="ref-synopsis"><span class="author"><a href="http://www.sixapart.com/">Six Apart, LLC</a>
+   <div class="author-blurb"><a href="http://developer.typepad.com/">TypePad Developer Resources</a></div>
+   <div class="author-blurb"><a href="http://www.typepad.com/services/apidocs/introduction">TypePad JSON API Introduction</a></div>
+   <div class="author-blurb"><a href="http://github.com/sixapart/">Six Apart on GitHub</a></div>
+   <div class="author-blurb"><a href="http://groups.google.com/group/typepad-dev-network">TypePad Developer Network Google group</a></div></span></div>
+ <h1 class="title">Table of Contents</h1>
+<ul class="toc">
+	
+			
+					<li><a href="../TypePad/tutorial_TypePad.pkg.html#requirements">Requirements</a></li>
+					
+					<li><a href="../TypePad/tutorial_TypePad.pkg.html#intro">Getting Started</a></li>
+					
+				  				<ul class="toc">
+					<li><a href="../TypePad/tutorial_TypePad.pkg.html#intro.database">Set Up the Database</a></li>
+						
+					
+					<li><a href="../TypePad/tutorial_TypePad.pkg.html#intro.install">Install the Code</a></li>
+					
+					<li><a href="../TypePad/tutorial_TypePad.pkg.html#intro.config">Configure Your Settings</a></li>
+						</ul>
+		</ul>
+
+ <span><a name="requirements"></a><h2 class="title">Requirements</h2><p>This library has been designed to have zero dependencies on extensions that require compilation and thus are not necessarily available to a given installation of PHP. All the required modules are included in the extlib directory distributed with the library. So, the requirements are simple:
+   <ul><li><em>PHP 5.x</em> The library relies heavily on PHP 5's object-oriented language features, so PHP 4.x is not supported.</li>
+    <li><em>A MySQL database</em> is necessary if you want to allow users to log in to your site with TypePad; OAuth tokens and TypePad IDs are stored in tables in the database.</li></ul></p></span>
+ <span><a name="intro"></a><h2 class="title">Getting Started</h2><span><a name="intro.database"></a><h3 class="title">Set Up the Database</h3><p>The file typepad.sql included in the library distribution contains the SQL statements to create the tables the library needs. If you have shell (command-line) access to your database, you can navigate to the php-typepad-api directory and type (replacing USERNAME, HOST, and DATABASE with your own information):</p>
+   <p>mysql -u USERNAME -h HOST -p DATABASE &lt; typepad.sql</p>
+   <p>If you have access to <a href="http://www.phpmyadmin.net/">phpMyAdmin</a> or a similar web-based tool to manage your database, you can paste the SQL statements from typepad.sql into the tool.</p></span>
+  <span><a name="intro.install"></a><h3 class="title">Install the Code</h3><p><ul><li>Upload the lib and extlib directories to the server where your site is hosted. These can go within the site's web root or somewhere elseas we'll see, you'll specify their location in your configuration settings.</li>
+     <li>Upload the files from the site directory to your site's directory on the server.
+      <ul><li>Rename config.original.php to config.php before uploading. The &quot;.original&quot; is included to prevent you from accidentally overwriting your settings when upgrading.</li>
+       <li>The index.php page is a basic &quot;Hello World&quot; example of using the API; you won't need it if you're integrating the API into existing pages.</li>
+       <li>login.php, logout.php, and sync.php are only necessary if you're going to allow users to log in to your site with TypePad.</li></ul></li></ul></p></span>
+  <span><a name="intro.config"></a><h3 class="title">Configure Your Settings</h3><p>Edit the config.php file, inserting information about your site and server setup.
+    <ul><li>The last line of code in this file is an include_once statement. Edit the path in this statement to point to the location of your lib/TypePad.php library. It's a good idea to make this an absolute path to the file on your server, but it can also be relative to the location of the pages that will be using the library.</li>
+     <li>If you want to allow users to log in with TypePad and have set up the database tables as described above, enter your database information in the TP_DB_NAME, TP_DB_HOST, TP_DB_USERNAME, and TP_DB_PASSWORD constants.</li>
+     <li>If you want to allow users to log in with TypePad, edit the TP_RETURN_URL and TP_SYNC_URL constants to reflect your site's homepage and the location of the sync.php file you uploaded.</li>
+     <li>If you want to make authenticated requests to the API, you must first obtain a set of API keys by going to <a href="http://www.typepad.com/account/access/developer">http://www.typepad.com/account/access/developer</a> when logged in to TypePad. Once you've created the keys, enter them into the TP_CONSUMER_KEY, TP_CONSUMER_SECRET, TP_GENERAL_PURPOSE_KEY, and TP_GENERAL_PURPOSE_SECRET constants.</li></ul></p></span>
+  <p></p></span></div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 14 Jul 2010 17:23:16 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

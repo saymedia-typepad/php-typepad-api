@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Object type classes for the TypePad API.
+ *
+ * AUTO-GENERATED FILE - DO NOT EDIT
+ *
+ * @package TypePad-ObjectTypes
+ */
+
+/**
+ * A Base object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Base
+ * @package TypePad-ObjectTypes
+ * @subpackage TPBase
+ */
 class TPBase extends TPObject {
 
     protected static $properties = array(
@@ -16,6 +31,13 @@ class TPBase extends TPObject {
 
 }
 
+/**
+ * An Account object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Account
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAccount
+ */
 class TPAccount extends TPBase {
 
     protected static $properties = array(
@@ -42,6 +64,13 @@ class TPAccount extends TPBase {
 
 }
 
+/**
+ * An ApiKey object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ApiKey
+ * @package TypePad-ObjectTypes
+ * @subpackage TPApiKey
+ */
 class TPApiKey extends TPBase {
 
     protected static $properties = array(
@@ -66,6 +95,13 @@ class TPApiKey extends TPBase {
     }
 }
 
+/**
+ * An Asset object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Asset
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAsset
+ */
 class TPAsset extends TPBase {
 
     protected static $properties = array(
@@ -121,6 +157,13 @@ class TPAsset extends TPBase {
     }
 }
 
+/**
+ * An Audio object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Audio
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAudio
+ */
 class TPAudio extends TPAsset {
 
     protected static $properties = array(
@@ -130,6 +173,7 @@ class TPAudio extends TPAsset {
         'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
         'author' => array('The user who created the selected asset.', 'User'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
+        'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.', 'boolean'),
         'audioLink' => array('A link to the audio stream that is this Audio asset\'s content.', 'AudioLink'),
         'publicationStatus' => array('T<Editable> An object describing the visibility status and publication date for this asset. Only visibility status is editable.', 'PublicationStatus'),
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
@@ -181,6 +225,13 @@ class TPAudio extends TPAsset {
     }
 }
 
+/**
+ * A Comment object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Comment
+ * @package TypePad-ObjectTypes
+ * @subpackage TPComment
+ */
 class TPComment extends TPAsset {
 
     protected static $properties = array(
@@ -190,12 +241,14 @@ class TPComment extends TPAsset {
         'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
         'author' => array('The user who created the selected asset.', 'User'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
+        'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.', 'boolean'),
         'publicationStatus' => array('T<Editable> An object describing the visibility status and publication date for this page. Only visibility status is editable.', 'PublicationStatus'),
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
+        'root' => array('A reference to the root asset that this comment is descended from. This will be the same as M<inReplyTo> unless this comment is a reply to another comment.', 'AssetRef'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
         'inReplyTo' => array('A reference to the asset that this comment is in reply to.', 'AssetRef'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
@@ -234,6 +287,10 @@ class TPComment extends TPAsset {
             $ot_class = 'TP' . (isset($data->author->objectType) ? $data->author->objectType : 'User');
             $this->author = new $ot_class($data->author);
         }
+        if (isset($data->root) && (get_class($data->root) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->root->objectType) ? $data->root->objectType : 'AssetRef');
+            $this->root = new $ot_class($data->root);
+        }
         if (isset($data->publicationStatus) && (get_class($data->publicationStatus) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->publicationStatus->objectType) ? $data->publicationStatus->objectType : 'PublicationStatus');
             $this->publicationStatus = new $ot_class($data->publicationStatus);
@@ -241,6 +298,13 @@ class TPComment extends TPAsset {
     }
 }
 
+/**
+ * A Link object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Link
+ * @package TypePad-ObjectTypes
+ * @subpackage TPLink
+ */
 class TPLink extends TPAsset {
 
     protected static $properties = array(
@@ -250,6 +314,7 @@ class TPLink extends TPAsset {
         'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
         'author' => array('The user who created the selected asset.', 'User'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
+        'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.', 'boolean'),
         'publicationStatus' => array('T<Editable> An object describing the visibility status and publication date for this asset. Only visibility status is editable.', 'PublicationStatus'),
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
@@ -297,6 +362,13 @@ class TPLink extends TPAsset {
     }
 }
 
+/**
+ * A Page object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Page
+ * @package TypePad-ObjectTypes
+ * @subpackage TPPage
+ */
 class TPPage extends TPAsset {
 
     protected static $properties = array(
@@ -306,6 +378,7 @@ class TPPage extends TPAsset {
         'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
         'author' => array('The user who created the selected asset.', 'User'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
+        'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.', 'boolean'),
         'publicationStatus' => array('T<Editable> An object describing the draft status and publication date for this page.', 'PublicationStatus'),
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
@@ -360,6 +433,13 @@ class TPPage extends TPAsset {
     }
 }
 
+/**
+ * A Photo object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Photo
+ * @package TypePad-ObjectTypes
+ * @subpackage TPPhoto
+ */
 class TPPhoto extends TPAsset {
 
     protected static $properties = array(
@@ -369,6 +449,7 @@ class TPPhoto extends TPAsset {
         'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
         'author' => array('The user who created the selected asset.', 'User'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
+        'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.', 'boolean'),
         'publicationStatus' => array('T<Editable> An object describing the visibility status and publication date for this asset. Only visibility status is editable.', 'PublicationStatus'),
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
@@ -420,6 +501,13 @@ class TPPhoto extends TPAsset {
     }
 }
 
+/**
+ * A Post object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Post
+ * @package TypePad-ObjectTypes
+ * @subpackage TPPost
+ */
 class TPPost extends TPAsset {
 
     protected static $properties = array(
@@ -431,6 +519,7 @@ class TPPost extends TPAsset {
         'author' => array('The user who created the selected asset.', 'User'),
         'reblogCount' => array('The number of times this post has been reblogged by other people.', 'integer'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
+        'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.', 'boolean'),
         'publicationStatus' => array('T<Editable> An object describing the draft status and publication date for this post.', 'PublicationStatus'),
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
@@ -494,6 +583,13 @@ class TPPost extends TPAsset {
     }
 }
 
+/**
+ * A Video object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Video
+ * @package TypePad-ObjectTypes
+ * @subpackage TPVideo
+ */
 class TPVideo extends TPAsset {
 
     protected static $properties = array(
@@ -504,6 +600,8 @@ class TPVideo extends TPAsset {
         'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
         'author' => array('The user who created the selected asset.', 'User'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
+        'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such
+ as emails or dashboard entries. Not available to all applications.', 'boolean'),
         'publicationStatus' => array('T<Editable> An object describing the visibility status and publication date for this asset. Only visibility status is editable.', 'PublicationStatus'),
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
@@ -559,6 +657,13 @@ class TPVideo extends TPAsset {
     }
 }
 
+/**
+ * An AssetExtendedContent object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/AssetExtendedContent
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAssetExtendedContent
+ */
 class TPAssetExtendedContent extends TPBase {
 
     protected static $properties = array(
@@ -575,6 +680,13 @@ class TPAssetExtendedContent extends TPBase {
 
 }
 
+/**
+ * An AssetRef object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/AssetRef
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAssetRef
+ */
 class TPAssetRef extends TPBase {
 
     protected static $properties = array(
@@ -604,6 +716,13 @@ class TPAssetRef extends TPBase {
     }
 }
 
+/**
+ * An AssetSource object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/AssetSource
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAssetSource
+ */
 class TPAssetSource extends TPBase {
 
     protected static $properties = array(
@@ -622,6 +741,13 @@ class TPAssetSource extends TPBase {
 
 }
 
+/**
+ * An AudioLink object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/AudioLink
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAudioLink
+ */
 class TPAudioLink extends TPBase {
 
     protected static $properties = array(
@@ -639,6 +765,13 @@ class TPAudioLink extends TPBase {
 
 }
 
+/**
+ * An AuthToken object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/AuthToken
+ * @package TypePad-ObjectTypes
+ * @subpackage TPAuthToken
+ */
 class TPAuthToken extends TPBase {
 
     protected static $properties = array(
@@ -663,10 +796,18 @@ class TPAuthToken extends TPBase {
     }
 }
 
+/**
+ * A Badge object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Badge
+ * @package TypePad-ObjectTypes
+ * @subpackage TPBadge
+ */
 class TPBadge extends TPBase {
 
     protected static $properties = array(
         'id' => array('The canonical identifier that can be used to identify this badge in URLs.  This can be used to recognise where the same badge is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'isLearning' => array('A learning badge is given for a special achievement a user accomplishes while filling out a new account. C<true> if this is a learning badge, or C<false> if this is a normal badge.', 'boolean'),
         'displayName' => array('A human-readable name for this badge.', 'string'),
         'description' => array('A human-readable description of what a user must do to win this badge.', 'string'),
         'imageLink' => array('A link to the image that depicts this badge to users.', 'ImageLink')
@@ -689,6 +830,13 @@ class TPBadge extends TPBase {
     }
 }
 
+/**
+ * A Blog object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Blog
+ * @package TypePad-ObjectTypes
+ * @subpackage TPBlog
+ */
 class TPBlog extends TPBase {
 
     protected static $properties = array(
@@ -719,6 +867,13 @@ class TPBlog extends TPBase {
     }
 }
 
+/**
+ * A BlogCommentingSettings object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/BlogCommentingSettings
+ * @package TypePad-ObjectTypes
+ * @subpackage TPBlogCommentingSettings
+ */
 class TPBlogCommentingSettings extends TPBase {
 
     protected static $properties = array(
@@ -742,6 +897,13 @@ class TPBlogCommentingSettings extends TPBase {
 
 }
 
+/**
+ * A BlogStats object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/BlogStats
+ * @package TypePad-ObjectTypes
+ * @subpackage TPBlogStats
+ */
 class TPBlogStats extends TPBase {
 
     protected static $properties = array(
@@ -759,6 +921,13 @@ class TPBlogStats extends TPBase {
 
 }
 
+/**
+ * A CommentTreeItem object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/CommentTreeItem
+ * @package TypePad-ObjectTypes
+ * @subpackage TPCommentTreeItem
+ */
 class TPCommentTreeItem extends TPBase {
 
     protected static $properties = array(
@@ -783,6 +952,13 @@ class TPCommentTreeItem extends TPBase {
     }
 }
 
+/**
+ * A ContainerRef object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ContainerRef
+ * @package TypePad-ObjectTypes
+ * @subpackage TPContainerRef
+ */
 class TPContainerRef extends TPBase {
 
     protected static $properties = array(
@@ -803,6 +979,13 @@ class TPContainerRef extends TPBase {
 
 }
 
+/**
+ * An Endpoint object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Endpoint
+ * @package TypePad-ObjectTypes
+ * @subpackage TPEndpoint
+ */
 class TPEndpoint extends TPBase {
 
     protected static $properties = array(
@@ -849,6 +1032,13 @@ class TPEndpoint extends TPBase {
     }
 }
 
+/**
+ * An Entity object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Entity
+ * @package TypePad-ObjectTypes
+ * @subpackage TPEntity
+ */
 class TPEntity extends TPBase {
 
     protected static $properties = array(
@@ -866,6 +1056,13 @@ class TPEntity extends TPBase {
 
 }
 
+/**
+ * An Application object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Application
+ * @package TypePad-ObjectTypes
+ * @subpackage TPApplication
+ */
 class TPApplication extends TPEntity {
 
     protected static $properties = array(
@@ -893,6 +1090,13 @@ class TPApplication extends TPEntity {
 
 }
 
+/**
+ * A Group object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Group
+ * @package TypePad-ObjectTypes
+ * @subpackage TPGroup
+ */
 class TPGroup extends TPEntity {
 
     protected static $properties = array(
@@ -923,6 +1127,13 @@ class TPGroup extends TPEntity {
     }
 }
 
+/**
+ * An User object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/User
+ * @package TypePad-ObjectTypes
+ * @subpackage TPUser
+ */
 class TPUser extends TPEntity {
 
     protected static $properties = array(
@@ -957,14 +1168,21 @@ class TPUser extends TPEntity {
     }
 }
 
+/**
+ * An Event object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Event
+ * @package TypePad-ObjectTypes
+ * @subpackage TPEvent
+ */
 class TPEvent extends TPBase {
 
     protected static $properties = array(
         'object' => array('The object to which the action described by this event was performed.', 'Base'),
         'verbs' => array('T<Deprecated> An array of verb identifier URIs. This set will contain one verb identifier URI.', 'set<string>'),
         'verb' => array('A keyword identifying the type of event this is.', 'set<string>'),
-        'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
-        'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'id' => array('A URI that serves as a globally unique identifier for the event.', 'string'),
+        'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same event is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
         'actor' => array('The user who performed the action described by this event.', 'Entity'),
         'published' => array('The time at which the event was performed, as a W3CDTF timestamp.', 'string')
     );
@@ -990,6 +1208,13 @@ class TPEvent extends TPBase {
     }
 }
 
+/**
+ * An ExternalFeedSubscription object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ExternalFeedSubscription
+ * @package TypePad-ObjectTypes
+ * @subpackage TPExternalFeedSubscription
+ */
 class TPExternalFeedSubscription extends TPBase {
 
     protected static $properties = array(
@@ -1010,6 +1235,13 @@ class TPExternalFeedSubscription extends TPBase {
 
 }
 
+/**
+ * A Favorite object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Favorite
+ * @package TypePad-ObjectTypes
+ * @subpackage TPFavorite
+ */
 class TPFavorite extends TPBase {
 
     protected static $properties = array(
@@ -1041,6 +1273,13 @@ class TPFavorite extends TPBase {
     }
 }
 
+/**
+ * A FeedbackStatus object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/FeedbackStatus
+ * @package TypePad-ObjectTypes
+ * @subpackage TPFeedbackStatus
+ */
 class TPFeedbackStatus extends TPBase {
 
     protected static $properties = array(
@@ -1059,6 +1298,13 @@ class TPFeedbackStatus extends TPBase {
 
 }
 
+/**
+ * An ImageLink object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ImageLink
+ * @package TypePad-ObjectTypes
+ * @subpackage TPImageLink
+ */
 class TPImageLink extends TPBase {
 
     protected static $properties = array(
@@ -1078,6 +1324,13 @@ class TPImageLink extends TPBase {
 
 }
 
+/**
+ * An ObjectProperty object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ObjectProperty
+ * @package TypePad-ObjectTypes
+ * @subpackage TPObjectProperty
+ */
 class TPObjectProperty extends TPBase {
 
     protected static $properties = array(
@@ -1096,6 +1349,13 @@ class TPObjectProperty extends TPBase {
 
 }
 
+/**
+ * An ObjectType object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ObjectType
+ * @package TypePad-ObjectTypes
+ * @subpackage TPObjectType
+ */
 class TPObjectType extends TPBase {
 
     protected static $properties = array(
@@ -1118,6 +1378,13 @@ class TPObjectType extends TPBase {
     }
 }
 
+/**
+ * A PostByEmailAddress object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/PostByEmailAddress
+ * @package TypePad-ObjectTypes
+ * @subpackage TPPostByEmailAddress
+ */
 class TPPostByEmailAddress extends TPBase {
 
     protected static $properties = array(
@@ -1134,6 +1401,13 @@ class TPPostByEmailAddress extends TPBase {
 
 }
 
+/**
+ * A PublicationStatus object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/PublicationStatus
+ * @package TypePad-ObjectTypes
+ * @subpackage TPPublicationStatus
+ */
 class TPPublicationStatus extends TPBase {
 
     protected static $properties = array(
@@ -1151,6 +1425,13 @@ class TPPublicationStatus extends TPBase {
 
 }
 
+/**
+ * A RelationshipStatus object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/RelationshipStatus
+ * @package TypePad-ObjectTypes
+ * @subpackage TPRelationshipStatus
+ */
 class TPRelationshipStatus extends TPBase {
 
     protected static $properties = array(
@@ -1167,6 +1448,13 @@ class TPRelationshipStatus extends TPBase {
 
 }
 
+/**
+ * An UserBadge object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/UserBadge
+ * @package TypePad-ObjectTypes
+ * @subpackage TPUserBadge
+ */
 class TPUserBadge extends TPBase {
 
     protected static $properties = array(
@@ -1191,6 +1479,13 @@ class TPUserBadge extends TPBase {
     }
 }
 
+/**
+ * An UserProfile object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/UserProfile
+ * @package TypePad-ObjectTypes
+ * @subpackage TPUserProfile
+ */
 class TPUserProfile extends TPBase {
 
     protected static $properties = array(
@@ -1228,6 +1523,13 @@ class TPUserProfile extends TPBase {
     }
 }
 
+/**
+ * A VideoLink object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/VideoLink
+ * @package TypePad-ObjectTypes
+ * @subpackage TPVideoLink
+ */
 class TPVideoLink extends TPBase {
 
     protected static $properties = array(
@@ -1245,6 +1547,13 @@ class TPVideoLink extends TPBase {
 
 }
 
+/**
+ * A Relationship object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/Relationship
+ * @package TypePad-ObjectTypes
+ * @subpackage TPRelationship
+ */
 class TPRelationship extends TPObject {
 
     protected static $properties = array(

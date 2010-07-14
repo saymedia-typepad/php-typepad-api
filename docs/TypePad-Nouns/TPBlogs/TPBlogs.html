@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TPBlogs</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TPBlogs</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-vars">Vars</a>
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+		<p class="notes">
+			Located in <a class="field" href="_lib---TypePad---Nouns.php.html">/lib/TypePad/Nouns.php</a> (line <span class="field">49</span>)
+		</p>
+		
+				
+		<pre><a href="../../TypePad/TPNoun/TPNoun.html">TPNoun</a>
+   |
+   --TPBlogs</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-vars">Vars</a>
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																												
+												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#addCategory" title="details" class="method-name">addCategory</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPAsset/TPAsset.html">TPAsset</a></span>
+										<a href="#discoverExternalPostAsset" title="details" class="method-name">discoverExternalPostAsset</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPBlog/TPBlog.html">TPBlog</a></span>
+										<a href="#get" title="details" class="method-name">get</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getCategories" title="details" class="method-name">getCategories</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPBlogCommentingSettings/TPBlogCommentingSettings.html">TPBlogCommentingSettings</a></span>
+										<a href="#getCommentingSettings" title="details" class="method-name">getCommentingSettings</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getCrosspostAccounts" title="details" class="method-name">getCrosspostAccounts</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getPageAssets" title="details" class="method-name">getPageAssets</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getPostAssets" title="details" class="method-name">getPostAssets</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getPostAssetsByCategory" title="details" class="method-name">getPostAssetsByCategory</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getPostAssetsByMonth" title="details" class="method-name">getPostAssetsByMonth</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPPostByEmailAddress/TPPostByEmailAddress.html">TPPostByEmailAddress</a></span>
+										<a href="#getPostByEmailSettingsByUser" title="details" class="method-name">getPostByEmailSettingsByUser</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getPublishedComments" title="details" class="method-name">getPublishedComments</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getPublishedRecentComments" title="details" class="method-name">getPublishedRecentComments</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+										<a href="#getRecentPostAssets" title="details" class="method-name">getRecentPostAssets</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPBlogStats/TPBlogStats.html">TPBlogStats</a></span>
+										<a href="#getStats" title="details" class="method-name">getStats</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPAsset/TPAsset.html">TPAsset</a></span>
+										<a href="#postToMediaAssets" title="details" class="method-name">postToMediaAssets</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPPage/TPPage.html">TPPage</a></span>
+										<a href="#postToPageAssets" title="details" class="method-name">postToPageAssets</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../TypePad-ObjectTypes/TPPost/TPPost.html">TPPost</a></span>
+										<a href="#postToPostAssets" title="details" class="method-name">postToPostAssets</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#removeCategory" title="details" class="method-name">removeCategory</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+										<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../TypePad/TPNoun/TPNoun.html">TPNoun</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../TypePad/TPNoun/TPNoun.html#var$typepad">TPNoun::$typepad</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-vars">Vars</a>
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodaddCategory" id="addCategory"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addCategory</span> (line <span class="line-number">69</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Send label argument to remove a category from the blog</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/add-category">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/add-category</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addCategory
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddiscoverExternalPostAsset" id="discoverExternalPostAsset"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">discoverExternalPostAsset</span> (line <span class="line-number">153</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">If the selected blog is a connected blog, create or retrieve the external post stub for the given permalink.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The asset that acts as a stub for the given permalink.</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/discover-external-post-asset">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/discover-external-post-asset</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPAsset/TPAsset.html">TPAsset</a></span>
+		<span class="method-name">
+			discoverExternalPostAsset
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodget" id="get"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">get</span> (line <span class="line-number">57</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get basic information about the selected blog.</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPBlog/TPBlog.html">TPBlog</a></span>
+		<span class="method-name">
+			get
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCategories" id="getCategories"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCategories</span> (line <span class="line-number">80</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a list of categories which are defined for the selected blog.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of string</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/categories">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/categories</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getCategories
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCommentingSettings" id="getCommentingSettings"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCommentingSettings</span> (line <span class="line-number">95</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the commenting-related settings for this blog.</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/commenting-settings">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/commenting-settings</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPBlogCommentingSettings/TPBlogCommentingSettings.html">TPBlogCommentingSettings</a></span>
+		<span class="method-name">
+			getCommentingSettings
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCrosspostAccounts" id="getCrosspostAccounts"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCrosspostAccounts</span> (line <span class="line-number">138</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get  a list of accounts that can be used for crossposting with this blog.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPAccount</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/crosspost-accounts">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/crosspost-accounts</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getCrosspostAccounts
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPageAssets" id="getPageAssets"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPageAssets</span> (line <span class="line-number">186</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a list of pages associated with the selected blog.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPPage</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/page-assets">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/page-assets</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getPageAssets
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPostAssets" id="getPostAssets"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostAssets</span> (line <span class="line-number">212</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a list of posts associated with the selected blog.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPPost</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/post-assets</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getPostAssets
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPostAssetsByCategory" id="getPostAssetsByCategory"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostAssetsByCategory</span> (line <span class="line-number">227</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get all visibile posts in the selected blog that have been assigned to the given category.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPPost</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@by-category/<id>">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/post-assets/@by-category/&lt;id&gt;</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getPostAssetsByCategory
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPostAssetsByMonth" id="getPostAssetsByMonth"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostAssetsByMonth</span> (line <span class="line-number">241</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get all visible posts in the selected blog that have a publication date within the selected month, specified as a string of the form &quot;YYYY-MM&quot;.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPPost</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@by-month/<id>">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/post-assets/@by-month/&lt;id&gt;</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getPostAssetsByMonth
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPostByEmailSettingsByUser" id="getPostByEmailSettingsByUser"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostByEmailSettingsByUser</span> (line <span class="line-number">270</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the selected user's post-by-email address</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-by-email-settings/@by-user/<id>">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/post-by-email-settings/@by-user/&lt;id&gt;</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPPostByEmailAddress/TPPostByEmailAddress.html">TPPostByEmailAddress</a></span>
+		<span class="method-name">
+			getPostByEmailSettingsByUser
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPublishedComments" id="getPublishedComments"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPublishedComments</span> (line <span class="line-number">108</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return a pageable list of published comments associated with the selected blog</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPComment</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/comments/@published">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/comments/@published</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getPublishedComments
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPublishedRecentComments" id="getPublishedRecentComments"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPublishedRecentComments</span> (line <span class="line-number">123</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return the fifty most recent published comments associated with the selected blog</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPComment</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/comments/@published/@recent">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/comments/@published/@recent</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getPublishedRecentComments
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetRecentPostAssets" id="getRecentPostAssets"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getRecentPostAssets</span> (line <span class="line-number">255</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the most recent 50 posts in the selected blog, including draft and scheduled posts.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TPList of TPPost</li>
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@recent">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/post-assets/@recent</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad/TPList/TPList.html">TPList</a></span>
+		<span class="method-name">
+			getRecentPostAssets
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetStats" id="getStats"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getStats</span> (line <span class="line-number">294</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get data about the pageviews for the selected blog.</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/stats">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/stats</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPBlogStats/TPBlogStats.html">TPBlogStats</a></span>
+		<span class="method-name">
+			getStats
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpostToMediaAssets" id="postToMediaAssets"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">postToMediaAssets</span> (line <span class="line-number">164</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add a new media asset to the account that owns this blog.</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/media-assets">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/media-assets</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPAsset/TPAsset.html">TPAsset</a></span>
+		<span class="method-name">
+			postToMediaAssets
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpostToPageAssets" id="postToPageAssets"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">postToPageAssets</span> (line <span class="line-number">175</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add a new page to a blog</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/page-assets">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/page-assets</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPPage/TPPage.html">TPPage</a></span>
+		<span class="method-name">
+			postToPageAssets
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpostToPostAssets" id="postToPostAssets"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">postToPostAssets</span> (line <span class="line-number">201</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add a new post to a blog</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/post-assets</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../TypePad-ObjectTypes/TPPost/TPPost.html">TPPost</a></span>
+		<span class="method-name">
+			postToPostAssets
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodremoveCategory" id="removeCategory"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeCategory</span> (line <span class="line-number">283</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Send label argument to remove a category from the blog</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/remove-category">http://www.typepad.com/services/apidocs/endpoints/blogs/&lt;id&gt;/remove-category</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeCategory
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../TypePad/TPNoun/TPNoun.html">TPNoun</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../TypePad/TPNoun/TPNoun.html#method__construct">TPNoun::__construct()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 14 Jul 2010 17:23:17 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

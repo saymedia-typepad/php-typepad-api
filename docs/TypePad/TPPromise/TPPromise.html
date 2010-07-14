@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TPPromise</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TPPromise</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-descendents">Descendents</a>
+			|											<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Allow deferred object population for batch requests.</p>
+<p class="description"><p>Every TPObject is actually a TPPromise; it won't have any content until  it's fulfill()ed with some data. When a non-batch request is made, the  result object is simply fulfill()ed immediately with the response data.</p><p>If a TPObject subclass has properties that are themselves TPObjects,  it will override the fulfill() method in order to make the properties  instances of the appropriate classes.</p></p>
+		<p class="notes">
+			Located in <a class="field" href="_lib---TypePad.php.html">/lib/TypePad.php</a> (line <span class="field">514</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+	<a name="sec-descendents"></a>
+	<div class="info-box">
+		<div class="info-box-title">Direct descendents</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Descendents</span>
+			|												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+								|															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../../TypePad/TPObject/TPObject.html">TPObject</a></td>
+					<td>
+											Base class for objects requested from the TypePad API.
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$data" title="details" class="var-name">$data</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$fulfilled" title="details" class="var-name">$fulfilled</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$request_id" title="details" class="var-name">$request_id</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																												
+												<div class="method-definition">
+											<span class="method-result">TPPromise</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">NULL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#fulfill" title="details" class="method-name">fulfill</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$result_type</span> = <span class="var-default">NULL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#isFulfilled" title="details" class="method-name">isFulfilled</a>
+										()
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$data" id="$data"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$data</span>
+						(line <span class="line-number">517</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$fulfilled" id="$fulfilled"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$fulfilled</span>
+						(line <span class="line-number">518</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$request_id" id="$request_id"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$request_id</span>
+						(line <span class="line-number">516</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">520</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">TPPromise</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$data</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../TypePad/TPList/TPList.html#method__construct">TPList::__construct()</a>
+							</li>
+				</ul>
+	</div>
+<a name="methodfulfill" id="fulfill"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">fulfill</span> (line <span class="line-number">537</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Populate a promise object with content and mark it as fulfilled.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			fulfill
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$result_type</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span><span class="var-description">: The content with which to fulfill the promise.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$result_type</span><span class="var-description">: (Optional) The expected type of the data.</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPApiKey/TPApiKey.html#methodfulfill">TPApiKey::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPAsset/TPAsset.html#methodfulfill">TPAsset::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPAudio/TPAudio.html#methodfulfill">TPAudio::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPComment/TPComment.html#methodfulfill">TPComment::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPLink/TPLink.html#methodfulfill">TPLink::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPPage/TPPage.html#methodfulfill">TPPage::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPPhoto/TPPhoto.html#methodfulfill">TPPhoto::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPPost/TPPost.html#methodfulfill">TPPost::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPVideo/TPVideo.html#methodfulfill">TPVideo::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPAssetRef/TPAssetRef.html#methodfulfill">TPAssetRef::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPAuthToken/TPAuthToken.html#methodfulfill">TPAuthToken::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPBadge/TPBadge.html#methodfulfill">TPBadge::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPBlog/TPBlog.html#methodfulfill">TPBlog::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPCommentTreeItem/TPCommentTreeItem.html#methodfulfill">TPCommentTreeItem::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPEndpoint/TPEndpoint.html#methodfulfill">TPEndpoint::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPGroup/TPGroup.html#methodfulfill">TPGroup::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPUser/TPUser.html#methodfulfill">TPUser::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPEvent/TPEvent.html#methodfulfill">TPEvent::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPFavorite/TPFavorite.html#methodfulfill">TPFavorite::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPObjectType/TPObjectType.html#methodfulfill">TPObjectType::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPUserBadge/TPUserBadge.html#methodfulfill">TPUserBadge::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPUserProfile/TPUserProfile.html#methodfulfill">TPUserProfile::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad-ObjectTypes/TPRelationship/TPRelationship.html#methodfulfill">TPRelationship::fulfill()</a>
+							</li>
+					<li>
+				<a href="../../TypePad/TPList/TPList.html#methodfulfill">TPList::fulfill()</a>
+							</li>
+				</ul>
+	</div>
+<a name="methodisFulfilled" id="isFulfilled"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">isFulfilled</span> (line <span class="line-number">551</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return whether this promise has been fulfilled.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			isFulfilled
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 14 Jul 2010 17:23:24 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

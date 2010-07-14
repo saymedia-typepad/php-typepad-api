@@ -1,7 +1,20 @@
 <?php
+
+/**
+ * Authentication for the TypePad API.
+ *
+ * @package TypePad-Auth
+ */
+
 require_once ("oauth-php-98/library/OAuthStore.php");
 require_once ("oauth-php-98/library/OAuthRequester.php");
 
+/**
+ * Object class representing a TypePad user session.
+ *
+ * @package TypePad-Auth
+ * @subpackage TPSession
+ */
 class TPSession {
     protected $store;
     protected $oauth_token;
@@ -15,37 +28,68 @@ class TPSession {
     static protected $user_session_map = array();
     static protected $session_user_map = array();
     
+    /**
+     * Return the ID (cookie value) associated with this session.
+     *
+     * @return string
+     */
     function sessionId() {
         if (!$this->user_id && !$this->session_id) return NULL;
-        if (!$this->session_id) $this->setSessionId();
+        if (!$this->session_id) $this->_setSessionId();
         return $this->session_id;
     }
     
+    /**
+     * Return the user ID associated with this session.
+     *
+     * @return string
+     */
     function userId() {
         if (!$this->user_id && !$this->session_id) return NULL;
-        if (!$this->user_id) $this->setUserId();
+        if (!$this->user_id) $this->_setUserId();
         return $this->user_id;
     }
     
+    /**
+     * Return the OAuth token associated with this session.
+     *
+     * @return string
+     */
     function getOauthToken() {
         return $this->oauth_token;
     }
     
+    /**
+     * Return true if the session has a logged-in user, false otherwise.
+     *
+     * @return boolean
+     */
     function isLoggedIn() {
         if ($this->oauth_token) return 1;
         return 0;
     }
-   
+    
+    /**
+     * Create a new user session object.
+     *
+     * The TPSession constructor looks at the session ID in the local cookie,
+     * the OAuth tokens in the database (if a database is configured),
+     * and communicates with TypePad to determine whether the
+     * user is legitimately logged in.
+     *
+     * @param TypePad $typepad An instance of the TypePad class. The TPSession
+     *                         session will be stored as the instance's user session.
+     */
     function __construct($typepad = NULL) {
         if (!$typepad) {
             $typepad = new TypePad();
         }
         // define the DB store.
-        if (!$this->store) $this->store = OAuthStore::instance('MySQL', self::getDbOptions());
+        if (!$this->store) $this->store = OAuthStore::instance('MySQL', self::_getDbOptions());
 
         if (array_key_exists(TP_COOKIE_NAME, $_COOKIE)) {
             $this->session_id = $_COOKIE[TP_COOKIE_NAME];
-            $this->setUserId();
+            $this->_setUserId();
         }
         
         // If there's no user_id in the cookie, then there's no session -- not logged in.
@@ -54,7 +98,7 @@ class TPSession {
         // This method looks up the OAuth token in one of two ways:
         //   1. the _GET parameters -- if this is the last step of the OAuth dance.
         //   2. the Database -- if the user already completed the OAuth dance.
-        $this->oauth_token = self::lookupOauthToken($_GET, $this->store);
+        $this->oauth_token = self::_lookupOauthToken($_GET, $this->store);
         
         // Somebody wanted to log out!  You should let them.
         if (array_key_exists('logout', $_GET)) {
@@ -69,19 +113,24 @@ class TPSession {
             // TypePad would try to construct another session ==> infinite recursion.
             $typepad->setUserSession($this);
 
-            $this->verifyAccessToken();
-            $this->updateUserRecord($typepad, $_GET['session_sync_token']);
+            $this->_verifyAccessToken();
+            $this->_updateUserRecord($typepad, $_GET['session_sync_token']);
         }
     }
     
+    /**
+     * Synchronize this session with a TypePad user session. 
+     *
+     * @link http://www.typepad.com/services/apidocs/authentication#session_synchronization
+     */
     function syncSession() {
         if (!array_key_exists('session_sync_token', $_GET)) return;
         mysql_connect(TP_DB_HOST, TP_DB_USERNAME, TP_DB_PASSWORD);
         mysql_select_db(TP_DB_NAME);
-        $session_id = self::lookupSessionSyncToken($_GET['session_sync_token']);
+        $session_id = self::_lookupSessionSyncToken($_GET['session_sync_token']);
         if (!$session_id) {
             // Obtain a Request token from TypePad.  
-            $this->requestAndVerifyRequestToken();
+            $this->_requestAndVerifyRequestToken();
             // Next step in the OAuth Dance: Redirect your user to the Provider.
             // this redirect() method is courtesy of our OAuthPHP lib. Parameters:
             //   1 = the URL to redirect to
@@ -96,6 +145,13 @@ class TPSession {
         header('Location: ' . $_GET['callback_next']);
     }
     
+    /**
+     * Return the URL of the session sync JavaScript hosted on typepad.com.
+     *
+     * @param string $callback_url  The local URL to redirect to for sync.
+     * @param string $callback_next (Optional) The local URL to redirect to *after* sync.
+     * @return string
+     */
     function sessionSyncScriptUrl($callback_url, $callback_next = TP_RETURN_URL) {
         $auth_string = preg_replace('/&/', '&amp;', $this->authString('url'));
         $url = $this->getApiEndpoint('sessionSyncScriptUrl')
@@ -106,6 +162,20 @@ class TPSession {
         return $url;
     }
     
+    /**
+     * Return an API endpoint URL.
+     *
+     * Looks up and returns an authentication-related API endpoint URL for the 
+     * application whose API keys are specified in config.php.
+     *
+     * These endpoints will be retrieved from the API itself the first time,
+     * and then cached in the database. If the TP_CONSUMER_KEY in config.php
+     * is changed, the cached data will be discarded.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/api-keys/%253Cid%253E
+     * @param string $endpoint The type of endpoint.
+     * @return string
+     */
     function getApiEndpoint($endpoint) {
         if (!$this->store) return "";
         
@@ -115,7 +185,7 @@ class TPSession {
             if ($result && mysql_num_rows($result)) {
                 $row = mysql_fetch_array($result);
                 if ($row['consumer_key'] == TP_CONSUMER_KEY) {
-                    $this->api_endpoints = get_object_vars(json_decode($row['urls']));
+                    $this->api_endpoints = get_object_vars(TypePad::_json_decode($row['urls']));
                     return $this->api_endpoints[$endpoint];
                 } else {
                     // if the consumer key has changed in the config file from what it was
@@ -125,14 +195,14 @@ class TPSession {
             }
             $url = TP_API_BASE . '/api-keys/' . TP_CONSUMER_KEY . '.json';
             $request = new HttpRequest('GET', $url);
-            $doc = json_decode($request->getResponse()->getContent());
+            $doc = TypePad::_json_decode($request->getResponse()->getContent());
             
             $vars = get_object_vars($doc->owner);
             foreach (preg_grep('/Url$/', array_keys($vars)) as $key) {
                 $this->api_endpoints[$key] = $vars[$key];
             }
             // store in db
-            $urls = mysql_real_escape_string(json_encode($this->api_endpoints));
+            $urls = mysql_real_escape_string(TypePad::_json_encode($this->api_endpoints));
             $key = mysql_real_escape_string(TP_CONSUMER_KEY);
             if ($old_key) {
                 mysql_query("UPDATE config SET consumer_key = '$key', urls = '$urls'");
@@ -144,6 +214,18 @@ class TPSession {
         return $this->api_endpoints[$endpoint];
     }
 
+    /**
+     * Generate an authentication string.
+     *
+     * Generates and returns a string with this user session's credentials
+     * according to the OAuth specification. The string can be returned as a
+     * comma-delimited list of key="value" pairs, suitable for use in an
+     * Authentication: header, or as an &-delimited list of key=value pairs,
+     * suitable for use in a URL.
+     *
+     * @param string $format (Optional) 'header' (the default) or 'url'
+     * @return string
+     */
     function authString($format = 'header') {
         // Make a dummy OAuth Request object so we can use its signed parameters
         $oauth = new OAuthRequester($this->getApiEndpoint('oauthAccessTokenUrl'), 'GET');
@@ -187,7 +269,7 @@ class TPSession {
         
         // Then append each value in the $parameters array...
         foreach ($parameters as $parm) {
-            $auth_string .= self::authPair($oauth, $parm, $format);
+            $auth_string .= self::_authPair($oauth, $parm, $format);
         }
         
         // ...ending with the access token from the DB.
@@ -200,7 +282,7 @@ class TPSession {
         return $auth_string;
     }
     
-    static function authPair($oauth, $key, $format = 'header') {
+    private static function _authPair($oauth, $key, $format = 'header') {
         $key = 'oauth_' . $key;
         if ($format == 'header') {
             return $key . '="' . $oauth->getParam($key) . '", ';
@@ -209,12 +291,12 @@ class TPSession {
         }
     }
    
-    function updateUserRecord($typepad, $session_sync_token) {
+    private function _updateUserRecord($typepad, $session_sync_token) {
         
         $this->user = $typepad->users->get('@self');
         $this->session_sync_token = $session_sync_token;
         // this writes the user record to the db.
-        $oauth_user_id = self::rememberUser($this->user, $session_sync_token);
+        $oauth_user_id = self::_rememberUser($this->user, $session_sync_token);
         
         $old_oauth_id = $this->user_id;
         // this is important for other services using this obj...
@@ -230,11 +312,11 @@ class TPSession {
             self::replaceOauthUser($old_oauth_id, $oauth_user_id);
             
             // Remove the temporary user.
-            self::deleteUser($old_oauth_id);
+            self::_deleteUser($old_oauth_id);
         } 
-    }    
+    }
     
-    function verifyAccessToken() {      
+    private function _verifyAccessToken() {      
         try {
             $r = $this->store->getServerTokenSecrets(TP_CONSUMER_KEY, $_GET['oauth_token'], 
             'request', $this->user_id);
@@ -244,7 +326,7 @@ class TPSession {
             // they've submitted once.  Try to use the DB-stored oauth token instead...
             try {
                 $r = $this->store->getServerTokenSecrets(TP_CONSUMER_KEY, 
-                $this->lookupOauthTokenFromDb($_COOKIE[TP_COOKIE_NAME], $_GET, $this->store),
+                $this->_lookupOauthTokenFromDb($_COOKIE[TP_COOKIE_NAME], $_GET, $this->store),
                     'request', $this->user_id);
             } catch (OAuthException2 $e) {
                 var_dump($e);
@@ -289,19 +371,28 @@ class TPSession {
                 $this->user_id, $opts);                         
             
             // Ignore what's in the URL -- use what's in the DB.
-            $this->oauth_token = $this->lookupOauthTokenFromDb($this->user_id, $_GET, $this->store);
+            $this->oauth_token = $this->_lookupOauthTokenFromDb($this->user_id, $_GET, $this->store);
         } else {
             $this->oauth_token = "";
         }       
-   }
-   
+    }
+
+    /**
+     * Initiate an OAuth login via TypePad.
+     *
+     * If the user is not already logged in, requests a token from TypePad,
+     * then redirects to the application's oauthIdentificationUrl.
+     *
+     * @param string $return_url (Optional) The URL on the application's site to
+     *                                      redirect to after login.
+     */
     function doLogin($return_url = TP_RETURN_URL) {
         if ($this->isLoggedIn()) {
             header('Location: ' . $return_url);
             return;
         }
         // Obtain a Request token from TypePad.  
-        $this->requestAndVerifyRequestToken();
+        $this->_requestAndVerifyRequestToken();
         header(
             'Location: '
             . $this->getApiEndpoint('oauthIdentificationUrl')
@@ -310,6 +401,13 @@ class TPSession {
         );
     }
 
+    /**
+     * Log the user out of the application and (optionally) TypePad.
+     *
+     * @param boolean $redirect Whether to attempt to redirect the user to the
+     *                          application's signoutUrl on TypePad after deleting
+     *                          the local cookie.
+     */
     function doLogout($redirect = false) {
         if ($this->user_id) $this->store->deleteConsumer(TP_CONSUMER_KEY, $this->user_id);
         
@@ -334,11 +432,11 @@ class TPSession {
    //  2. Makes the request to TypePad
    //  3. Parses the request result, makes sure everything's okay.
    // It does NOT redirect to TypePad for login. 
-    function requestAndVerifyRequestToken() {
+    private function _requestAndVerifyRequestToken() {
         
         if (!$this->user_id) {
             // create a temp user and make a cookie for his record
-            $this->user_id = self::createTempUser();
+            $this->user_id = self::_createTempUser();
             setcookie(TP_COOKIE_NAME, $this->sessionId());
         }
         
@@ -422,7 +520,7 @@ class TPSession {
         $this->oauth_token = $response['oauth_token'];     
     }
 
-    static function getDbOptions() {
+    private static function _getDbOptions() {
         return array(
             'server'     => TP_DB_HOST,
             'username'   => TP_DB_USERNAME,
@@ -431,7 +529,7 @@ class TPSession {
         );
     }
        
-    static function lookupSessionSyncToken($token) {
+    private static function _lookupSessionSyncToken($token) {
         $query = "SELECT * FROM user WHERE session_sync_token = '"
             . mysql_real_escape_string($token) . "'";
         $result = mysql_query($query);
@@ -441,7 +539,7 @@ class TPSession {
         return mysql_result($result, 0, 'session_id');
     }
     
-    function lookupOauthToken($params, $store) {
+    private function _lookupOauthToken($params, $store) {
         // The OAuth token is in one of two places:
         $oauth_token = "";
         
@@ -452,13 +550,13 @@ class TPSession {
         } else if (array_key_exists(TP_COOKIE_NAME, $_COOKIE)) {
             // 2. it resides in the DB.  key off of the user_id cookie.
             $this->session_id = $_COOKIE[TP_COOKIE_NAME];
-            $oauth_token = $this->lookupOauthTokenFromDb($this->userId(), $params, $store);
+            $oauth_token = $this->_lookupOauthTokenFromDb($this->userId(), $params, $store);
         }
         
         return $oauth_token;
     }
     
-    function lookupOauthTokenFromDb($user_id, $params, $store) {
+    private function _lookupOauthTokenFromDb($user_id, $params, $store) {
         $tokens = $store->listServerTokens($user_id);
         
         if (sizeof($tokens) >= 1) {
@@ -467,37 +565,8 @@ class TPSession {
             return 0;
         }
     }
-    
-    static function getUserId($TP_COOKIE_NAME, $create_ifne=0) {
-        $user_id = 0;
-        if (array_key_exists($TP_COOKIE_NAME, $_COOKIE)) {
-            return self::getUserIdFromSessionId($_COOKIE[$TP_COOKIE_NAME]);
-        }
-        if ($create_ifne) {
-            $session_id = self::createTempUser();
-            setcookie(TP_COOKIE_NAME, self::getUserIdFromSessionId($session_id));
-        }
-        
-        return $user_id;
-    }
-    
-    static function getUserIdFromSessionId($session_id) {
-        if (isset(self::$session_user_map[$session_id])) return self::$session_user_map[$session_id];
-        $query = "SELECT * FROM user where session_id='" . mysql_real_escape_string($session_id) . "'";
-        $result = mysql_query($query);
-        
-        if (!$result || !mysql_num_rows($result)) {
-            self::$session_user_map[$session_id] = 0;
-            return 0;
-        }
-        
-        // otherwise, it exists
-        $user_id = mysql_result($result, 0, "id");
-        self::$session_user_map[$session_id] = $user_id;
-        return $user_id;
-    }
 
-    function setSessionId() {
+    private function _setSessionId() {
         if (isset(self::$user_session_map[$this->user_id])) return self::$user_session_map[$this->user_id];
         $query = "SELECT * FROM user where id='" . mysql_real_escape_string($this->user_id) . "'";
         $result = mysql_query($query);
@@ -514,7 +583,7 @@ class TPSession {
         
     }
 
-    function setUserId() {
+    private function _setUserId() {
         if (isset(self::$session_user_map[$this->session_id])) return self::$session_user_map[$this->session_id];
         $query = "SELECT * FROM user where session_id='" . mysql_real_escape_string($this->session_id) . "'";
         $result = mysql_query($query);
@@ -530,7 +599,7 @@ class TPSession {
         self::$session_user_map[$this->session_id] = $this->user_id;
     }
     
-    static function createTempUser() {
+    private static function _createTempUser() {
         // Make a temporary row.
         
         $rando = uniqid();
@@ -538,12 +607,12 @@ class TPSession {
         $query = "INSERT INTO user (tp_xid, name, session_id) VALUES ('$rando', '', '$rando_2')"; 
         $result = mysql_query($query);
         
-        if (!$result) print ("[createTempUser] QUERY INSERT WENT BAD");
+        if (!$result) print ("[_createTempUser] QUERY INSERT WENT BAD");
         
-        return self::getId($rando);
+        return self::_getId($rando);
     }
     
-    static function replaceOauthUser($old_user, $new_user) {
+    private static function _replaceOauthUser($old_user, $new_user) {
         // Update the token record first...
         $query = "update oauth_consumer_token set oct_usa_id_ref=$new_user where oct_usa_id_ref=$old_user";
         $result = mysql_query($query);
@@ -572,12 +641,12 @@ class TPSession {
         }
     }
     
-    static function deleteUser($id) {
+    private static function _deleteUser($id) {
         $query = "DELETE FROM user where id=$id";
         $result = mysql_query($query);
     }
     
-    static function getId($xid) {
+    private static function _getId($xid) {
         $query = "SELECT * FROM user where tp_xid='" . mysql_real_escape_string($xid) . "'";
         $result = mysql_query($query);
     
@@ -587,9 +656,9 @@ class TPSession {
         return mysql_result($result, 0, "id");
     }
         
-    static function rememberUser($user, $session_sync_token) {
+    private static function _rememberUser($user, $session_sync_token) {
         // check if the user exists.
-        $id = self::getId($user->urlId);
+        $id = self::_getId($user->urlId);
         
         if ($id) return $id;
         
@@ -602,7 +671,7 @@ class TPSession {
             . mysql_real_escape_string($session_sync_token) .  "')";
         $result = mysql_query($query);
         // Now, get the user's id from the db.
-        return self::getId($user->urlId);
+        return self::_getId($user->urlId);
     }
 
 }

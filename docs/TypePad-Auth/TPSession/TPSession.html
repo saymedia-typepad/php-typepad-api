@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TPSession</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TPSession</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Object class representing a TypePad user session.</p>
+		<p class="notes">
+			Located in <a class="field" href="_lib---TypePad---Auth.php.html">/lib/TypePad/Auth.php</a> (line <span class="field">18</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																				<div class="var-title">
+					static <span class="var-type">mixed</span>
+					<a href="#$session_user_map" title="details" class="var-name">$session_user_map</a>
+				</div>
+																																								<div class="var-title">
+					static <span class="var-type">mixed</span>
+					<a href="#$user_session_map" title="details" class="var-name">$user_session_map</a>
+				</div>
+																				<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$api_endpoints" title="details" class="var-name">$api_endpoints</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$oauth_token" title="details" class="var-name">$oauth_token</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$oauth_verifier" title="details" class="var-name">$oauth_verifier</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$session_id" title="details" class="var-name">$session_id</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$session_sync_token" title="details" class="var-name">$session_sync_token</a>
+				</div>
+																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$store" title="details" class="var-name">$store</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$user" title="details" class="var-name">$user</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$user_id" title="details" class="var-name">$user_id</a>
+				</div>
+																			</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																												
+												<div class="method-definition">
+											<span class="method-result">TPSession</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type"><a href="../../TypePad/TypePad.html">TypePad</a></span>&nbsp;<span class="var-name">$typepad</span> = <span class="var-default">NULL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#authString" title="details" class="method-name">authString</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$format</span> = <span class="var-default">'header'</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#doLogin" title="details" class="method-name">doLogin</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$return_url</span> = <span class="var-default">TP_RETURN_URL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#doLogout" title="details" class="method-name">doLogout</a>
+											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$redirect</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getApiEndpoint" title="details" class="method-name">getApiEndpoint</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$endpoint</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getOauthToken" title="details" class="method-name">getOauthToken</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#isLoggedIn" title="details" class="method-name">isLoggedIn</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#sessionId" title="details" class="method-name">sessionId</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#sessionSyncScriptUrl" title="details" class="method-name">sessionSyncScriptUrl</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$callback_url</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$callback_next</span> = <span class="var-default">TP_RETURN_URL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#syncSession" title="details" class="method-name">syncSession</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#userId" title="details" class="method-name">userId</a>
+										()
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$session_user_map" id="$session_user_map"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$session_user_map</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">29</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$user_session_map" id="$user_session_map"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$user_session_map</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">28</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$api_endpoints" id="$api_endpoints"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$api_endpoints</span>
+						(line <span class="line-number">26</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$oauth_token" id="$oauth_token"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$oauth_token</span>
+						(line <span class="line-number">20</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$oauth_verifier" id="$oauth_verifier"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$oauth_verifier</span>
+						(line <span class="line-number">21</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$session_id" id="$session_id"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$session_id</span>
+						(line <span class="line-number">23</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$session_sync_token" id="$session_sync_token"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$session_sync_token</span>
+						(line <span class="line-number">24</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$store" id="$store"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$store</span>
+						(line <span class="line-number">19</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$user" id="$user"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$user</span>
+						(line <span class="line-number">25</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$user_id" id="$user_id"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$user_id</span>
+						(line <span class="line-number">22</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">83</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Create a new user session object.</p>
+<p class="description"><p>The TPSession constructor looks at the session ID in the local cookie,  the OAuth tokens in the database (if a database is configured),  and communicates with TypePad to determine whether the  user is legitimately logged in.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">TPSession</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type"><a href="../../TypePad/TypePad.html">TypePad</a></span>&nbsp;<span class="var-name">$typepad</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../TypePad/TypePad.html">TypePad</a></span>
+				<span class="var-name">$typepad</span><span class="var-description">: An instance of the TypePad class. The TPSession                          session will be stored as the instance's user session.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodauthString" id="authString"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">authString</span> (line <span class="line-number">229</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Generate an authentication string.</p>
+<p class="description"><p>Generates and returns a string with this user session's credentials  according to the OAuth specification. The string can be returned as a  comma-delimited list of key=&quot;value&quot; pairs, suitable for use in an  Authentication: header, or as an &amp;-delimited list of key=value pairs,  suitable for use in a URL.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			authString
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$format</span> = <span class="var-default">'header'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$format</span><span class="var-description">: (Optional) 'header' (the default) or 'url'</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoLogin" id="doLogin"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">doLogin</span> (line <span class="line-number">389</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Initiate an OAuth login via TypePad.</p>
+<p class="description"><p>If the user is not already logged in, requests a token from TypePad,  then redirects to the application's oauthIdentificationUrl.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			doLogin
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$return_url</span> = <span class="var-default">TP_RETURN_URL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$return_url</span><span class="var-description">: (Optional) The URL on the application's site to                                       redirect to after login.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoLogout" id="doLogout"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">doLogout</span> (line <span class="line-number">411</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Log the user out of the application and (optionally) TypePad.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			doLogout
+		</span>
+					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$redirect</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$redirect</span><span class="var-description">: Whether to attempt to redirect the user to the                           application's signoutUrl on TypePad after deleting                           the local cookie.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetApiEndpoint" id="getApiEndpoint"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getApiEndpoint</span> (line <span class="line-number">179</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return an API endpoint URL.</p>
+<p class="description"><p>Looks up and returns an authentication-related API endpoint URL for the  application whose API keys are specified in config.php.</p><p>These endpoints will be retrieved from the API itself the first time,  and then cached in the database. If the TP_CONSUMER_KEY in config.php  is changed, the cached data will be discarded.</p></p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/endpoints/api-keys/%253Cid%253E">http://www.typepad.com/services/apidocs/endpoints/api-keys/%253Cid%253E</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getApiEndpoint
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$endpoint</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$endpoint</span><span class="var-description">: The type of endpoint.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetOauthToken" id="getOauthToken"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getOauthToken</span> (line <span class="line-number">58</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return the OAuth token associated with this session.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getOauthToken
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisLoggedIn" id="isLoggedIn"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">isLoggedIn</span> (line <span class="line-number">67</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return true if the session has a logged-in user, false otherwise.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			isLoggedIn
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsessionId" id="sessionId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">sessionId</span> (line <span class="line-number">36</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return the ID (cookie value) associated with this session.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			sessionId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsessionSyncScriptUrl" id="sessionSyncScriptUrl"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">sessionSyncScriptUrl</span> (line <span class="line-number">155</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return the URL of the session sync JavaScript hosted on typepad.com.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			sessionSyncScriptUrl
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$callback_url</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$callback_next</span> = <span class="var-default">TP_RETURN_URL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$callback_url</span><span class="var-description">: The local URL to redirect to for sync.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$callback_next</span><span class="var-description">: (Optional) The local URL to redirect to *after* sync.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsyncSession" id="syncSession"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">syncSession</span> (line <span class="line-number">126</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Synchronize this session with a TypePad user session.</p>
+	<ul class="tags">
+				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/authentication#session_synchronization">http://www.typepad.com/services/apidocs/authentication#session_synchronization</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			syncSession
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoduserId" id="userId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">userId</span> (line <span class="line-number">47</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return the user ID associated with this session.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			userId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 14 Jul 2010 17:23:16 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
