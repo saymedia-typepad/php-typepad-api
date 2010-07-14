@@ -604,7 +604,7 @@ class TPSession {
         
         $rando = uniqid();
         $rando_2 = uniqid();
-        $query = "INSERT INTO user (tp_xid, name, session_id) VALUES ('$rando', '', '$rando_2')"; 
+        $query = "INSERT INTO user (tp_id, name, session_id) VALUES ('$rando', '', '$rando_2')"; 
         $result = mysql_query($query);
         
         if (!$result) print ("[_createTempUser] QUERY INSERT WENT BAD");
@@ -647,7 +647,7 @@ class TPSession {
     }
     
     private static function _getId($xid) {
-        $query = "SELECT * FROM user where tp_xid='" . mysql_real_escape_string($xid) . "'";
+        $query = "SELECT * FROM user where tp_id='" . mysql_real_escape_string($xid) . "'";
         $result = mysql_query($query);
     
         if (!$result || !mysql_num_rows($result)) return 0;
@@ -665,7 +665,7 @@ class TPSession {
         $rando = uniqid();
         
         // otherwise, create a new record.
-        $query = "INSERT INTO user (tp_xid, name, session_id, session_sync_token) VALUES ('" . 
+        $query = "INSERT INTO user (tp_id, name, session_id, session_sync_token) VALUES ('" . 
             mysql_real_escape_string($user->urlId)
             . "', '" . mysql_real_escape_string($user->displayName) . "', '$rando', '"
             . mysql_real_escape_string($session_sync_token) .  "')";

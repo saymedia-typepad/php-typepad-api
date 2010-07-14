@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS user (
     id                      int(11) not null auto_increment, 
-    tp_xid                  varchar(20),
+    tp_id                  varchar(20),
     name                    mediumtext,
     session_id              varchar(20),
     session_sync_token      varchar(80),
 
     primary key (id),
-    key (tp_xid),
+    key (tp_id),
     key (session_id),
     key (session_sync_token)
 );
