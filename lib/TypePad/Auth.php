@@ -195,6 +195,7 @@ class TPSession {
             }
             $url = TP_API_BASE . '/api-keys/' . TP_CONSUMER_KEY . '.json';
             $request = new HttpRequest('GET', $url);
+            TypePad::setCurlopts($request);
             $doc = TypePad::_json_decode($request->getResponse()->getContent());
             
             $vars = get_object_vars($doc->owner);
@@ -350,6 +351,7 @@ class TPSession {
         $final_url .= 'oauth_verifier=' . $this->oauth_verifier;
                 
         $request = new HttpRequest('GET', $final_url);
+        TypePad::setCurlopts($request);
         $doc = $request->getResponse()->getContent();
         
         // Successful verification.
@@ -501,6 +503,7 @@ class TPSession {
         
         // and go ahead and execute the request.
         $request = new HttpRequest('GET', $final_url);
+        TypePad::setCurlopts($request);
         $doc = $request->getResponse()->getContent();
         $response_array = explode("&", $doc);
         

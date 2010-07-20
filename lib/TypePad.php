@@ -102,7 +102,7 @@ class TypePad {
      *
      * @param HttpRequest $request
      */
-    static protected function setCurlopts($request) {
+    static function setCurlopts($request) {
         if (TP_INSECURE) {
             $request->setCurlopts(array(
                 CURLOPT_SSL_VERIFYPEER => false,
@@ -161,6 +161,7 @@ class TypePad {
      */
     function sessionSyncScriptTag($callback_url = TP_SYNC_URL) {
         $url = $this->userSession()->sessionSyncScriptUrl($callback_url);
+        if (!$url) return;
         echo <<<EOT
 <script type="text/javascript" src="$url"></script>
 EOT;

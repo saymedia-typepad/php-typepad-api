@@ -98,6 +98,9 @@ class HttpRequest {
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headerArray());
         $this->raw_response = curl_exec($ch);
+        if (!$this->raw_response) {
+            echo 'cURL error: ' . curl_error($ch);
+        }
         curl_close($ch);
     }
     
