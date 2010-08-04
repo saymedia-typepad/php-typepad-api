@@ -26,7 +26,7 @@
 <p class="short-description">Allow deferred object population for batch requests.</p>
 <p class="description"><p>Every TPObject is actually a TPPromise; it won't have any content until  it's fulfill()ed with some data. When a non-batch request is made, the  result object is simply fulfill()ed immediately with the response data.</p><p>If a TPObject subclass has properties that are themselves TPObjects,  it will override the fulfill() method in order to make the properties  instances of the appropriate classes.</p></p>
 		<p class="notes">
-			Located in <a class="field" href="_lib---TypePad.php.html">/lib/TypePad.php</a> (line <span class="field">514</span>)
+			Located in <a class="field" href="_lib---TypePad.php.html">/lib/TypePad.php</a> (line <span class="field">524</span>)
 		</p>
 		
 				
@@ -104,23 +104,25 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																												
-												<div class="method-definition">
+																																						
+				<div class="method-definition">
 											<span class="method-result">TPPromise</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
 											([<span class="var-type"></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">NULL</span>])
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#fulfill" title="details" class="method-name">fulfill</a>
 											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$result_type</span> = <span class="var-default">NULL</span>])
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">boolean</span>
 										<a href="#isFulfilled" title="details" class="method-name">isFulfilled</a>
 										()
 									</div>
-								</div>
+											</div>
 		</div>
 	</div>		
 
@@ -138,14 +140,15 @@
 							
 					</div>
 		<div class="info-box-body">
-			<a name="var$data" id="$data"><!-- --></A>
+			
+<a name="var$data" id="$data"><!-- --></A>
 <div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$data</span>
-						(line <span class="line-number">517</span>)
+						(line <span class="line-number">527</span>)
 		</span>
 	</div>
 
@@ -166,7 +169,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$fulfilled</span>
-						(line <span class="line-number">518</span>)
+						(line <span class="line-number">528</span>)
 		</span>
 	</div>
 
@@ -187,7 +190,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$request_id</span>
-						(line <span class="line-number">516</span>)
+						(line <span class="line-number">526</span>)
 		</span>
 	</div>
 
@@ -217,12 +220,11 @@
 		</div>
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
-
 <a name="method__construct" id="__construct"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">520</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">530</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -254,7 +256,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">fulfill</span> (line <span class="line-number">537</span>)
+		<span class="method-title">fulfill</span> (line <span class="line-number">551</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -359,7 +361,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">isFulfilled</span> (line <span class="line-number">551</span>)
+		<span class="method-title">isFulfilled</span> (line <span class="line-number">565</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -382,7 +384,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 14 Jul 2010 17:23:24 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Wed, 04 Aug 2010 17:10:14 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

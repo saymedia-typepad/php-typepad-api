@@ -24,13 +24,13 @@
  <refsect1 id="{@id requirements}">
   <title>Requirements</title>
   <para>
-   This library has been designed to have zero dependencies on extensions that require compilation and thus are not necessarily available to a given installation of PHP. All the required modules are included in the <code>extlib</code> directory distributed with the library. So, the requirements are simple:
+   This library has been designed to have zero dependencies on extensions that require compilation and thus are not necessarily available to a given installation of PHP. All the required modules are included in the <literal>extlib</literal> directory distributed with the library. So, the requirements are simple:
    <itemizedlist>
     <listitem>
-     <emphasis>PHP 5.x</emphasis> The library relies heavily on PHP 5's object-oriented language features, so PHP 4.x is not supported.
+     <important>PHP 5.x</important> The library relies heavily on PHP 5's object-oriented language features, so PHP 4.x is not supported.
     </listitem>
     <listitem>
-     <emphasis>A MySQL database</emphasis> is necessary if you want to allow users to log in to your site with TypePad; OAuth tokens and TypePad IDs are stored in tables in the database.
+     <important>A MySQL database</important> is necessary if you want to allow users to log in to your site with TypePad; OAuth tokens and TypePad IDs are stored in tables in the database. Support for other SQL database engines is planned for a future version of the library.
     </listitem>
    </itemizedlist>
   </para>
@@ -40,13 +40,13 @@
   <refsect2 id="{@id database}">
    <title>Set Up the Database</title>
    <para>
-    The file <code>typepad.sql</code> included in the library distribution contains the SQL statements to create the tables the library needs. If you have shell (command-line) access to your database, you can navigate to the <code>php-typepad-api</code> directory and type (replacing USERNAME, HOST, and DATABASE with your own information):
+    The file <literal>typepad.sql</literal> included in the library distribution contains the SQL statements to create the tables the library needs. If you have shell (command-line) access to your database, you can navigate to the <literal>php-typepad-api</literal> directory and type (replacing USERNAME, HOST, and DATABASE with your own information):
    </para>
    <para>
-    <code>mysql -u USERNAME -h HOST -p DATABASE &lt; typepad.sql</code>
+    <literal>mysql -u USERNAME -h HOST -p DATABASE &lt; typepad.sql</literal>
    </para>
    <para>
-    If you have access to {@link http://www.phpmyadmin.net/ phpMyAdmin} or a similar web-based tool to manage your database, you can paste the SQL statements from <code>typepad.sql</code> into the tool.
+    If you have access to {@link http://www.phpmyadmin.net/ phpMyAdmin} or a similar web-based tool to manage your database, you can paste the SQL statements from <literal>typepad.sql</literal> into the tool.
    </para>
   </refsect2>
   <refsect2 id="{@id install}">
@@ -54,19 +54,19 @@
    <para>
     <itemizedlist>
      <listitem>
-      Upload the <code>lib</code> and <code>extlib</code> directories to the server where your site is hosted. These can go within the site's web root or somewhere else&#151;as we'll see, you'll specify their location in your configuration settings.
+      Upload the <literal>lib</literal> and <literal>extlib</literal> directories to the server where your site is hosted. These can go within the site's web root or somewhere else; as we'll see, you'll specify their location in your configuration settings.
      </listitem>
      <listitem>
-      Upload the files from the <code>site</code> directory to your site's directory on the server.
+      Upload the files from the <literal>site</literal> directory to your site's directory on the server.
       <itemizedlist>
        <listitem>
-        Rename <code>config.original.php</code> to <code>config.php</code> before uploading. The ".original" is included to prevent you from accidentally overwriting your settings when upgrading.
+        Rename <literal>config.original.php</literal> to <literal>config.php</literal> before uploading. The <literal>.original</literal> is included to prevent you from accidentally overwriting your settings when upgrading.
        </listitem>
        <listitem>
-        The <code>index.php</code> page is a basic "Hello World" example of using the API; you won't need it if you're integrating the API into existing pages.
+        The <literal>index.php</literal> page is a basic "Hello World" example of using the API; you won't need it if you're integrating the API into existing pages.
        </listitem>
        <listitem>
-        <code>login.php</code>, <code>logout.php</code>, and <code>sync.php</code> are only necessary if you're going to allow users to log in to your site with TypePad.
+        <literal>login.php</literal>, <literal>logout.php</literal>, and <literal>sync.php</literal> are only necessary if you're going to allow users to log in to your site with TypePad.
        </listitem>
       </itemizedlist>
      </listitem>
@@ -76,24 +76,225 @@
   <refsect2 id="{@id config}">
    <title>Configure Your Settings</title>
    <para>
-    Edit the <code>config.php</code> file, inserting information about your site and server setup.
+    Edit the <literal>config.php</literal> file, inserting information about your site and server setup.
     <itemizedlist>
      <listitem>
-      The last line of code in this file is an <code>include_once</code> statement. Edit the path in this statement to point to the location of your <code>lib/TypePad.php</code> library. It's a good idea to make this an absolute path to the file on your server, but it can also be relative to the location of the pages that will be using the library.
+      The last line of code in this file is an <literal>include_once</literal> statement. Edit the path in this statement to point to the location of your <literal>lib/TypePad.php</literal> library. It's a good idea to make this an absolute path to the file on your server, but it can also be relative to the location of the pages that will be using the library.
      </listitem>
      <listitem>
-      If you want to allow users to log in with TypePad and have set up the database tables as described above, enter your database information in the <code>TP_DB_NAME</code>, <code>TP_DB_HOST</code>, <code>TP_DB_USERNAME</code>, and <code>TP_DB_PASSWORD</code> constants.
+      If you want to allow users to log in with TypePad and you've set up the database tables as described above, enter your database information in the <literal>TP_DB_NAME</literal>, <literal>TP_DB_HOST</literal>, <literal>TP_DB_USERNAME</literal>, and <literal>TP_DB_PASSWORD</literal> constants.
      </listitem>
      <listitem>
-      If you want to allow users to log in with TypePad, edit the <code>TP_RETURN_URL</code> and <code>TP_SYNC_URL</code> constants to reflect your site's homepage and the location of the <code>sync.php</code> file you uploaded.
+      If you want to allow users to log in with TypePad, edit the <literal>TP_RETURN_URL</literal> and <literal>TP_SYNC_URL</literal> constants to reflect your site's homepage and the location of the <literal>sync.php</literal> file you uploaded.
      </listitem>
      <listitem>
-      If you want to make authenticated requests to the API, you must first obtain a set of API keys by going to {@link http://www.typepad.com/account/access/developer http://www.typepad.com/account/access/developer} when logged in to TypePad. Once you've created the keys, enter them into the <code>TP_CONSUMER_KEY</code>, <code>TP_CONSUMER_SECRET</code>, <code>TP_GENERAL_PURPOSE_KEY</code>, and <code>TP_GENERAL_PURPOSE_SECRET</code> constants.
+      If you want to make authenticated requests to the API, you must first obtain a set of API keys by going to {@link http://www.typepad.com/account/access/developer http://www.typepad.com/account/access/developer} when logged in to TypePad. Once you've created the keys, enter them into the <literal>TP_CONSUMER_KEY</literal>, <literal>TP_CONSUMER_SECRET</literal>, <literal>TP_GENERAL_PURPOSE_KEY</literal>, and <literal>TP_GENERAL_PURPOSE_SECRET</literal> constants.
      </listitem>
     </itemizedlist>
    </para>
   </refsect2>
+ </refsect1>
+ <refsect1 id="{@id apibasics}">
+  <title>API Basics</title>
+  <refsect2 id="{@id loading}">
+   <title>Loading the Library</title>
+   <para>
+    All you need to do to enable a page to use the TypePad API is to place two lines of PHP code in the page's header:
+    <programlisting>
+&lt;?php
+include('config.php');
+$tp = new TypePad();
+?&gt;
+    </programlisting>
+   </para>
+   <para>
+    Note that this assumes that <literal>config.php</literal> is in the same directory as this page, or in a directory that's included in your <literal>include_path</literal>; if that's not the case, you should specify the path to <literal>config.php</literal> in the <literal>include()</literal> statement.
+   </para>
+  </refsect2>
+  <refsect2 id="{@id calling}">
+   <title>Calling the API</title>
+   <para>
+    The library defines a PHP class for each "noun" (users, blogs, etc.) supported by the TypePad API. The noun class has a method corresponding to each endpoint the noun supports. However, you won't normally call an endpoint directly on the class; instead, you'll call them via an instance of the <literal>TypePad</literal> class, using the syntax <literal>$tp->noun->endpoint</literal>. This allows the API requests to include the appropriate authentication information and be sent in batches.
+    <programlisting>
+&lt;?php
+
+$user = $tp->users->get('@self');
+
+$last_10_posts = $tp->blogs->getPublishedRecentComments(array(
+    'id' => $blog->urlId,
+    'limit' => 10
+));
+
+$post = $tp->groups->postToPostAssets(array(
+    'id' => $group->urlId,
+    'payload' => array(
+        'title' => $_POST['post_title'],
+        'content' => $_POST['post_content']
+    )
+));
+
+&gt;?>
+    </programlisting>
+   </para>
+   <para>
+    You can find a full list of supported endpoints at {@link http://www.typepad.com/services/apidocs}; the documentation you're reading right now contains a list of the corresponding PHP method names, in the documentation section for each subclass of <literal>TPNoun</literal>.
+   </para>
+   <para>
+    A few notes about calling the API:
+    <itemizedlist>
+     <listitem>
+      Every endpoint method takes a single argument. This can either be an associative array of named arguments or, if you don't need to specify any parameters other than the ID of the object you're targeting, a string containing the ID. In other words, the following two calls are equivalent:
+      <para>
+      <programlisting>
+$tp->noun->endpoint($id)
+$tp->noun->endpoint(array('id' => $id))
+      </programlisting>
+      </para>
+     </listitem>
+     <listitem>
+      For <literal>POST</literal> and <literal>PUT</literal> endpoints, the array you pass must include an argument named <literal>payload</literal>, whose value can be one of three things:
+      <orderedlist>
+       <listitem>
+        An associative array whose keys are the properties accepted by the endpoint, and whose values are the values you want to <literal>POST</literal> or <literal>PUT</literal> to the endpoint.
+       </listitem>
+       <listitem>
+        A TypePad object, either one returned from a previous API call or one created by instantiating one of the subclasses of <literal>TPObject</literal>.
+       </listitem>
+       <listitem>
+        A JSON string. If you pass an array or object, the library will transform it into JSON before sending it to the API, but you're free to construct your own JSON if you like.
+       </listitem>
+      </orderedlist>
+     </listitem>
+    </itemizedlist>
+   </para>
+  </refsect2>
+  <refsect2 id="{@id errors}">
+   <title>Handling Errors</title>
+   <para>
+    If a request to the API returns an HTTP failure status code, the library will <literal>throw</literal> a <literal>TPException</literal>. Thus, you should always wrap your API calls in <literal>try .. catch</literal> blocks in order to catch such errors and notify the user about them accordingly. 
+   </para>
+   <para>
+    Note that an error status does not necessarily indicate that something has gone wrong; it may simply indicate that the requested object was not found. In the case of a <literal>GET</literal> request for the User object specified by <literal>@self</literal>, it simply means the user is not logged in.
+    <programlisting>
+try {
+    $tp->users->get('@self');
+    print "Welcome, " . $user->displayName . "!";
+} catch (TPException $e) {
+    if ($e->getCode() == 404) {
+        print 'You are not logged in. <a href="login.php">Click here</a> to log in.'
+    }
+}
+    </programlisting>
+   </para>
+   <para>
+    Note that if you're combining multiple requests into a batch (see "Batch Requests" below), you should not wrap the individual calls to the endpoint methods, because the request will not actually be attempted at that time. Instead, you should wrap the <literal>runBatch()</literal> call, which is where the exception will be thrown.
+   </para>
+  </refsect2>
+ </refsect1>
+ <refsect1 id="{@id objects}">
+  <title>TypePad Objects</title>
   <para>
+   All the API's <literal>GET</literal> endpoint methods, and many of the <literal>POST</literal> and <literal>PUT</literal> endpoint methods, return a TypePad object: an instance of a subclass of <literal>TPObject</literal>. The constructor for an object accepts an optional argument which is an associative array of property => value pairs. 
+   <programlisting>
+$comment = new TPComment(array(
+    'inReplyTo' => $post->urlId,
+    'author' => $tp->userUrlId(),
+    'content' => $_POST['comment_content']
+));
+   </programlisting>
+  </para>
+  <para>
+   You can get or set any of an object's documented properties by calling a method of the same name on the object:
+   <programlisting>
+echo $comment->content;
+$comment->inReplyTo($post->urlId);
+   </programlisting>
+  </para>
+  <para>
+   Property endpoints return a <literal>TPList</literal> object. <literal>TPList</literal> is a special type of <literal>TPObject</literal> that has two properties: <literal>totalResults</literal>, the count of the total number of results of which the returned list of objects is a subset; and <literal>entries</literal>, an array of objects of the requested type.
+  </para>
+ </refsect1>
+ <refsect1 id="{@id batchrequests}">
+  <title>Batch Requests</title>
+  <para>
+   The TypePad API allows you to combine multiple requests into a single {@link http://www.typepad.com/services/apidocs/endpoints/batch-processor batch request}. The details of how this works are somewhat complicated, but the PHP library makes it very easy.
+   <orderedlist>
+    <listitem>
+     Use the <literal>openBatch()</literal> method to open a batch. A <literal>Typepad</literal> instance can have only one batch open at a time, but you can create multiple instances of <literal>TypePad</literal> if you want more than one batch.
+     <para>
+      <programlisting>
+$tp->openBatch();
+      </programlisting>
+     </para>
+    </listitem>
+    <listitem>
+     Call the API endpoint methods normally, assigning the results to variables. These variables will not contain any data until the batch is run.
+     <para>
+      <programlisting>
+$blog = $tp->blogs->get($blog_id);
+$settings = $tp->blogs->getCommentingSettings($blog_id);
+$comments = $tp->blogs->getPublishedComments($blog_id);
+      </programlisting>
+     </para>
+    </listitem>
+    <listitem>
+     Call <literal>runBatch()</literal> to execute the batch of requests. You should wrap this in a <literal>try .. catch</literal> block, because if the response to the batch request itself or to any of its subrequests has an HTTP status code indicating an error, a <literal>TPException</literal> will be thrown.
+     <para>
+      <programlisting>
+try {
+    $tp->runBatch();
+} catch (TPException $e) {
+    print "An error occurred: "
+        . $e->getCode() .' '. $e->getMessage()
+        . " (request was " . $e->getRequest()->getUri() . ")";
+}
+      </programlisting>
+     </para>
+    </listitem>
+    <listitem>
+     Some endpoints return objects whose class is not known until the request is complete. For example, a <literal>GET</literal> of a <literal>TPAsset</literal> may return a <literal>TPPost</literal>, <literal>TPLink</literal>, <literal>TPPhoto</literal>, etc. In this case, you can call the <literal>reclass()</literal> method after the batch is run to return a new object of the appropriate subclass with all the same data.
+     <para>
+      <programlisting>
+$asset = $asset->reclass();
+      </programlisting>
+     </para>
+    </listitem>
+   </orderedlist>
+  </para>
+ </refsect1>
+ <refsect1 id="{@id authentication}">
+  <title>User Authentication</title>
+  <para>
+   The TypePad API uses {@link http://oauth.net/ OAuth} to allow a user to use their TypePad account to log into your application, and to let your application act on behalf of the user when interacting with TypePad.
+  </para>
+  <para>
+   There are two different types of access that your application can request from TypePad on behalf of a user who signs up for the application, specified in the <literal>TP_ACCESS_TYPE</literal> setting in <literal>config.php</literal>. A setting of <literal>app_full</literal> will give the user access to content owned by the application; <literal>typepad_full</literal> will give the user access to content owned by TypePad itself.
+  </para>
+  <para>
+   OAuth can be tricky, but the PHP API library is intended to make using this part of the API relatively transparent to the developer. There are just a few steps involved:
+   <orderedlist>
+    <listitem>
+     Set the <literal>TP_RETURN_URL</literal> constant in your <literal>config.php</literal> file. This should specify a page on your site that includes the two lines of code for loading the API library.
+    </listitem>
+    <listitem>
+     Set the <literal>TP_SYNC_URL</literal> constant in your <literal>config.php</literal> file. This should point to a copy of the <literal>sync.php</literal> page included in the <literal>site</literal> directory in the library distribution (although you can name it something else).
+    </listitem>
+    <listitem>
+     In a PHP block in your page's <literal>&lt;head&gt;</literal>, include the following line of code:
+     <para>
+      <programlisting>
+$tp->sessionSyncScriptTag();
+      </programlisting>
+     </para>
+     This writes a <literal>&lt;script&gt;</literal> tag to the page that calls in a script file from typepad.com, allowing TypePad to recognize that the user is logged in to TypePad and, if so, provide the user's information to your PHP application. See {@link http://www.typepad.com/services/apidocs/authentication} for more details, although you shouldn't have to worry about them.
+    </listitem>
+    <listitem>
+     Include a "Log in" link on your page that points to the <literal>login.php</literal> page included in the <literal>site</literal> directory in the library distribution (you can name it something else). 
+    </listitem>
+    <listitem>
+     In the logged-in view of your page (see "Error Handling," above, for one way to determine whether or not a user is logged in), include a "Log out" link that points to the <literal>logout.php</literal> page included in the <literal>site</literal> directory in the library distribution (you can name it something else).
+    </listitem>
+   </orderedlist>
   </para>
  </refsect1>
 </refentry>

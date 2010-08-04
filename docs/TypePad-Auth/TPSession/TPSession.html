@@ -55,7 +55,7 @@
 					static <span class="var-type">mixed</span>
 					<a href="#$user_session_map" title="details" class="var-name">$user_session_map</a>
 				</div>
-																				<div class="var-title">
+																												<div class="var-title">
 					<span class="var-type">mixed</span>
 					<a href="#$api_endpoints" title="details" class="var-name">$api_endpoints</a>
 				</div>
@@ -87,7 +87,11 @@
 					<span class="var-type">mixed</span>
 					<a href="#$user_id" title="details" class="var-name">$user_id</a>
 				</div>
-																			</div>
+																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$user_url_id" title="details" class="var-name">$user_url_id</a>
+				</div>
+											</div>
 		</div>
 	</div>
 
@@ -103,63 +107,79 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																												
-												<div class="method-definition">
+																																																																																																														
+				<div class="method-definition">
 											<span class="method-result">TPSession</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
 											([<span class="var-type"><a href="../../TypePad/TypePad.html">TypePad</a></span>&nbsp;<span class="var-name">$typepad</span> = <span class="var-default">NULL</span>])
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#authString" title="details" class="method-name">authString</a>
 											([<span class="var-type">string</span>&nbsp;<span class="var-name">$format</span> = <span class="var-default">'header'</span>])
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#doLogin" title="details" class="method-name">doLogin</a>
 											([<span class="var-type">string</span>&nbsp;<span class="var-name">$return_url</span> = <span class="var-default">TP_RETURN_URL</span>])
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#doLogout" title="details" class="method-name">doLogout</a>
 											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$redirect</span> = <span class="var-default">false</span>])
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#getApiEndpoint" title="details" class="method-name">getApiEndpoint</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$endpoint</span>)
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#getOauthToken" title="details" class="method-name">getOauthToken</a>
 										()
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">boolean</span>
 										<a href="#isLoggedIn" title="details" class="method-name">isLoggedIn</a>
 										()
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#sessionId" title="details" class="method-name">sessionId</a>
 										()
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#sessionSyncScriptUrl" title="details" class="method-name">sessionSyncScriptUrl</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$callback_url</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$callback_next</span> = <span class="var-default">TP_RETURN_URL</span>])
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#syncSession" title="details" class="method-name">syncSession</a>
 										()
 									</div>
-																<div class="method-definition">
+														
+				<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#userId" title="details" class="method-name">userId</a>
 										()
 									</div>
-								</div>
+														
+				<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#userUrlId" title="details" class="method-name">userUrlId</a>
+										()
+									</div>
+											</div>
 		</div>
 	</div>		
 
@@ -183,7 +203,7 @@
 		<span class="var-title">
 			static <span class="var-type">mixed</span>
 			<span class="var-name">$session_user_map</span>
-			 = <span class="var-default">array()</span>			(line <span class="line-number">29</span>)
+			 = <span class="var-default">array()</span>			(line <span class="line-number">30</span>)
 		</span>
 	</div>
 
@@ -204,7 +224,7 @@
 		<span class="var-title">
 			static <span class="var-type">mixed</span>
 			<span class="var-name">$user_session_map</span>
-			 = <span class="var-default">array()</span>			(line <span class="line-number">28</span>)
+			 = <span class="var-default">array()</span>			(line <span class="line-number">29</span>)
 		</span>
 	</div>
 
@@ -218,6 +238,7 @@
 		
 
 </div>
+
 <a name="var$api_endpoints" id="$api_endpoints"><!-- --></A>
 <div class="evenrow">
 
@@ -225,7 +246,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$api_endpoints</span>
-						(line <span class="line-number">26</span>)
+						(line <span class="line-number">27</span>)
 		</span>
 	</div>
 
@@ -288,7 +309,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$session_id</span>
-						(line <span class="line-number">23</span>)
+						(line <span class="line-number">24</span>)
 		</span>
 	</div>
 
@@ -309,7 +330,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$session_sync_token</span>
-						(line <span class="line-number">24</span>)
+						(line <span class="line-number">25</span>)
 		</span>
 	</div>
 
@@ -351,7 +372,7 @@
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$user</span>
-						(line <span class="line-number">25</span>)
+						(line <span class="line-number">26</span>)
 		</span>
 	</div>
 
@@ -386,6 +407,27 @@
 		
 
 </div>
+<a name="var$user_url_id" id="$user_url_id"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$user_url_id</span>
+						(line <span class="line-number">23</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
 						
 		</div>
 	</div>
@@ -401,12 +443,11 @@
 		</div>
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
-
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">83</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">95</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -430,10 +471,10 @@
 			
 	</div>
 <a name="methodauthString" id="authString"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">authString</span> (line <span class="line-number">229</span>)
+		<span class="method-title">authString</span> (line <span class="line-number">242</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -457,10 +498,10 @@
 			
 	</div>
 <a name="methoddoLogin" id="doLogin"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">doLogin</span> (line <span class="line-number">389</span>)
+		<span class="method-title">doLogin</span> (line <span class="line-number">403</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -484,10 +525,10 @@
 			
 	</div>
 <a name="methoddoLogout" id="doLogout"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">doLogout</span> (line <span class="line-number">411</span>)
+		<span class="method-title">doLogout</span> (line <span class="line-number">425</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -510,10 +551,10 @@
 			
 	</div>
 <a name="methodgetApiEndpoint" id="getApiEndpoint"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getApiEndpoint</span> (line <span class="line-number">179</span>)
+		<span class="method-title">getApiEndpoint</span> (line <span class="line-number">191</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -540,10 +581,10 @@
 			
 	</div>
 <a name="methodgetOauthToken" id="getOauthToken"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getOauthToken</span> (line <span class="line-number">58</span>)
+		<span class="method-title">getOauthToken</span> (line <span class="line-number">70</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -561,10 +602,10 @@
 			
 	</div>
 <a name="methodisLoggedIn" id="isLoggedIn"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">isLoggedIn</span> (line <span class="line-number">67</span>)
+		<span class="method-title">isLoggedIn</span> (line <span class="line-number">79</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -582,10 +623,10 @@
 			
 	</div>
 <a name="methodsessionId" id="sessionId"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">sessionId</span> (line <span class="line-number">36</span>)
+		<span class="method-title">sessionId</span> (line <span class="line-number">37</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -603,10 +644,10 @@
 			
 	</div>
 <a name="methodsessionSyncScriptUrl" id="sessionSyncScriptUrl"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">sessionSyncScriptUrl</span> (line <span class="line-number">155</span>)
+		<span class="method-title">sessionSyncScriptUrl</span> (line <span class="line-number">167</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -632,10 +673,10 @@
 			
 	</div>
 <a name="methodsyncSession" id="syncSession"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">syncSession</span> (line <span class="line-number">126</span>)
+		<span class="method-title">syncSession</span> (line <span class="line-number">138</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -656,10 +697,10 @@
 			
 	</div>
 <a name="methoduserId" id="userId"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">userId</span> (line <span class="line-number">47</span>)
+		<span class="method-title">userId</span> (line <span class="line-number">48</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -676,13 +717,34 @@
 		
 			
 	</div>
+<a name="methoduserUrlId" id="userUrlId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">userUrlId</span> (line <span class="line-number">59</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return the TypePad user urlId associated with this session.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			userUrlId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
 						
 		</div>
 	</div>
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 14 Jul 2010 17:23:16 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Wed, 04 Aug 2010 17:10:07 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
