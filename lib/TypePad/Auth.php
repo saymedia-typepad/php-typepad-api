@@ -20,6 +20,7 @@ class TPSession {
     protected $oauth_token;
     protected $oauth_verifier;
     protected $user_id;
+    protected $user_url_id;
     protected $session_id;
     protected $session_sync_token;
     protected $user;
@@ -48,6 +49,17 @@ class TPSession {
         if (!$this->user_id && !$this->session_id) return NULL;
         if (!$this->user_id) $this->_setUserId();
         return $this->user_id;
+    }
+    
+    /**
+     * Return the TypePad user urlId associated with this session.
+     *
+     * @return string
+     */
+    function userUrlId() {
+        if (!$this->user_url_id && !$this->session_id) return NULL;
+        if (!$this->user_url_id) $this->_setUserId();
+        return $this->user_url_id;
     }
     
     /**
@@ -588,7 +600,7 @@ class TPSession {
 
     private function _setUserId() {
         if (isset(self::$session_user_map[$this->session_id])) return self::$session_user_map[$this->session_id];
-        $query = "SELECT * FROM user where session_id='" . mysql_real_escape_string($this->session_id) . "'";
+        $query = "SELECT id, tp_id FROM user where session_id='" . mysql_real_escape_string($this->session_id) . "'";
         $result = mysql_query($query);
         
         if (!$result || !mysql_num_rows($result)) {
@@ -598,6 +610,7 @@ class TPSession {
         
         // otherwise, it exists
         $this->user_id = mysql_result($result, 0, "id");
+        $this->user_url_id = mysql_result($result, 0, "tp_id");
         $this->session_sync_token = mysql_result($result, 0, "session_sync_token");
         self::$session_user_map[$this->session_id] = $this->user_id;
     }

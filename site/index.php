@@ -54,7 +54,8 @@ try {
 	// logged in, we want to catch a 404 Not Found response and present 
 	// the user with the option to log in.
 	$tp->runBatch();
-	print "Welcome, " . $user->displayName . "!";
+	print "<p>Welcome, " . $user->displayName . "!</p>";
+	print '<p><a href="logout.php">Log out</a></p>';
 
 } catch (TPException $e) {
 

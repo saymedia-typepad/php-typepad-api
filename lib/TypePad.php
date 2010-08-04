@@ -134,6 +134,15 @@ class TypePad {
         $this->user_session = new TPSession($this);
         return $this->user_session;
     }
+
+    /**
+    * Get the urlId of the currently logged-in user.
+    *
+    * @return string
+    */
+    function userUrlId() {
+        return $this->userSession()->userUrlId();
+    }
     
     /**
      * Set the user session for this instance of TypePad.
@@ -382,7 +391,7 @@ EOT;
         if (is_a($content, 'TPObject')) {
             $content = $content->asPayload();
         } elseif (is_object($content)) {
-            $content = TypePad::_json_decode($content);
+            $content = TypePad::_json_encode($content);
         }
         if ($this->batch) {
             return $this->addRequest($method, $path_chunks, NULL, $content, $result_type);
@@ -522,6 +531,10 @@ class TPPromise {
         if (!$data) {
             // called manually to make an object to post back to the API
             $this->data = new stdClass();
+        } elseif (is_array($data)) {
+            // called manually to make an object to post back to the API
+            $obj = (object) $data;
+            $this->fulfill($obj);
         } elseif (is_object($data)) {
             $this->fulfill($data);
         } else {
@@ -627,7 +640,7 @@ class TPObject extends TPPromise {
                 $obj->$key = self::memberAsPayload($this->$key);
             }
         }
-        return $want_json ? json_encode($obj) : $obj;
+        return $want_json ? _json_encode($obj) : $obj;
     }
     
     /**
