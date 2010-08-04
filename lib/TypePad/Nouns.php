@@ -401,6 +401,51 @@ class TPApplications extends TPNoun {
     }
 
     /**
+     * Get a list of badges defined by this application.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/badges
+     * @return TPList TPList of TPBadge
+     */
+    function getBadges($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('applications', $params['id'], 'badges');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Badge>');
+    }
+
+    /**
+     * Get a list of all learning badges defined by this application.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/badges/@learning
+     * @return TPList TPList of TPBadge
+     */
+    function getLearningBadges($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('applications', $params['id'], 'badges', '@learning');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Badge>');
+    }
+
+    /**
+     * Get a list of all public badges defined by this application.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/badges/@public
+     * @return TPList TPList of TPBadge
+     */
+    function getPublicBadges($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('applications', $params['id'], 'badges', '@public');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Badge>');
+    }
+
+    /**
      * Subscribe the application to one or more external feeds.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/create-external-feed-subscription
@@ -472,6 +517,36 @@ class TPUsers extends TPNoun {
     function getBadges($params) {
        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'badges');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<UserBadge>');
+    }
+
+    /**
+     * Get a list of learning badges that the selected user has won.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/badges/@learning
+     * @return TPList TPList of TPUserBadge
+     */
+    function getLearningBadges($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('users', $params['id'], 'badges', '@learning');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<UserBadge>');
+    }
+
+    /**
+     * Get a list of public badges that the selected user has won.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/badges/@public
+     * @return TPList TPList of TPUserBadge
+     */
+    function getPublicBadges($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('users', $params['id'], 'badges', '@public');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
         if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
@@ -1157,6 +1232,21 @@ class TPGroups extends TPNoun {
     }
 
     /**
+     * Get a list of recently created Audio assets from the selected group.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/audio-assets
+     * @return TPList TPList of TPAudio
+     */
+    function getAudioAssets($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('groups', $params['id'], 'audio-assets');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Audio>');
+    }
+
+    /**
      * Block the given user from joining the selected group, removing that user as a member in the process.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/block-user
@@ -1216,6 +1306,21 @@ class TPGroups extends TPNoun {
     function postToLinkAssets($params) {
         $path_chunks = array('groups', $params['id'], 'link-assets');
         return $this->typepad->post($path_chunks, $params['payload'], 'Link');
+    }
+
+    /**
+     * Returns a list of recently created Link assets from the selected group.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/link-assets
+     * @return TPList TPList of TPLink
+     */
+    function getLinkAssets($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('groups', $params['id'], 'link-assets');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Link>');
     }
 
     /**
@@ -1290,6 +1395,21 @@ class TPGroups extends TPNoun {
     }
 
     /**
+     * Get a list of recently created Photo assets from the selected group.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/photo-assets
+     * @return TPList TPList of TPPhoto
+     */
+    function getPhotoAssets($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('groups', $params['id'], 'photo-assets');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Photo>');
+    }
+
+    /**
      * Create a new Post asset within the selected group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/post-assets
@@ -1298,6 +1418,21 @@ class TPGroups extends TPNoun {
     function postToPostAssets($params) {
         $path_chunks = array('groups', $params['id'], 'post-assets');
         return $this->typepad->post($path_chunks, $params['payload'], 'Post');
+    }
+
+    /**
+     * Get a list of recently created Post assets from the selected group.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/post-assets
+     * @return TPList TPList of TPPost
+     */
+    function getPostAssets($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('groups', $params['id'], 'post-assets');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Post>');
     }
 
     /**
@@ -1329,6 +1464,21 @@ class TPGroups extends TPNoun {
     function postToVideoAssets($params) {
         $path_chunks = array('groups', $params['id'], 'video-assets');
         return $this->typepad->post($path_chunks, $params['payload'], 'Video');
+    }
+
+    /**
+     * Get a list of recently created Video assets from the selected group.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/video-assets
+     * @return TPList TPList of TPVideo
+     */
+    function getVideoAssets($params) {
+       if (!is_array($params)) $params = array('id' => $params);
+        $path_chunks = array('groups', $params['id'], 'video-assets');
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Video>');
     }
 
 }

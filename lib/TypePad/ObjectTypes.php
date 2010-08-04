@@ -690,13 +690,16 @@ class TPAssetExtendedContent extends TPBase {
 class TPAssetRef extends TPBase {
 
     protected static $properties = array(
+        'excerpt' => array('A short, plain-text excerpt of the referenced asset\'s content. This is currently available only for O<Post> assets.', 'string'),
         'author' => array('The user who created the referenced asset.', 'User'),
         'objectType' => array('The keyword identifying the type of asset the referenced O<Asset> object is.', 'string'),
         'href' => array('The URL of a representation of the referenced asset.', 'string'),
         'id' => array('The URI from the referenced O<Asset> object\'s M<id> property.', 'string'),
         'urlId' => array('The canonical identifier from the referenced O<Asset> object\'s M<urlId> property.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of the referenced asset. Only the one object type URI for the particular type of asset the referenced asset is will be present.', 'array<string>'),
-        'type' => array('The MIME type of the representation at the URL given in the M<href> property.', 'string')
+        'permalinkUrl' => array('The URL that is the referenced asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
+        'type' => array('The MIME type of the representation at the URL given in the M<href> property.', 'string'),
+        'title' => array('The title of the referenced asset, if it has one.', 'string')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
