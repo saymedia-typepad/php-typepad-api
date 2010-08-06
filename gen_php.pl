@@ -34,7 +34,7 @@ for my $noun (keys %$map) {
     for my $endpoint (@{$map->{$noun}->{methods}}) {
         my $path_chunks = $endpoint->{pathChunks};
         my %path_params = reverse %{$endpoint->{pathParams}};
-        
+
         my $i = -1;
         my $php_chunks = join(', ', map {
             $i++;
@@ -43,7 +43,7 @@ for my $noun (keys %$map) {
         my $doc_path = join('/', map {
             defined($_) ? $_ : '<id>'
         } @$path_chunks);
-        
+
         my $query_params = '';
         for my $key (keys %{$endpoint->{queryParams}}) {
             my $plusone = ($key eq 'offset') ? ' + 1' : '';
@@ -237,7 +237,7 @@ sub children_flat {
         }
     }
     return \@ret;
-    
+
 }
 
 sub write_file {
