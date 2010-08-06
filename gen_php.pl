@@ -283,6 +283,6 @@ sub children_flat {
 sub write_file {
     my ($filename, $content) = @_;
     open(FILE, ">$php_dir/$filename.php") || die $!;
-    print FILE "<?php\n\n$content?>";
+    print FILE "<?php\n\n$content";
     close FILE;
 }

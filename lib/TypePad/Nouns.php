@@ -1501,4 +1501,3 @@ class TPAuthTokens extends TPNoun {
 }
 TypePad::addNoun('authTokens');
 
-?>
