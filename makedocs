@@ -1,0 +1,1 @@
+phpdoc -d lib,tutorials --defaultpackagename TypePad-API -t docs -o HTML:frames:phphtmllib --title "PHP TypePad API Library Documentation"
