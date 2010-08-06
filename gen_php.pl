@@ -11,13 +11,22 @@ my $api_base = 'http://api.typepad.com';
 my $php_dir = 'lib/TypePad';
 my $j = JSON->new;
 
-my $nouns_php = <<'EOPHP';
+open(LICENSE, '<LICENSE.txt') || die $!;
+my $license = "/**\n";
+while (my $line = <LICENSE>) {
+    $license .= " * $line";
+}
+close LICENSE;
+$license .= " */";
+
+my $nouns_php = <<EOPHP;
+$license
 /**
  * Noun classes for the TypePad API.
  *
  * AUTO-GENERATED FILE - DO NOT EDIT
  *
- * @package TypePad-Nouns
+ * \@package TypePad-Nouns
  */
 
 EOPHP
@@ -207,13 +216,14 @@ EOPHP
     $types_php{$class} = $type_php;
 }
 
-my $types_php = <<'EOPHP';
+my $types_php = <<"EOPHP";
+$license
 /**
  * Object type classes for the TypePad API.
  *
  * AUTO-GENERATED FILE - DO NOT EDIT
  *
- * @package TypePad-ObjectTypes
+ * \@package TypePad-ObjectTypes
  */
 
 EOPHP
