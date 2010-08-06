@@ -20,8 +20,6 @@ Please refer to the documentation in the `docs` directory in this distribution.
 
 [Six Apart, LLC][sixapart]
 
-## Licensing ##
-
 ## Resources ##
 
 * [TypePad Developer Resources][developer]
