@@ -1,0 +1,39 @@
+# PHP TypePad API Library #
+
+This is a PHP library for interacting with the [TypePad JSON API][tpapi]. It provides:
+
+* An object-oriented interface with methods for all of the API's supported nouns and endpoints.
+* The ability to let users to log in to your PHP-powered site using TypePad as an OAuth provider.
+* A batch request library that allows you to combine multiple API requests into a single operation.
+
+## Requirements ##
+
+* PHP 5.x
+* MySQL 5.x (if using user authentication features)
+* A set of TypePad API keys (if making authenticated API requests; go to [Account &gt; Developer][account] when logged in to TypePad to get keys)
+
+## Installation and Usage ##
+
+Please refer to the documentation in the `docs` directory in this distribution.
+
+## Author ##
+
+[Six Apart, LLC][sixapart]
+
+## Licensing ##
+
+## Resources ##
+
+* [TypePad Developer Resources][developer]
+* [TypePad JSON API Introduction][introduction]
+* [Six Apart on GitHub][github]
+* [TypePad Developer Network Google group][devnetwork]
+
+
+  [tpapi]: http://www.typepad.com/services/apidocs
+  [account]: http://www.typepad.com/account/access/developer
+  [sixapart]: http://www.sixapart.com/
+  [developer]: http://developer.typepad.com/
+  [introduction]: http://www.typepad.com/services/apidocs/introduction
+  [github]: http://github.com/sixapart/
+  [devnetwork]: http://groups.google.com/group/typepad-dev-network
