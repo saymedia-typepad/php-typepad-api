@@ -1,0 +1,4 @@
+This is not an official Six Apart product. As such, customer support
+from Six Apart is not available. Developer support is available through
+various channels described on the TypePad Developer web site:
+<http://developer.typepad.com/>.
