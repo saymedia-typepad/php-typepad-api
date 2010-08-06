@@ -46,7 +46,7 @@ require_once('TypePad/Auth.php');
 require_once('TypePad/Nouns.php');
 require_once('TypePad/ObjectTypes.php');
 // Transparently replace the curl_* functions with command-line or pure-PHP
-// implementations if they're not compiled into the PHP we're running under. 
+// implementations if they're not compiled into the PHP we're running under.
 require_once('libcurlemu/libcurlemu.inc.php');
 
 /**
@@ -55,7 +55,7 @@ require_once('libcurlemu/libcurlemu.inc.php');
  * @package TypePad
  */
 class TypePad {
-    
+
     protected $user_session;
     protected $batch;
     protected $requests;
@@ -84,7 +84,7 @@ class TypePad {
         }
         TypePad::throwPropertyNotice($name);
     }
-    
+
     /**
      * Tell the TypePad library about a noun class.
      *
@@ -99,7 +99,7 @@ class TypePad {
         if (isset(self::$noun_classes[$class])) return;
         self::$noun_classes[$noun] = $class;
     }
-    
+
     /**
      * The base URL for non-secure TypePad API endpoints.
      *
@@ -113,11 +113,11 @@ class TypePad {
             ? TP_API_BASE
             : TP_API_BASE . '/';
     }
-    
+
     /**
      * The base URL for secure TypePad API endpoints.
      *
-     * Returns the TP_API_BASE_SECURE defined in your config.php, but always 
+     * Returns the TP_API_BASE_SECURE defined in your config.php, but always
      * with a trailing slash whether or not the constant in the config has one.
      *
      * @return string The URL.
@@ -127,7 +127,7 @@ class TypePad {
             ? TP_API_BASE_SECURE
             : TP_API_BASE_SECURE . '/';
     }
-    
+
     /**
      * Apply the default cURL option settings for an API request.
      *
@@ -141,19 +141,19 @@ class TypePad {
             ));
         }
     }
-    
+
     private function _prepRequest($request) {
         self::setCurlopts($request);
         $request->setHeader('Authorization',
             $this->userSession()->authString());
     }
-    
+
     /**
      * Get the current user's session.
      *
      * Returns the $user_session for this instance of TypePad if already;
      * populated; if not, instantiates a new TPSession object.
-     * 
+     *
      * If no user is logged in, a TPSession object will still be returned,
      * which can be used to generate an auth header with the application's
      * anonymous access keys.
@@ -174,7 +174,7 @@ class TypePad {
     function userUrlId() {
         return $this->userSession()->userUrlId();
     }
-    
+
     /**
      * Set the user session for this instance of TypePad.
      *
@@ -183,15 +183,15 @@ class TypePad {
     function setUserSession($session) {
         $this->user_session = $session;
     }
-    
+
     /**
      * Output a script tag for session synchronization.
-     * 
-     * This method is provided for use on sites that allow login via TypePad. 
-     * it writes a &lt;script&gt; tag to the page that calls in a script file from 
+     *
+     * This method is provided for use on sites that allow login via TypePad.
+     * it writes a &lt;script&gt; tag to the page that calls in a script file from
      * typepad.com, allowing TypePad to recognize that the user is logged in
      * to TypePad and, if so, provide the user's information to your PHP application.
-     * To use this session synchronization mechanism, simply include this in your 
+     * To use this session synchronization mechanism, simply include this in your
      * page's &lt;head&gt;:
      *
      * <code><?php $tp->sessionSyncScriptTag(); ?></code>
@@ -206,10 +206,10 @@ class TypePad {
 <script type="text/javascript" src="$url"></script>
 EOT;
     }
-    
+
     /**
      * Synchronize the user's session with TypePad.
-     * 
+     *
      * This method should be called from a page that does nothing except
      * load config.php, create a new instance of TypePad, and call syncSession().
      * After attempting to synchronize the session, it will redirect to the
@@ -218,18 +218,18 @@ EOT;
     function syncSession() {
         $this->userSession()->syncSession();
     }
-    
+
     /**
      * Begin queuing requests for batch retrieval.
-     * 
+     *
      * Any calls to API endpoint functions that come after an openBatch()
      * will not call the API yet, but will add them to the batch; when you've
-     * queued all the subrequests you need to render the page, call 
+     * queued all the subrequests you need to render the page, call
      * $tp->runBatch().
      *
      * Each instance of the TypePad class has its own batch (or no batch),
      * so you could build multiple batches at the same time, or run some
-     * requests synchronously while building a batch for others, by 
+     * requests synchronously while building a batch for others, by
      * creating multiple TypePad instances.
      */
     function openBatch() {
@@ -242,7 +242,7 @@ EOT;
         $this->batch->setDefaultHeader('Authorization', $auth_string);
         self::setCurlopts($this->batch);
     }
-    
+
     /**
      * Returns the currently open batch, if any, for this instance of TypePad.
      *
@@ -251,7 +251,7 @@ EOT;
     function currentBatch() {
         return $this->batch;
     }
-    
+
     private static function _makeUrl($path_chunks, $params = array()) {
         $url = (TP_CONSUMER_KEY ? self::baseSecure() : self::base())
             . implode('/', $path_chunks) . '.json';
@@ -264,7 +264,7 @@ EOT;
         }
         return $url;
     }
-    
+
     private static function _objectFromType($result_type, $request_id = NULL, $fulfill_with = NULL) {
         $of_class = NULL;
         if ($fulfill_with) {
@@ -273,7 +273,7 @@ EOT;
         if (preg_match('/:/', $result_type)) {
             // an action endpoint will return a hash where the object
             // we're after is in one of its properties, rather than
-            // returning the object directly 
+            // returning the object directly
             list($property, $class) = explode(':', $result_type);
         } elseif (preg_match('/(.*)<([^>]+)>/', $result_type, $matches)) {
             $class = $matches[1];
@@ -324,7 +324,7 @@ EOT;
         array_push($this->result_types, $result_type);
         return $promise;
     }
-    
+
     /**
      * Run a batch of subrequests.
      *
@@ -362,11 +362,11 @@ EOT;
         }
         $this->batch = NULL;
     }
-    
+
     /**
      * Execute or batch a GET request to the API.
      *
-     * Normally you shouldn't need to call this directly; it's called by the 
+     * Normally you shouldn't need to call this directly; it's called by the
      * handlers for the individual API endpoints.
      *
      * @param array  $path_chunks The pieces of the URL after the base.
@@ -389,11 +389,11 @@ EOT;
         }
         return $result;
     }
-    
+
     /**
      * Execute or batch a POST request to the API.
      *
-     * Normally you shouldn't need to call this directly; it's called by the 
+     * Normally you shouldn't need to call this directly; it's called by the
      * handlers for the individual API endpoints.
      *
      * @param array  $path_chunks The pieces of the URL after the base.
@@ -407,7 +407,7 @@ EOT;
     /**
      * Execute or batch a PUT request to the API.
      *
-     * Normally you shouldn't need to call this directly; it's called by the 
+     * Normally you shouldn't need to call this directly; it's called by the
      * handlers for the individual API endpoints.
      *
      * @param array  $path_chunks The pieces of the URL after the base.
@@ -439,11 +439,11 @@ EOT;
         }
         return $result;
     }
-    
+
     /**
      * Execute or batch a DELETE request to the API.
      *
-     * Normally you shouldn't need to call this directly; it's called by the 
+     * Normally you shouldn't need to call this directly; it's called by the
      * handlers for the individual API endpoints.
      *
      * @param array  $path_chunks The pieces of the URL after the base.
@@ -463,7 +463,7 @@ EOT;
         }
         return $result;
     }
-    
+
     /**
      * Return the API response last encountered by this instance of TypePad.
      *
@@ -472,7 +472,7 @@ EOT;
     function lastResponse() {
         return $this->last_response;
     }
-    
+
     private function _resultOrError($request, $response, $result_type) {
         $this->last_response = $response;
         if (!$response->isError()) {
@@ -493,7 +493,7 @@ EOT;
             E_USER_NOTICE
         );
     }
-    
+
     /**
      * Decode JSON, degrading to a pure-PHP library if the compiled function
      * is not available
@@ -506,12 +506,12 @@ EOT;
         if (!function_exists('json_decode')) {
             function json_decode($doc) {
                 require_once 'json_lib.php';
-                $json = new Services_JSON(0);            
+                $json = new Services_JSON(0);
                 $result = $json->decode($doc);
                 return $result;
             }
         }
-    
+
         return json_decode($str);
     }
 
@@ -526,12 +526,12 @@ EOT;
         if (!function_exists('json_encode')) {
             function json_encode($obj) {
                 require_once 'json_lib.php';
-                $json = new Services_JSON(0);            
+                $json = new Services_JSON(0);
                 $result = $json->encode($obj);
                 return $result;
             }
         }
-    
+
         return json_encode($data);
     }
 
@@ -542,10 +542,10 @@ EOT;
  * Allow deferred object population for batch requests.
  *
  * Every TPObject is actually a TPPromise; it won't have any content until
- * it's fulfill()ed with some data. When a non-batch request is made, the 
+ * it's fulfill()ed with some data. When a non-batch request is made, the
  * result object is simply fulfill()ed immediately with the response data.
  *
- * If a TPObject subclass has properties that are themselves TPObjects, 
+ * If a TPObject subclass has properties that are themselves TPObjects,
  * it will override the fulfill() method in order to make the properties
  * instances of the appropriate classes.
  *
@@ -557,7 +557,7 @@ class TPPromise {
     public $request_id;
     protected $data;
     protected $fulfilled;
-    
+
     function __construct($data = NULL) {
         if (!$data) {
             // called manually to make an object to post back to the API
@@ -572,7 +572,7 @@ class TPPromise {
             $this->request_id = $data;
         }
     }
-    
+
     /**
      * Populate a promise object with content and mark it as fulfilled.
      *
@@ -587,7 +587,7 @@ class TPPromise {
         $this->data = $data;
         $this->fulfilled = true;
     }
-    
+
     /**
      * Return whether this promise has been fulfilled.
      *
@@ -596,7 +596,7 @@ class TPPromise {
     function isFulfilled() {
         return $this->fulfilled ? true : false;
     }
-    
+
 }
 
 /**
@@ -612,7 +612,7 @@ class TPObject extends TPPromise {
     /**
      * Property getter method. PHP's inheritance model is rather, um,
      * interesting, so in order for each subclass to define its own set of
-     * properties, we end up having to define the magic methods __get() and 
+     * properties, we end up having to define the magic methods __get() and
      * __set() in every subclass, which in turn call get() and set() in the
      * base class.
      */
@@ -622,7 +622,7 @@ class TPObject extends TPPromise {
         }
         return isset($this->data->$name) ? $this->data->$name : NULL;
     }
-    
+
     /**
      * Property setter method.
      */
@@ -633,7 +633,7 @@ class TPObject extends TPPromise {
         $this->data->$name = $value;
         return $this->data->$name;
     }
-    
+
     /**
      * Translate a member of an object into a JSON payload.
      *
@@ -647,12 +647,12 @@ class TPObject extends TPPromise {
             return $member;
         }
     }
-    
+
     /**
      * Translate a TPObject into a simple stdClass object, and optionally
      * a JSON representation of that object.
      *
-     * @param array $properties  The object class's properties, which we 
+     * @param array $properties  The object class's properties, which we
      *                           need to pass around because PHP is sort of
      *                           broken with regard to inheritance.
      * @param boolean $want_json Return a JSON string, or an object?
@@ -673,11 +673,11 @@ class TPObject extends TPPromise {
         }
         return $want_json ? _json_encode($obj) : $obj;
     }
-    
+
     /**
      * Called on a TPObject, return an instance of the appropriate subclass
      * based on the object's type. This is necessary in cases when a
-     * batched subrequest returns an object whose type is not known 
+     * batched subrequest returns an object whose type is not known
      * until the batch is run--for example, an endpoint that returns a
      * TPAsset which may turn out to be a TPPost, TPComment, etc.
      */
@@ -690,7 +690,7 @@ class TPObject extends TPPromise {
         }
         return $this;
     }
-    
+
 }
 
 /**
@@ -712,7 +712,7 @@ class TPList extends TPObject {
         parent::__construct($data);
         $this->of_class = $of_class;
     }
-    
+
     function __get($name) { return $this->get($name, self::$properties); }
     function __set($name, $value) { return $this->set($name, $value, self::$properties); }
     static function propertyDocString($name) { return self::$properties[$name][0]; }
@@ -760,7 +760,7 @@ class TPStream extends TPList {
 class TPNoun {
 
     protected $typepad;
-    
+
     function __construct($typepad) {
         $this->typepad = $typepad ? $typepad : new TypePad;
     }
@@ -776,13 +776,13 @@ class TPException extends Exception {
 
     protected $response;
     protected $request;
-    
+
     function __construct($response, $request = NULL) {
         parent::__construct($response->getMessage(), $response->getCode());
         $this->response = $response;
         $this->request = $request;
     }
-    
+
     /**
      * Return the HTTP response that caused the exception to be thrown.
      *
