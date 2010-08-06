@@ -350,7 +350,7 @@ class TPSession {
         $this->session_id = $_COOKIE[TP_COOKIE_NAME];
           if (($old_oauth_id != $oauth_user_id) && ($oauth_user_id)){
             // Update the OAuth table to user our user lookup.
-            self::replaceOauthUser($old_oauth_id, $oauth_user_id);
+            self::_replaceOauthUser($old_oauth_id, $oauth_user_id);
 
             // Remove the temporary user.
             self::_deleteUser($old_oauth_id);
@@ -628,7 +628,7 @@ class TPSession {
 
     private function _setUserId() {
         if (isset(self::$session_user_map[$this->session_id])) return self::$session_user_map[$this->session_id];
-        $query = "SELECT id, tp_id FROM user where session_id='" . mysql_real_escape_string($this->session_id) . "'";
+        $query = "SELECT id, tp_id, session_sync_token FROM user where session_id='" . mysql_real_escape_string($this->session_id) . "'";
         $result = mysql_query($query);
 
         if (!$result || !mysql_num_rows($result)) {
