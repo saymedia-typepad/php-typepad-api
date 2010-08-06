@@ -722,5 +722,3 @@ class TPSession {
     }
 
 }
-
-?>

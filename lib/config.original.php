@@ -88,5 +88,3 @@ define ('TP_API_BASE_SECURE', 'https://api.typepad.com');
 define ('TP_INSECURE', false);
 
 include_once('../lib/TypePad.php');
-
-?>

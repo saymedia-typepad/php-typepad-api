@@ -801,5 +801,3 @@ class TPException extends Exception {
         return $this->request;
     }
 }
-
-?>
