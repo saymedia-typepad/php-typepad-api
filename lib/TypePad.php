@@ -53,6 +53,7 @@ require_once('libcurlemu/libcurlemu.inc.php');
  * Object class allowing interaction with the TypePad API.
  *
  * @package TypePad
+ * @subpackage TypePad
  */
 class TypePad {
 

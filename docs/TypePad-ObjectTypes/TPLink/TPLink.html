@@ -27,7 +27,7 @@
 				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/objecttypes/Link">http://www.typepad.com/services/apidocs/objecttypes/Link</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_lib---TypePad---ObjectTypes.php.html">/lib/TypePad/ObjectTypes.php</a> (line <span class="field">308</span>)
+			Located in <a class="field" href="_lib---TypePad---ObjectTypes.php.html">/lib/TypePad/ObjectTypes.php</a> (line <span class="field">338</span>)
 		</p>
 		
 				
@@ -138,13 +138,13 @@
 					</div>
 		<div class="info-box-body">
 			<a name="var$properties" id="$properties"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			static <span class="var-type">mixed</span>
 			<span class="var-name">$properties</span>
-			 = <span class="var-default">array(<br />        'source' =&gt; array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),'excerpt'=&gt;array('A short, plain-text excerpt of the entry content. This is currently available only for O&lt;Post&gt; assets.','string'),'content'=&gt;array('The raw asset content. The M&lt;textFormat&gt; property describes how to format this data. Use this property to set the asset content in write operations. An asset posted in a group may have a M&lt;content&gt; value up to 10,000 bytes long, while a O&lt;Post&gt; asset in a blog may have up to 65,000 bytes of content.','string'),'favoriteCount'=&gt;array('The number of distinct users who have added this asset as a favorite.','integer'),'author'=&gt;array('The user who created the selected asset.','User'),'isFavoriteForCurrentUser'=&gt;array('C&lt;true&gt; if this asset is a favorite for the currently authenticated user, or C&lt;false&gt; otherwise. This property is omitted from responses to anonymous requests.','boolean'),'suppressEvents'=&gt;array('T&lt;Editable&gt; An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.','boolean'),'publicationStatus'=&gt;array('T&lt;Editable&gt; An object describing the visibility status and publication date for this asset. Only visibility status is editable.','PublicationStatus'),'renderedContent'=&gt;array('The content of this asset rendered to HTML. This is currently available only for O&lt;Post&gt; and O&lt;Page&gt; assets.','string'),'crosspostAccounts'=&gt;array('T&lt;Editable&gt; A set of identifiers for O&lt;Account&gt; objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.','set&lt;string&gt;'),'objectType'=&gt;array('The keyword identifying the type of asset this is.','string'),'groups'=&gt;array('T&lt;Deprecated&gt; An array of strings containing the M&lt;id&gt; URI of the O&lt;Group&gt; object that this asset is mapped into, if any. This property has been superseded by the M&lt;container&gt; property.','array&lt;string&gt;'),'id'=&gt;array('A URI that serves as a globally unique identifier for the user.','string'),'urlId'=&gt;array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.','string'),'objectTypes'=&gt;array('T&lt;Deprecated&gt; An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.','set&lt;string&gt;'),'container'=&gt;array('An object describing the group or blog to which this asset belongs.','ContainerRef'),'description'=&gt;array('The description of the asset.','string'),'commentCount'=&gt;array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.','integer'),'published'=&gt;array('The time at which the asset was created, as a W3CDTF timestamp.','string'),'targetUrl'=&gt;array('The URL that is the target of this link.','string'),'textFormat'=&gt;array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C&lt;html&gt; for assets the content of which is HTML, C&lt;html_convert_linebreaks&gt; for assets the content of which is HTML but where paragraph tags should be added automatically, or C&lt;markdown&gt; for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.','string'),'permalinkUrl'=&gt;array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.','string'),'title'=&gt;array('The title of the asset.','string'))</span>			(line <span class="line-number">310</span>)
+			 = <span class="var-default">array(<br />        'source' =&gt; array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),'excerpt'=&gt;array('A short, plain-text excerpt of the entry content. This is currently available only for O&lt;Post&gt; assets.','string'),'content'=&gt;array('The raw asset content. The M&lt;textFormat&gt; property describes how to format this data. Use this property to set the asset content in write operations. An asset posted in a group may have a M&lt;content&gt; value up to 10,000 bytes long, while a O&lt;Post&gt; asset in a blog may have up to 65,000 bytes of content.','string'),'favoriteCount'=&gt;array('The number of distinct users who have added this asset as a favorite.','integer'),'author'=&gt;array('The user who created the selected asset.','User'),'isFavoriteForCurrentUser'=&gt;array('C&lt;true&gt; if this asset is a favorite for the currently authenticated user, or C&lt;false&gt; otherwise. This property is omitted from responses to anonymous requests.','boolean'),'suppressEvents'=&gt;array('T&lt;Editable&gt; An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.','boolean'),'publicationStatus'=&gt;array('T&lt;Editable&gt; An object describing the visibility status and publication date for this asset. Only visibility status is editable.','PublicationStatus'),'renderedContent'=&gt;array('The content of this asset rendered to HTML. This is currently available only for O&lt;Post&gt; and O&lt;Page&gt; assets.','string'),'crosspostAccounts'=&gt;array('T&lt;Editable&gt; A set of identifiers for O&lt;Account&gt; objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.','set&lt;string&gt;'),'objectType'=&gt;array('The keyword identifying the type of asset this is.','string'),'groups'=&gt;array('T&lt;Deprecated&gt; An array of strings containing the M&lt;id&gt; URI of the O&lt;Group&gt; object that this asset is mapped into, if any. This property has been superseded by the M&lt;container&gt; property.','array&lt;string&gt;'),'id'=&gt;array('A URI that serves as a globally unique identifier for the user.','string'),'urlId'=&gt;array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.','string'),'objectTypes'=&gt;array('T&lt;Deprecated&gt; An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.','set&lt;string&gt;'),'container'=&gt;array('An object describing the group or blog to which this asset belongs.','ContainerRef'),'description'=&gt;array('The description of the asset.','string'),'commentCount'=&gt;array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.','integer'),'published'=&gt;array('The time at which the asset was created, as a W3CDTF timestamp.','string'),'targetUrl'=&gt;array('The URL that is the target of this link.','string'),'textFormat'=&gt;array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C&lt;html&gt; for assets the content of which is HTML, C&lt;html_convert_linebreaks&gt; for assets the content of which is HTML but where paragraph tags should be added automatically, or C&lt;markdown&gt; for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.','string'),'permalinkUrl'=&gt;array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.','string'),'title'=&gt;array('The title of the asset.','string'))</span>			(line <span class="line-number">340</span>)
 		</span>
 	</div>
 
@@ -194,10 +194,10 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="methodisAbstract" id="isAbstract"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">static isAbstract</span> (line <span class="line-number">342</span>)
+		<span class="method-title">static isAbstract</span> (line <span class="line-number">372</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -219,10 +219,10 @@
 			
 	</div>
 <a name="methodpropertyDocString" id="propertyDocString"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">static propertyDocString</span> (line <span class="line-number">338</span>)
+		<span class="method-title">static propertyDocString</span> (line <span class="line-number">368</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -249,10 +249,10 @@
 			
 	</div>
 <a name="methodpropertyType" id="propertyType"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">static propertyType</span> (line <span class="line-number">339</span>)
+		<span class="method-title">static propertyType</span> (line <span class="line-number">369</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -279,10 +279,10 @@
 			
 	</div>
 <a name="methodasPayload" id="asPayload"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">asPayload</span> (line <span class="line-number">340</span>)
+		<span class="method-title">asPayload</span> (line <span class="line-number">370</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -312,10 +312,10 @@
 			
 	</div>
 <a name="methodfulfill" id="fulfill"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">fulfill</span> (line <span class="line-number">344</span>)
+		<span class="method-title">fulfill</span> (line <span class="line-number">374</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -342,10 +342,10 @@
 			
 	</div>
 <a name="method__get" id="__get"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">__get</span> (line <span class="line-number">336</span>)
+		<span class="method-title">__get</span> (line <span class="line-number">366</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -372,10 +372,10 @@
 			
 	</div>
 <a name="method__set" id="__set"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">__set</span> (line <span class="line-number">337</span>)
+		<span class="method-title">__set</span> (line <span class="line-number">367</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -449,7 +449,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 04 Aug 2010 17:25:21 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Fri, 06 Aug 2010 12:58:16 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

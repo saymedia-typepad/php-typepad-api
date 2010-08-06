@@ -26,7 +26,7 @@
 <p class="short-description">Allow deferred object population for batch requests.</p>
 <p class="description"><p>Every TPObject is actually a TPPromise; it won't have any content until  it's fulfill()ed with some data. When a non-batch request is made, the  result object is simply fulfill()ed immediately with the response data.</p><p>If a TPObject subclass has properties that are themselves TPObjects,  it will override the fulfill() method in order to make the properties  instances of the appropriate classes.</p></p>
 		<p class="notes">
-			Located in <a class="field" href="_lib---TypePad.php.html">/lib/TypePad.php</a> (line <span class="field">524</span>)
+			Located in <a class="field" href="_lib---TypePad.php.html">/lib/TypePad.php</a> (line <span class="field">525</span>)
 		</p>
 		
 				
@@ -142,33 +142,12 @@
 		<div class="info-box-body">
 			
 <a name="var$data" id="$data"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			<span class="var-type">mixed</span>
-			<span class="var-name">$data</span>
-						(line <span class="line-number">527</span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">access:</span> protected</li>
-			</ul>
-	
-	
-		
-		
-
-</div>
-<a name="var$fulfilled" id="$fulfilled"><!-- --></A>
 <div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">mixed</span>
-			<span class="var-name">$fulfilled</span>
+			<span class="var-name">$data</span>
 						(line <span class="line-number">528</span>)
 		</span>
 	</div>
@@ -183,14 +162,35 @@
 		
 
 </div>
-<a name="var$request_id" id="$request_id"><!-- --></A>
+<a name="var$fulfilled" id="$fulfilled"><!-- --></A>
 <div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">mixed</span>
+			<span class="var-name">$fulfilled</span>
+						(line <span class="line-number">529</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$request_id" id="$request_id"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
 			<span class="var-name">$request_id</span>
-						(line <span class="line-number">526</span>)
+						(line <span class="line-number">527</span>)
 		</span>
 	</div>
 
@@ -221,10 +221,10 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">530</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">531</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -253,10 +253,10 @@
 				</ul>
 	</div>
 <a name="methodfulfill" id="fulfill"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">fulfill</span> (line <span class="line-number">551</span>)
+		<span class="method-title">fulfill</span> (line <span class="line-number">552</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -358,10 +358,10 @@
 				</ul>
 	</div>
 <a name="methodisFulfilled" id="isFulfilled"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">isFulfilled</span> (line <span class="line-number">565</span>)
+		<span class="method-title">isFulfilled</span> (line <span class="line-number">566</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -384,7 +384,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 04 Aug 2010 17:25:24 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Fri, 06 Aug 2010 12:58:19 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
