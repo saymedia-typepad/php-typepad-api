@@ -83,6 +83,15 @@ define ('TP_API_BASE', 'http://api.typepad.com');
  */
 define ('TP_API_BASE_SECURE', 'https://api.typepad.com');
 /**
+ * Setting this to true will mean you can't access any property of an object
+ * returned by the API unless it's declared as a property of the object type 
+ * in question. That's generally a good thing, but it will expose any
+ * inconsistencies in the API's property declarations; if you encounter such 
+ * a case and it leaves you unable to render some data, set this to false 
+ * temporarily, and please report the API bug!
+ */
+define ('TP_STRICT_PROPERTIES', false);
+/**
  * Set this to true if hitting dev API backends with no SSL certs.
  */
 define ('TP_INSECURE', false);
