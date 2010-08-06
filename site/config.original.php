@@ -38,7 +38,7 @@ define ('TP_GENERAL_PURPOSE_KEY', '');
 define ('TP_GENERAL_PURPOSE_SECRET', '');
 /**
  * The type of access that this application will request from TypePad on behalf
- * of a user who signs up for it. 'app_full' will give the user access to 
+ * of a user who signs up for it. 'app_full' will give the user access to
  * content owned by the application; 'typepad_full' will give the user access
  * to TypePad content.
  */
@@ -46,7 +46,7 @@ define ('TP_ACCESS_TYPE', 'app_full');
 
 /**
  * The default URL to which TypePad should redirect the browser after login
- * or logout. 
+ * or logout.
  */
 define ('TP_RETURN_URL', 'http://www.example.com/');
 /**
@@ -74,11 +74,11 @@ define ('TP_DB_PASSWORD', '');
  */
 define ('TP_DB_NAME', 'typepad');
 /**
- * The location of the non-secure TypePad API endpoints. 
+ * The location of the non-secure TypePad API endpoints.
  */
 define ('TP_API_BASE', 'http://api.typepad.com');
 /**
- * The location of the secure TypePad API endpoints. 
+ * The location of the secure TypePad API endpoints.
  */
 define ('TP_API_BASE_SECURE', 'https://api.typepad.com');
 /**
