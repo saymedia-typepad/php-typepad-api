@@ -4,11 +4,10 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-use lib '/Users/kevin/test/summary/mt/extlib';
 use JSON;
 use LWP::Simple;
 
-my $api_base = 'http://api.typepad.com.kshay-eng.dev.sixapart.com';
+my $api_base = 'http://api.typepad.com';
 my $php_dir = 'lib/TypePad';
 my $j = JSON->new;
 
