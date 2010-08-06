@@ -7,7 +7,7 @@ use Data::Dumper;
 use JSON;
 use LWP::Simple;
 
-my $api_base = 'http://api.typepad.com.kshay-eng.dev.sixapart.com';
+my $api_base = 'http://api.typepad.com';
 my $php_dir = 'lib/TypePad';
 my $j = JSON->new;
 
