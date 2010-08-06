@@ -4,7 +4,6 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-use lib '/Users/kevin/test/summary/mt/extlib';
 use JSON;
 use LWP::Simple;
 
