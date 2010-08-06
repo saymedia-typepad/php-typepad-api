@@ -1,8 +1,11 @@
 <?php
-
 /**
  * Interface to the TypePad API.
  *
+ * @package TypePad-API
+ */
+
+/*
  * Copyright (c) 2010 Six Apart Ltd.
  * All rights reserved.
  *
@@ -32,27 +35,15 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * @package TypePad
  */
-
-$dir = preg_replace('/TypePad.php$/', '', __FILE__);
-$extdir = preg_replace('/lib\/$/', 'extlib/', $dir);
-set_include_path(implode(PATH_SEPARATOR, array(get_include_path(), $dir, $extdir)));
-
-require_once('BatchRequest.php');
-require_once('TypePad/Auth.php');
-require_once('TypePad/Nouns.php');
-require_once('TypePad/ObjectTypes.php');
-// Transparently replace the curl_* functions with command-line or pure-PHP
-// implementations if they're not compiled into the PHP we're running under.
-require_once('libcurlemu/libcurlemu.inc.php');
 
 /**
  * Object class allowing interaction with the TypePad API.
  *
- * @package TypePad
+ * @package TypePad-API
  * @subpackage TypePad
  */
+
 class TypePad {
 
     protected $user_session;
@@ -548,7 +539,7 @@ EOT;
  * it will override the fulfill() method in order to make the properties
  * instances of the appropriate classes.
  *
- * @package TypePad
+ * @package TypePad-API
  * @subpackage TPPromise
  */
 class TPPromise {
@@ -601,7 +592,7 @@ class TPPromise {
 /**
  * Base class for objects requested from the TypePad API.
  *
- * @package TypePad
+ * @package TypePad-API
  * @subpackage TPObject
  */
 class TPObject extends TPPromise {
@@ -695,7 +686,7 @@ class TPObject extends TPPromise {
 /**
  * Object class representing a list of items of a given type.
  *
- * @package TypePad
+ * @package TypePad-API
  * @subpackage TPList
  */
 class TPList extends TPObject {
@@ -730,7 +721,7 @@ class TPList extends TPObject {
 /**
  * Object class representing a stream of items.
  *
- * @package TypePad
+ * @package TypePad-API
  * @subpackage TPStream
  */
 class TPStream extends TPList {
@@ -753,7 +744,7 @@ class TPStream extends TPList {
 /**
  * Base class for nouns in the TypePad API.
  *
- * @package TypePad
+ * @package TypePad-API
  * @subpackage TPNoun
  */
 class TPNoun {
@@ -768,7 +759,7 @@ class TPNoun {
 /**
  * Exception class for HTTP error responses returned by the TypePad API.
  *
- * @package TypePad
+ * @package TypePad-API
  * @subpackage TPException
  */
 class TPException extends Exception {
@@ -800,3 +791,15 @@ class TPException extends Exception {
         return $this->request;
     }
 }
+$dir = preg_replace('/TypePad.php$/', '', __FILE__);
+$extdir = preg_replace('/lib\/$/', 'extlib/', $dir);
+set_include_path(implode(PATH_SEPARATOR, array(get_include_path(), $dir, $extdir)));
+
+require_once('BatchRequest.php');
+require_once('TypePad/Auth.php');
+require_once('TypePad/Nouns.php');
+require_once('TypePad/ObjectTypes.php');
+// Transparently replace the curl_* functions with command-line or pure-PHP
+// implementations if they're not compiled into the PHP we're running under.
+require_once('libcurlemu/libcurlemu.inc.php');
+

@@ -20,7 +20,6 @@ close LICENSE;
 $license .= " */";
 
 my $nouns_php = <<EOPHP;
-$license
 /**
  * Noun classes for the TypePad API.
  *
@@ -28,6 +27,8 @@ $license
  *
  * \@package TypePad-Nouns
  */
+
+$license
 
 EOPHP
 
@@ -217,7 +218,6 @@ EOPHP
 }
 
 my $types_php = <<"EOPHP";
-$license
 /**
  * Object type classes for the TypePad API.
  *
@@ -225,6 +225,8 @@ $license
  *
  * \@package TypePad-ObjectTypes
  */
+
+$license
 
 EOPHP
 

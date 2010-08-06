@@ -3,6 +3,10 @@
 /**
  * Authentication for the TypePad API.
  *
+ * @package TypePad-Auth
+ */
+
+/**
  * Copyright (c) 2010 Six Apart Ltd.
  * All rights reserved.
  *
@@ -31,12 +35,7 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- *
- * @package TypePad-Auth
  */
-
-require_once ("oauth-php-98/library/OAuthStore.php");
-require_once ("oauth-php-98/library/OAuthRequester.php");
 
 /**
  * Object class representing a TypePad user session.
@@ -720,3 +719,7 @@ class TPSession {
     }
 
 }
+
+require_once ("oauth-php-98/library/OAuthStore.php");
+require_once ("oauth-php-98/library/OAuthRequester.php");
+

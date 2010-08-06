@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * Object type classes for the TypePad API.
+ *
+ * AUTO-GENERATED FILE - DO NOT EDIT
+ *
+ * @package TypePad-ObjectTypes
+ */
+
+/**
  * Copyright (c) 2010 Six Apart Ltd.
  * All rights reserved.
  * 
@@ -29,13 +37,6 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- */
-/**
- * Object type classes for the TypePad API.
- *
- * AUTO-GENERATED FILE - DO NOT EDIT
- *
- * @package TypePad-ObjectTypes
  */
 
 /**
