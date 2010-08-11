@@ -22,6 +22,7 @@ Please refer to the documentation in the `docs` directory in this distribution.
 * `extlib`: External libraries used by the TypePad library. This includes pure-PHP replacements for certain compiled extensions, so that the library should have no external dependencies beyond what's included in the code distribution.
 * `gen_php.pl`: A Perl script used to generate certain parts of the PHP code based on reflection endpoints in the API; this ensures that the PHP library can easily be updated to reflect API changes.
 * `lib`: The API libraries.
+* `makedocs`: A shell script that runs `phpdoc`, the command-line phpDocumentor tool, with the appropriate parameters to generate the `docs` directory.
 * `site`: The bare bones of a "Hello World" site that talks to the TypePad API.
 * `tutorials`: Additional documentation, viewable by loading `docs/index.html` in a web browser.
 * `typepad.sql`: SQL table definitions, needed if you're using the library's and API's authentication features.
