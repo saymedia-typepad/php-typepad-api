@@ -146,9 +146,11 @@ class TPAsset extends TPBase {
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOf' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset, this property describes the original asset.', 'AssetRef'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
         'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
         'description' => array('The description of the asset.', 'string'),
@@ -156,7 +158,8 @@ class TPAsset extends TPBase {
         'published' => array('The time at which the asset was created, as a W3CDTF timestamp.', 'string'),
         'permalinkUrl' => array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
         'textFormat' => array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
-        'title' => array('The title of the asset.', 'string')
+        'title' => array('The title of the asset.', 'string'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -172,6 +175,10 @@ class TPAsset extends TPBase {
         if (isset($data->source) && (get_class($data->source) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->source->objectType) ? $data->source->objectType : 'AssetSource');
             $this->source = new $ot_class($data->source);
+        }
+        if (isset($data->reblogOf) && (get_class($data->reblogOf) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->reblogOf->objectType) ? $data->reblogOf->objectType : 'AssetRef');
+            $this->reblogOf = new $ot_class($data->reblogOf);
         }
         if (isset($data->container) && (get_class($data->container) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->container->objectType) ? $data->container->objectType : 'ContainerRef');
@@ -210,9 +217,11 @@ class TPAudio extends TPAsset {
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOf' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset, this property describes the original asset.', 'AssetRef'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
         'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
         'description' => array('The description of the asset.', 'string'),
@@ -220,7 +229,8 @@ class TPAudio extends TPAsset {
         'published' => array('The time at which the asset was created, as a W3CDTF timestamp.', 'string'),
         'textFormat' => array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
         'permalinkUrl' => array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
-        'title' => array('The title of the asset.', 'string')
+        'title' => array('The title of the asset.', 'string'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -236,6 +246,10 @@ class TPAudio extends TPAsset {
         if (isset($data->source) && (get_class($data->source) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->source->objectType) ? $data->source->objectType : 'AssetSource');
             $this->source = new $ot_class($data->source);
+        }
+        if (isset($data->reblogOf) && (get_class($data->reblogOf) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->reblogOf->objectType) ? $data->reblogOf->objectType : 'AssetRef');
+            $this->reblogOf = new $ot_class($data->reblogOf);
         }
         if (isset($data->container) && (get_class($data->container) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->container->objectType) ? $data->container->objectType : 'ContainerRef');
@@ -277,11 +291,13 @@ class TPComment extends TPAsset {
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOf' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset, this property describes the original asset.', 'AssetRef'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
         'root' => array('A reference to the root asset that this comment is descended from. This will be the same as M<inReplyTo> unless this comment is a reply to another comment.', 'AssetRef'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
         'inReplyTo' => array('A reference to the asset that this comment is in reply to.', 'AssetRef'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
         'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
         'description' => array('The description of the asset.', 'string'),
@@ -289,7 +305,8 @@ class TPComment extends TPAsset {
         'published' => array('The time at which the asset was created, as a W3CDTF timestamp.', 'string'),
         'textFormat' => array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
         'permalinkUrl' => array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
-        'title' => array('The title of the asset.', 'string')
+        'title' => array('The title of the asset.', 'string'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -309,6 +326,10 @@ class TPComment extends TPAsset {
         if (isset($data->inReplyTo) && (get_class($data->inReplyTo) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->inReplyTo->objectType) ? $data->inReplyTo->objectType : 'AssetRef');
             $this->inReplyTo = new $ot_class($data->inReplyTo);
+        }
+        if (isset($data->reblogOf) && (get_class($data->reblogOf) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->reblogOf->objectType) ? $data->reblogOf->objectType : 'AssetRef');
+            $this->reblogOf = new $ot_class($data->reblogOf);
         }
         if (isset($data->container) && (get_class($data->container) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->container->objectType) ? $data->container->objectType : 'ContainerRef');
@@ -350,9 +371,11 @@ class TPLink extends TPAsset {
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOf' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset, this property describes the original asset.', 'AssetRef'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
         'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
         'description' => array('The description of the asset.', 'string'),
@@ -361,7 +384,8 @@ class TPLink extends TPAsset {
         'targetUrl' => array('The URL that is the target of this link.', 'string'),
         'textFormat' => array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
         'permalinkUrl' => array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
-        'title' => array('The title of the asset.', 'string')
+        'title' => array('The title of the asset.', 'string'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -377,6 +401,10 @@ class TPLink extends TPAsset {
         if (isset($data->source) && (get_class($data->source) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->source->objectType) ? $data->source->objectType : 'AssetSource');
             $this->source = new $ot_class($data->source);
+        }
+        if (isset($data->reblogOf) && (get_class($data->reblogOf) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->reblogOf->objectType) ? $data->reblogOf->objectType : 'AssetRef');
+            $this->reblogOf = new $ot_class($data->reblogOf);
         }
         if (isset($data->container) && (get_class($data->container) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->container->objectType) ? $data->container->objectType : 'ContainerRef');
@@ -415,9 +443,11 @@ class TPPage extends TPAsset {
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
         'feedbackStatus' => array('T<Editable> An object describing the comment and trackback behavior for this page.', 'FeedbackStatus'),
+        'reblogOf' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset, this property describes the original asset.', 'AssetRef'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
         'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
         'description' => array('T<Editable> The description of the page.', 'string'),
@@ -427,7 +457,8 @@ class TPPage extends TPAsset {
         'textFormat' => array('T<Editable> A keyword that indicates what formatting mode to use for the content of this page. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
         'embeddedImageLinks' => array('A list of links to the images that are embedded within the content of this page.', 'array<ImageLink>'),
         'filename' => array('T<Editable> The base name of the page, used to create the M<permalinkUrl>.', 'string'),
-        'title' => array('T<Editable> The title of the page.', 'string')
+        'title' => array('T<Editable> The title of the page.', 'string'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -448,6 +479,10 @@ class TPPage extends TPAsset {
         if (isset($data->feedbackStatus) && (get_class($data->feedbackStatus) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->feedbackStatus->objectType) ? $data->feedbackStatus->objectType : 'FeedbackStatus');
             $this->feedbackStatus = new $ot_class($data->feedbackStatus);
+        }
+        if (isset($data->reblogOf) && (get_class($data->reblogOf) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->reblogOf->objectType) ? $data->reblogOf->objectType : 'AssetRef');
+            $this->reblogOf = new $ot_class($data->reblogOf);
         }
         if (isset($data->container) && (get_class($data->container) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->container->objectType) ? $data->container->objectType : 'ContainerRef');
@@ -485,9 +520,11 @@ class TPPhoto extends TPAsset {
         'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
         'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOf' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset, this property describes the original asset.', 'AssetRef'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
         'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
         'description' => array('The description of the asset.', 'string'),
@@ -496,7 +533,8 @@ class TPPhoto extends TPAsset {
         'textFormat' => array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
         'permalinkUrl' => array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
         'title' => array('The title of the asset.', 'string'),
-        'imageLink' => array('A link to the image that is this Photo asset\'s content.', 'ImageLink')
+        'imageLink' => array('A link to the image that is this Photo asset\'s content.', 'ImageLink'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -512,6 +550,10 @@ class TPPhoto extends TPAsset {
         if (isset($data->source) && (get_class($data->source) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->source->objectType) ? $data->source->objectType : 'AssetSource');
             $this->source = new $ot_class($data->source);
+        }
+        if (isset($data->reblogOf) && (get_class($data->reblogOf) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->reblogOf->objectType) ? $data->reblogOf->objectType : 'AssetRef');
+            $this->reblogOf = new $ot_class($data->reblogOf);
         }
         if (isset($data->container) && (get_class($data->container) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->container->objectType) ? $data->container->objectType : 'ContainerRef');
@@ -542,19 +584,12 @@ class TPPhoto extends TPAsset {
 class TPPost extends TPAsset {
 
     protected static $properties = array(
-        'source' => array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),
         'excerpt' => array('A short, plain-text excerpt of the entry content. This is currently available only for O<Post> assets.', 'string'),
         'embeddedAudioLinks' => array('A list of links to the audio streams that are embedded within the content of this post.', 'array<AudioLink>'),
         'content' => array('T<Editable> The raw post content. The M<textFormat> property defines what format this data is in.', 'string'),
-        'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
-        'author' => array('The user who created the selected asset.', 'User'),
         'reblogCount' => array('The number of times this post has been reblogged by other people.', 'integer'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
         'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.', 'boolean'),
-        'publicationStatus' => array('T<Editable> An object describing the draft status and publication date for this post.', 'PublicationStatus'),
-        'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
-        'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
-        'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
         'feedbackStatus' => array('T<Editable> An object describing the comment and trackback behavior for this post.', 'FeedbackStatus'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'reblogOf' => array('A reference to a post of which this post is a reblog.', 'AssetRef'),
@@ -562,16 +597,25 @@ class TPPost extends TPAsset {
         'embeddedVideoLinks' => array('A list of links to the videos that are embedded within the content of this post.', 'array<VideoLink>'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
-        'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
-        'categories' => array('T<Editable> A list of categories associated with the post.', 'array<string>'),
         'description' => array('T<Editable> The description of the post.', 'string'),
-        'commentCount' => array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.', 'integer'),
         'published' => array('The time at which the asset was created, as a W3CDTF timestamp.', 'string'),
         'permalinkUrl' => array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
         'textFormat' => array('T<Editable> A keyword that indicates what formatting mode to use for the content of this post. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
-        'filename' => array('T<Editable> The base name of the post to use when creating its M<permalinkUrl>.', 'string'),
+        'title' => array('T<Editable> The title of the post.', 'string'),
+        'source' => array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),
+        'author' => array('The user who created the selected asset.', 'User'),
+        'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
+        'publicationStatus' => array('T<Editable> An object describing the draft status and publication date for this post.', 'PublicationStatus'),
+        'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
+        'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
+        'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
+        'categories' => array('T<Editable> A list of categories associated with the post.', 'array<string>'),
+        'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
+        'commentCount' => array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.', 'integer'),
         'embeddedImageLinks' => array('A list of links to the images that are embedded within the content of this post.', 'array<ImageLink>'),
-        'title' => array('T<Editable> The title of the post.', 'string')
+        'filename' => array('T<Editable> The base name of the post to use when creating its M<permalinkUrl>.', 'string'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -624,31 +668,34 @@ class TPPost extends TPAsset {
 class TPVideo extends TPAsset {
 
     protected static $properties = array(
-        'source' => array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),
         'excerpt' => array('A short, plain-text excerpt of the entry content. This is currently available only for O<Post> assets.', 'string'),
         'videoLink' => array('A link to the video that is this Video asset\'s content.', 'VideoLink'),
         'content' => array('The raw asset content. The M<textFormat> property describes how to format this data. Use this property to set the asset content in write operations. An asset posted in a group may have a M<content> value up to 10,000 bytes long, while a O<Post> asset in a blog may have up to 65,000 bytes of content.', 'string'),
-        'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
-        'author' => array('The user who created the selected asset.', 'User'),
         'isFavoriteForCurrentUser' => array('C<true> if this asset is a favorite for the currently authenticated user, or C<false> otherwise. This property is omitted from responses to anonymous requests.', 'boolean'),
         'suppressEvents' => array('T<Editable> An optional, write-only flag indicating that asset creation should not trigger notification events such
  as emails or dashboard entries. Not available to all applications.', 'boolean'),
-        'publicationStatus' => array('T<Editable> An object describing the visibility status and publication date for this asset. Only visibility status is editable.', 'PublicationStatus'),
-        'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
-        'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
-        'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOf' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset, this property describes the original asset.', 'AssetRef'),
         'groups' => array('T<Deprecated> An array of strings containing the M<id> URI of the O<Group> object that this asset is mapped into, if any. This property has been superseded by the M<container> property.', 'array<string>'),
         'previewImageLink' => array('A link to a preview image or poster frame for this video. This property is omitted if no such image is available.', 'ImageLink'),
         'id' => array('A URI that serves as a globally unique identifier for the user.', 'string'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
         'objectTypes' => array('T<Deprecated> An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.', 'set<string>'),
-        'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
         'description' => array('The description of the asset.', 'string'),
-        'commentCount' => array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.', 'integer'),
         'published' => array('The time at which the asset was created, as a W3CDTF timestamp.', 'string'),
         'textFormat' => array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C<html> for assets the content of which is HTML, C<html_convert_linebreaks> for assets the content of which is HTML but where paragraph tags should be added automatically, or C<markdown> for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.', 'string'),
         'permalinkUrl' => array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.', 'string'),
-        'title' => array('The title of the asset.', 'string')
+        'title' => array('The title of the asset.', 'string'),
+        'source' => array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),
+        'favoriteCount' => array('The number of distinct users who have added this asset as a favorite.', 'integer'),
+        'author' => array('The user who created the selected asset.', 'User'),
+        'publicationStatus' => array('T<Editable> An object describing the visibility status and publication date for this asset. Only visibility status is editable.', 'PublicationStatus'),
+        'renderedContent' => array('The content of this asset rendered to HTML. This is currently available only for O<Post> and O<Page> assets.', 'string'),
+        'crosspostAccounts' => array('T<Editable> A set of identifiers for O<Account> objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.', 'set<string>'),
+        'objectType' => array('The keyword identifying the type of asset this is.', 'string'),
+        'reblogOfUrl' => array('T<Deprecated> If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.', 'string'),
+        'container' => array('An object describing the group or blog to which this asset belongs.', 'ContainerRef'),
+        'commentCount' => array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.', 'integer'),
+        'isConversationsAnswer' => array('T<Deprecated> C<true> if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -680,6 +727,10 @@ class TPVideo extends TPAsset {
         if (isset($data->publicationStatus) && (get_class($data->publicationStatus) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->publicationStatus->objectType) ? $data->publicationStatus->objectType : 'PublicationStatus');
             $this->publicationStatus = new $ot_class($data->publicationStatus);
+        }
+        if (isset($data->reblogOf) && (get_class($data->reblogOf) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->reblogOf->objectType) ? $data->reblogOf->objectType : 'AssetRef');
+            $this->reblogOf = new $ot_class($data->reblogOf);
         }
         if (isset($data->previewImageLink) && (get_class($data->previewImageLink) == 'stdClass')) {
             $ot_class = 'TP' . (isset($data->previewImageLink->objectType) ? $data->previewImageLink->objectType : 'ImageLink');
@@ -1172,16 +1223,16 @@ class TPUser extends TPEntity {
 
     protected static $properties = array(
         'email' => array('T<Deprecated> The user\'s email address. This property is only provided for authenticated requests if the user has shared it with the authenticated application, and the authenticated user is allowed to view it (as with administrators of groups the user has joined). In all other cases, this property is omitted.', 'string'),
+        'id' => array('A URI that serves as a globally unique identifier for the object.', 'string'),
+        'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'location' => array('T<Deprecated> The user\'s location, as a free-form string provided by them. Use the the M<location> property of the related O<UserProfile> object, which can be retrieved from the N</users/{id}/profile> endpoint.', 'string'),
+        'objectTypes' => array('T<Deprecated> An array of object type identifier URIs.', 'set<string>'),
         'objectType' => array('The keyword identifying the type of object this is. For a User object, M<objectType> will be C<User>.', 'string'),
         'preferredUsername' => array('The name the user has chosen for use in the URL of their TypePad profile page. This property can be used to select this user in URLs, although it is not a persistent key, as the user can change it at any time.', 'string'),
-        'id' => array('A URI that serves as a globally unique identifier for the object.', 'string'),
         'avatarLink' => array('A link to an image representing this user.', 'ImageLink'),
         'gender' => array('T<Deprecated> The user\'s gender, as they provided it. This property is only provided for authenticated requests if the user has shared it with the authenticated application, and the authenticated user is allowed to view it (as with administrators of groups the user has joined). In all other cases, this property is omitted.', 'string'),
         'displayName' => array('The user\'s chosen display name.', 'string'),
-        'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
         'interests' => array('T<Deprecated> A list of interests provided by the user and displayed on the user\'s profile page. Use the M<interests> property of the O<UserProfile> object, which can be retrieved from the N</users/{id}/profile> endpoint.', 'array<string>'),
-        'location' => array('T<Deprecated> The user\'s location, as a free-form string provided by them. Use the the M<location> property of the related O<UserProfile> object, which can be retrieved from the N</users/{id}/profile> endpoint.', 'string'),
-        'objectTypes' => array('T<Deprecated> An array of object type identifier URIs.', 'set<string>'),
         'profilePageUrl' => array('The URL of the user\'s TypePad profile page.', 'string')
     );
 
@@ -1346,6 +1397,203 @@ class TPImageLink extends TPBase {
         'url' => array('The URL for the original, full size version of the image.', 'string'),
         'height' => array('The height of the original image in pixels. If the height of the image is not available (for example, if the image isn\'t hosted on TypePad), this property will be omitted.', 'integer'),
         'urlTemplate' => array('An URL template with which to build alternate sizes of this image. If present, replace the placeholder string C<{spec}> with a valid sizing specifier to generate the URL for an alternate version of this image. This property is omitted if TypePad is unable to provide a scaled version of this image (for example, if the image isn\'t hosted on TypePad).', 'string')
+    );
+
+    function __get($name) { return $this->get($name, self::$properties); }
+    function __set($name, $value) { $this->set($name, $value, self::$properties); }
+    static function propertyDocString($name) { return self::$properties[$name][0]; }
+    static function propertyType($name) { return self::$properties[$name][1]; }
+    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
+
+    static function isAbstract() { return false; }
+
+}
+
+/**
+ * An ImportAsset object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ImportAsset
+ * @package TypePad-ObjectTypes
+ * @subpackage TPImportAsset
+ */
+class TPImportAsset extends TPBase {
+
+    protected static $properties = array(
+        'content' => array('Body or content of the imported asset', 'string'),
+        'author' => array('Object representing as much detail as available about the author of the imported asset', 'ImportAuthor'),
+        'foreignId' => array('Foreign site ID for the asset', 'string'),
+        'objectType' => array('The type of the imported asset', 'string'),
+        'published' => array('The time at which the asset was published, as a W3CDTF timestamp', 'string'),
+        'title' => array('Title of the imported asset', 'string')
+    );
+
+    function __get($name) { return $this->get($name, self::$properties); }
+    function __set($name, $value) { $this->set($name, $value, self::$properties); }
+    static function propertyDocString($name) { return self::$properties[$name][0]; }
+    static function propertyType($name) { return self::$properties[$name][1]; }
+    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
+
+    static function isAbstract() { return true; }
+
+    function fulfill($data) {
+        parent::fulfill($data);
+        if (isset($data->author) && (get_class($data->author) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->author->objectType) ? $data->author->objectType : 'ImportAuthor');
+            $this->author = new $ot_class($data->author);
+        }
+    }
+}
+
+/**
+ * An ImportComment object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ImportComment
+ * @package TypePad-ObjectTypes
+ * @subpackage TPImportComment
+ */
+class TPImportComment extends TPImportAsset {
+
+    protected static $properties = array(
+        'status' => array('Keyword indicating publication status of comment', 'string'),
+        'inReplyToForeignId' => array('Foreign site ID for the parent of this comment', 'string'),
+        'content' => array('Body or content of the imported asset', 'string'),
+        'author' => array('Object representing as much detail as available about the author of the imported asset', 'ImportAuthor'),
+        'foreignId' => array('Foreign site ID for the asset', 'string'),
+        'objectType' => array('The type of the imported asset', 'string'),
+        'published' => array('The time at which the asset was published, as a W3CDTF timestamp', 'string'),
+        'title' => array('Title of the imported asset', 'string')
+    );
+
+    function __get($name) { return $this->get($name, self::$properties); }
+    function __set($name, $value) { $this->set($name, $value, self::$properties); }
+    static function propertyDocString($name) { return self::$properties[$name][0]; }
+    static function propertyType($name) { return self::$properties[$name][1]; }
+    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
+
+    static function isAbstract() { return false; }
+
+    function fulfill($data) {
+        parent::fulfill($data);
+        if (isset($data->author) && (get_class($data->author) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->author->objectType) ? $data->author->objectType : 'ImportAuthor');
+            $this->author = new $ot_class($data->author);
+        }
+    }
+}
+
+/**
+ * An ImportPage object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ImportPage
+ * @package TypePad-ObjectTypes
+ * @subpackage TPImportPage
+ */
+class TPImportPage extends TPImportAsset {
+
+    protected static $properties = array(
+        'content' => array('Body or content of the imported asset', 'string'),
+        'author' => array('Object representing as much detail as available about the author of the imported asset', 'ImportAuthor'),
+        'foreignId' => array('Foreign site ID for the asset', 'string'),
+        'objectType' => array('The type of the imported asset', 'string'),
+        'published' => array('The time at which the asset was published, as a W3CDTF timestamp', 'string'),
+        'title' => array('Title of the imported asset', 'string')
+    );
+
+    function __get($name) { return $this->get($name, self::$properties); }
+    function __set($name, $value) { $this->set($name, $value, self::$properties); }
+    static function propertyDocString($name) { return self::$properties[$name][0]; }
+    static function propertyType($name) { return self::$properties[$name][1]; }
+    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
+
+    static function isAbstract() { return false; }
+
+    function fulfill($data) {
+        parent::fulfill($data);
+        if (isset($data->author) && (get_class($data->author) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->author->objectType) ? $data->author->objectType : 'ImportAuthor');
+            $this->author = new $ot_class($data->author);
+        }
+    }
+}
+
+/**
+ * An ImportPost object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ImportPost
+ * @package TypePad-ObjectTypes
+ * @subpackage TPImportPost
+ */
+class TPImportPost extends TPImportAsset {
+
+    protected static $properties = array(
+        'content' => array('Body or content of the imported asset', 'string'),
+        'author' => array('Object representing as much detail as available about the author of the imported asset', 'ImportAuthor'),
+        'foreignId' => array('Foreign site ID for the asset', 'string'),
+        'objectType' => array('The type of the imported asset', 'string'),
+        'published' => array('The time at which the asset was published, as a W3CDTF timestamp', 'string'),
+        'title' => array('Title of the imported asset', 'string')
+    );
+
+    function __get($name) { return $this->get($name, self::$properties); }
+    function __set($name, $value) { $this->set($name, $value, self::$properties); }
+    static function propertyDocString($name) { return self::$properties[$name][0]; }
+    static function propertyType($name) { return self::$properties[$name][1]; }
+    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
+
+    static function isAbstract() { return false; }
+
+    function fulfill($data) {
+        parent::fulfill($data);
+        if (isset($data->author) && (get_class($data->author) == 'stdClass')) {
+            $ot_class = 'TP' . (isset($data->author->objectType) ? $data->author->objectType : 'ImportAuthor');
+            $this->author = new $ot_class($data->author);
+        }
+    }
+}
+
+/**
+ * An ImportAuthor object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ImportAuthor
+ * @package TypePad-ObjectTypes
+ * @subpackage TPImportAuthor
+ */
+class TPImportAuthor extends TPBase {
+
+    protected static $properties = array(
+        'email' => array('Foreign author\'s email address', 'string'),
+        'typepadUserId' => array('Known TypePad user id for foreign author', 'string'),
+        'homepageUrl' => array('URL for foreign author\'s homepage', 'string'),
+        'openidIdentifier' => array('Foreign author\'s OpenID identifier', 'string'),
+        'displayName' => array('Foreign author\'s displayed name', 'string')
+    );
+
+    function __get($name) { return $this->get($name, self::$properties); }
+    function __set($name, $value) { $this->set($name, $value, self::$properties); }
+    static function propertyDocString($name) { return self::$properties[$name][0]; }
+    static function propertyType($name) { return self::$properties[$name][1]; }
+    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
+
+    static function isAbstract() { return false; }
+
+}
+
+/**
+ * An ImporterJob object from the TypePad API.
+ *
+ * @link http://www.typepad.com/services/apidocs/objecttypes/ImporterJob
+ * @package TypePad-ObjectTypes
+ * @subpackage TPImporterJob
+ */
+class TPImporterJob extends TPBase {
+
+    protected static $properties = array(
+        'lastSubmitTime' => array('The time the last asset was submitted, as a W3CDTF timestamp.', 'string'),
+        'urlId' => array('ID of the import job', 'integer'),
+        'assetsImported' => array('Number of assets imported by this job', 'integer'),
+        'lastForeignId' => array('The foreign ID of the last asset importered', 'string'),
+        'createUsers' => array('C<true> if TypePad will create new users for the auther information given in the submitted payloads.', 'boolean'),
+        'matchUsers' => array('C<true> if TypePad will attempt to find matching users for the author information given in the submitted payloads.', 'boolean')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -1524,19 +1772,19 @@ class TPUserProfile extends TPBase {
 
     protected static $properties = array(
         'profileEditPageUrl' => array('The URL of a page where this user can edit their profile information. If this is not the authenticated user\'s UserProfile object, this property is omitted.', 'string'),
-        'followFrameContentUrl' => array('The URL of a widget that, when rendered in an C<iframe>, allows viewers to follow this user. Render this widget in an C<iframe> 300 pixels wide and 125 pixels high.', 'string'),
         'email' => array('The user\'s email address. This property is only provided for authenticated requests if the user has shared it with the authenticated application, and the authenticated user is allowed to view it (as with administrators of groups the user has joined). In all other cases, this property is omitted.', 'string'),
-        'homepageUrl' => array('The address of the user\'s homepage, as a URL they provided. This property is omitted if the user has not provided a homepage.', 'string'),
-        'preferredUsername' => array('The name the user has chosen for use in the URL of their TypePad profile page. This property can be used to select this user in URLs, although it is not a persistent key, as the user can change it at any time.', 'string'),
         'aboutMe' => array('The user\'s long description or biography, as a free-form string they provided.', 'string'),
         'id' => array('The URI from the related O<User> object\'s M<id> property.', 'string'),
+        'urlId' => array('The canonical identifier from the related O<User> object\'s M<urlId> property.', 'string'),
+        'location' => array('The user\'s location, as a free-form string they provided.', 'string'),
+        'membershipManagementPageUrl' => array('The URL of a page where this user can manage their group memberships. If this is not the authenticated user\'s UserProfile object, this property is omitted.', 'string'),
+        'followFrameContentUrl' => array('The URL of a widget that, when rendered in an C<iframe>, allows viewers to follow this user. Render this widget in an C<iframe> 300 pixels wide and 125 pixels high.', 'string'),
+        'homepageUrl' => array('The address of the user\'s homepage, as a URL they provided. This property is omitted if the user has not provided a homepage.', 'string'),
+        'preferredUsername' => array('The name the user has chosen for use in the URL of their TypePad profile page. This property can be used to select this user in URLs, although it is not a persistent key, as the user can change it at any time.', 'string'),
         'avatarLink' => array('A link to an image representing this user.', 'ImageLink'),
         'gender' => array('The user\'s gender, as they provided it. This property is only provided for authenticated requests if the user has shared it with the authenticated application, and the authenticated user is allowed to view it (as with administrators of groups the user has joined). In all other cases, this property is omitted.', 'string'),
         'displayName' => array('The user\'s chosen display name.', 'string'),
-        'urlId' => array('The canonical identifier from the related O<User> object\'s M<urlId> property.', 'string'),
         'interests' => array('A list of interests provided by the user and displayed on their profile page.', 'array<string>'),
-        'location' => array('The user\'s location, as a free-form string they provided.', 'string'),
-        'membershipManagementPageUrl' => array('The URL of a page where this user can manage their group memberships. If this is not the authenticated user\'s UserProfile object, this property is omitted.', 'string'),
         'profilePageUrl' => array('The URL of the user\'s TypePad profile page.', 'string')
     );
 
@@ -1567,8 +1815,8 @@ class TPUserProfile extends TPBase {
 class TPVideoLink extends TPBase {
 
     protected static $properties = array(
-        'embedCode' => array('An opaque HTML fragment that, when embedded in a HTML page, provides an inline player for the video.', 'string'),
-        'permalinkUrl' => array('T<Editable> The permalink URL for the video on its own site. When posting a new video, send only the M<permalinkUrl> property; videos on supported sites will be discovered and the embed code generated automatically.', 'string')
+        'permalinkUrl' => array('T<Editable> The permalink URL for the video on its own site. When posting a new video, send only the M<permalinkUrl> property; videos on supported sites will be discovered and the embed code generated automatically.', 'string'),
+        'embedCode' => array('An opaque HTML fragment that, when embedded in a HTML page, provides an inline player for the video.', 'string')
     );
 
     function __get($name) { return $this->get($name, self::$properties); }
@@ -1591,11 +1839,11 @@ class TPVideoLink extends TPBase {
 class TPRelationship extends TPObject {
 
     protected static $properties = array(
-        'source' => array('The source entity of the relationship.', 'Entity'),
-        'status' => array('An object describing all the types of relationship that currently exist between the source and target objects.', 'RelationshipStatus'),
         'target' => array('The target entity of the relationship.', 'Entity'),
         'id' => array('A URI that serves as a globally unique identifier for the relationship.', 'string'),
         'urlId' => array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same relationship is returned in response to different requests, and as a mapping key for an application\'s local data store.', 'string'),
+        'source' => array('The source entity of the relationship.', 'Entity'),
+        'status' => array('An object describing all the types of relationship that currently exist between the source and target objects.', 'RelationshipStatus'),
         'created' => array('A mapping of the relationship types present between the source and target objects to the times those types of relationship were established. The keys of the map are the relationship type URIs present in the relationship\'s M<status> property; the values are W3CDTF timestamps for the times those relationship edges were created.', 'map<string>')
     );
 
