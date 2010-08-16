@@ -411,7 +411,7 @@ EOT;
     private function _postPut($method, $path_chunks, $content, $result_type) {
         if (is_a($content, 'TPObject')) {
             $content = $content->asPayload();
-        } elseif (is_object($content)) {
+        } elseif (is_object($content) || is_array($content)) {
             $content = TypePad::_json_encode($content);
         }
         if ($this->batch) {
