@@ -3,8 +3,8 @@ $welcome = '';
 try {
 
     $user = $tp->users->get('@self');
-    $welcome = "<p>Welcome, " . $user->displayName . "!</p>"
-    . '<p><a href="logout.php">Log out</a></p>';
+    $welcome = "<p>Welcome, " . $user->displayName . "! "
+    . '<a href="logout.php">Log out</a></p>';
 
 } catch (TPException $e) {
 
