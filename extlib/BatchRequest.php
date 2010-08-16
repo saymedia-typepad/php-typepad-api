@@ -22,8 +22,9 @@ class HttpRequest {
         );
         if ($method == 'DELETE') {
             $this->curlopts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
-        } elseif ($method != 'GET') {
-            $this->curlopts[constant("CURLOPT_$method")] = true;
+        } elseif (($method == 'POST') || ($method == 'PUT')) {
+            // we'll fake a PUT with X-HTTP-Method-Override
+            $this->curlopts[constant("CURLOPT_POST")] = true;
         }
     }
     
@@ -95,6 +96,10 @@ class HttpRequest {
         }
         if (($this->method == 'POST') || ($this->method == 'PUT')) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $this->getContent());
+            if ($this->method == 'PUT') {
+                // cURL has a funny idea of what PUT means, so let's fake it
+                $this->setHeader('X-HTTP-Method-Override', 'PUT');
+            }
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headerArray());
         $this->raw_response = curl_exec($ch);
