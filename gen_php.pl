@@ -157,7 +157,7 @@ EOPHP
 
 write_file('Nouns', $nouns_php);
 
-my $raw_types = get("$api_base/object-types.json");
+my $raw_types = get("$api_base/client-library-helpers/object-types.json");
 my $types = $j->decode($raw_types);
 
 my %types_php;
