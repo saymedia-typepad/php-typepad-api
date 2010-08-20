@@ -1065,59 +1065,6 @@ class TPContainerRef extends TPBase {
 }
 
 /**
- * An Endpoint object from the TypePad API.
- *
- * @link http://www.typepad.com/services/apidocs/objecttypes/Endpoint
- * @package TypePad-ObjectTypes
- * @subpackage TPEndpoint
- */
-class TPEndpoint extends TPBase {
-
-    protected static $properties = array(
-        'canHaveId' => array('For noun endpoints, C<true> if an id part is accepted, or C<false> if the noun may only be used alone.', 'boolean'),
-        'supportedMethods' => array('A mapping of the HTTP methods that this endpoint accepts to the docstrings describing the result of each method.', 'map<string>'),
-        'postObjectType' => array('The type of object that this endpoint accepts for C<POST> operations. This property is omitted if this endpoint does not accept C<POST> requests.', 'ObjectType'),
-        'resourceObjectType' => array('The type of object that this endpoint represents for C<GET>, C<PUT> and C<DELETE> operations. This property is omitted for action endpoints, as they do not represent resources.', 'ObjectType'),
-        'formatSensitive' => array('C<true> if this endpoint requires a format suffix, or C<false> otherwise.', 'boolean'),
-        'canOmitId' => array('For noun endpoints, C<true> if the id part can be ommitted, or C<false> if it is always required.', 'boolean'),
-        'parameterized' => array('For filter endpoints, C<true> if a parameter is required on the filter, or C<false> if it\'s a boolean filter.', 'boolean'),
-        'name' => array('The name of the endpoint, as it appears in URLs.', 'string'),
-        'responseObjectType' => array('For action endpoints, the type of object that this endpoint returns on success. If the endpoint returns no payload on success, or if this is not an action endpoint, this property is omitted.', 'ObjectType'),
-        'supportedQueryArguments' => array('The names of the query string arguments that this endpoint accepts.', 'set<string>'),
-        'propertyEndpoints' => array('For noun endpoints, an array of property endpoints that it supports.', 'array<Endpoint>'),
-        'actionEndpoints' => array('For noun endpoints, an array of action endpoints that it supports.', 'array<Endpoint>'),
-        'filterEndpoints' => array('For endpoints that return lists, an array of filters that can be appended to the endpoint.', 'array<Endpoint>')
-    );
-
-    function __get($name) { return $this->get($name, self::$properties); }
-    function __set($name, $value) { $this->set($name, $value, self::$properties); }
-    static function propertyDocString($name) { return self::$properties[$name][0]; }
-    static function propertyType($name) { return self::$properties[$name][1]; }
-    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
-
-    static function isAbstract() { return false; }
-
-    function fulfill($data) {
-        parent::fulfill($data);
-        if (isset($data->resourceObjectType) && (get_class($data->resourceObjectType) == 'stdClass')) {
-            $ot_class = 'TP' . (isset($data->resourceObjectType->objectType) ? $data->resourceObjectType->objectType : 'ObjectType');
-            $this->resourceObjectType = new $ot_class($data->resourceObjectType);
-        }
-        if (isset($data->propertyEndpoints)) $this->propertyEndpoints = new TPList($data->propertyEndpoints, 'TPEndpoint');
-        if (isset($data->actionEndpoints)) $this->actionEndpoints = new TPList($data->actionEndpoints, 'TPEndpoint');
-        if (isset($data->postObjectType) && (get_class($data->postObjectType) == 'stdClass')) {
-            $ot_class = 'TP' . (isset($data->postObjectType->objectType) ? $data->postObjectType->objectType : 'ObjectType');
-            $this->postObjectType = new $ot_class($data->postObjectType);
-        }
-        if (isset($data->filterEndpoints)) $this->filterEndpoints = new TPList($data->filterEndpoints, 'TPEndpoint');
-        if (isset($data->responseObjectType) && (get_class($data->responseObjectType) == 'stdClass')) {
-            $ot_class = 'TP' . (isset($data->responseObjectType->objectType) ? $data->responseObjectType->objectType : 'ObjectType');
-            $this->responseObjectType = new $ot_class($data->responseObjectType);
-        }
-    }
-}
-
-/**
  * An Entity object from the TypePad API.
  *
  * @link http://www.typepad.com/services/apidocs/objecttypes/Entity
@@ -1629,35 +1576,6 @@ class TPObjectProperty extends TPBase {
 
     static function isAbstract() { return false; }
 
-}
-
-/**
- * An ObjectType object from the TypePad API.
- *
- * @link http://www.typepad.com/services/apidocs/objecttypes/ObjectType
- * @package TypePad-ObjectTypes
- * @subpackage TPObjectType
- */
-class TPObjectType extends TPBase {
-
-    protected static $properties = array(
-        'name' => array('The name of this object type. If this is an anonymous type representing the request or response of an action endpoint, this property is omitted.', 'string'),
-        'parentType' => array('The name of the parent type. This property is omitted if this object type has no parent type.', 'string'),
-        'properties' => array('The properties belonging to objects of this object type.', 'array<ObjectProperty>')
-    );
-
-    function __get($name) { return $this->get($name, self::$properties); }
-    function __set($name, $value) { $this->set($name, $value, self::$properties); }
-    static function propertyDocString($name) { return self::$properties[$name][0]; }
-    static function propertyType($name) { return self::$properties[$name][1]; }
-    function asPayload($properties = NULL, $want_json = 1) { return parent::asPayload($properties ? $properties : self::$properties, $want_json); }
-
-    static function isAbstract() { return false; }
-
-    function fulfill($data) {
-        parent::fulfill($data);
-        if (isset($data->properties)) $this->properties = new TPList($data->properties, 'TPObjectProperty');
-    }
 }
 
 /**

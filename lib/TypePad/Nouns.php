@@ -275,6 +275,20 @@ class TPBlogs extends TPNoun {
     }
 
     /**
+     * Get zero or one posts matching the given year, month and filename.
+     *
+     * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@by-filename/<id>
+     * @return TPList TPList of TPPost
+     */
+    function getPostAssetsByFilename($params) {
+        $path_chunks = array('blogs', $params['id'], 'post-assets', '@by-filename', $params['fileRef']);
+        $query_params = array();
+        if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
+        if (array_key_exists('offset', $params)) $query_params['start-index'] = $params['offset'] + 1;
+        return $this->typepad->get($path_chunks, $query_params, 'List<Post>');
+    }
+
+    /**
      * Get all visible posts in the selected blog that have a publication date within the selected month, specified as a string of the form "YYYY-MM".
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@by-month/<id>
@@ -431,40 +445,6 @@ class TPRelationships extends TPNoun {
 
 }
 TypePad::addNoun('relationships');
-
-/**
- * @package TypePad-Nouns
- * @subpackage TPObjectTypes
- */
-class TPObjectTypes extends TPNoun {
-
-    /**
-     * Get information about all of the object types in the API, including the names and types of their properties.
-     *
-     * @link http://www.typepad.com/services/apidocs/endpoints/object-types
-     * @return TPList TPList of TPObjectType
-     */
-    function getAll($params) {
-        $path_chunks = array('object-types');
-        $query_params = array();
-        return $this->typepad->get($path_chunks, $query_params, 'List<ObjectType>');
-    }
-
-    /**
-     * Get information about the selected object type and its properties.
-     *
-     * @link http://www.typepad.com/services/apidocs/endpoints/object-types/<id>
-     * @return TPObjectType
-     */
-    function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
-        $path_chunks = array('object-types', $params['id']);
-        $query_params = array();
-        return $this->typepad->get($path_chunks, $query_params, 'ObjectType');
-    }
-
-}
-TypePad::addNoun('objectTypes');
 
 /**
  * @package TypePad-Nouns
@@ -1265,40 +1245,6 @@ class TPAssets extends TPNoun {
 
 }
 TypePad::addNoun('assets');
-
-/**
- * @package TypePad-Nouns
- * @subpackage TPNouns
- */
-class TPNouns extends TPNoun {
-
-    /**
-     * Get information about all of the nouns in the API, along with their sub-resources and filters.
-     *
-     * @link http://www.typepad.com/services/apidocs/endpoints/nouns
-     * @return TPList TPList of TPEndpoint
-     */
-    function getAll($params) {
-        $path_chunks = array('nouns');
-        $query_params = array();
-        return $this->typepad->get($path_chunks, $query_params, 'List<Endpoint>');
-    }
-
-    /**
-     * Get information about the selected noun, its sub-resources and their filters.
-     *
-     * @link http://www.typepad.com/services/apidocs/endpoints/nouns/<id>
-     * @return TPEndpoint
-     */
-    function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
-        $path_chunks = array('nouns', $params['id']);
-        $query_params = array();
-        return $this->typepad->get($path_chunks, $query_params, 'Endpoint');
-    }
-
-}
-TypePad::addNoun('nouns');
 
 /**
  * @package TypePad-Nouns
