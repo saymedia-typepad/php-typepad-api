@@ -81,6 +81,11 @@ for my $noun (keys %$map) {
         my $doc_path = join('/', map {
             defined($_) ? $_ : '<id>'
         } @$path_chunks);
+        my $param_doc = join(', ',
+            map {"$_ => string" }
+            sort { $endpoint->{pathParams}->{$a} <=> $endpoint->{pathParams}->{$b} }
+            keys %{$endpoint->{pathParams}}
+        );
 
         my $query_params = '';
         for my $key (keys %{$endpoint->{queryParams}}) {
@@ -121,6 +126,7 @@ for my $noun (keys %$map) {
      * $endpoint->{docString}
      *
      * \@link http://www.typepad.com/services/apidocs/endpoints/$doc_path$return
+     * \@param array \$params array($param_doc)
      */
     function $endpoint->{methodName}(\$params) {
 $idcase        \$path_chunks = array($php_chunks);

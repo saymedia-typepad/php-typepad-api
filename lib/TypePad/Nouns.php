@@ -50,6 +50,7 @@ class TPFavorites extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/favorites/<id>
      * @return TPFavorite
+     * @param array $params array(id => string)
      */
     function delete($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -62,6 +63,7 @@ class TPFavorites extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/favorites/<id>
      * @return TPFavorite
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -84,6 +86,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>
      * @return TPBlog
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -96,6 +99,7 @@ class TPBlogs extends TPNoun {
      * Send label argument to remove a category from the blog
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/add-category
+     * @param array $params array(id => string)
      */
     function addCategory($params) {
         $path_chunks = array('blogs', $params['id'], 'add-category');
@@ -107,6 +111,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/begin-import
      * @return TPImporterJob The O<ImporterJob> object representing the job that was created.
+     * @param array $params array(id => string)
      */
     function beginImport($params) {
         $path_chunks = array('blogs', $params['id'], 'begin-import');
@@ -118,6 +123,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/categories
      * @return TPList TPList of string
+     * @param array $params array(id => string)
      */
     function getCategories($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -133,6 +139,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/commenting-settings
      * @return TPBlogCommentingSettings
+     * @param array $params array(id => string)
      */
     function getCommentingSettings($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -146,6 +153,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/comments/@published
      * @return TPList TPList of TPComment
+     * @param array $params array(id => string)
      */
     function getPublishedComments($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -161,6 +169,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/comments/@published/@recent
      * @return TPList TPList of TPComment
+     * @param array $params array(id => string)
      */
     function getPublishedRecentComments($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -176,6 +185,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/crosspost-accounts
      * @return TPList TPList of TPAccount
+     * @param array $params array(id => string)
      */
     function getCrosspostAccounts($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -191,6 +201,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/discover-external-post-asset
      * @return TPAsset The asset that acts as a stub for the given permalink.
+     * @param array $params array(id => string)
      */
     function discoverExternalPostAsset($params) {
         $path_chunks = array('blogs', $params['id'], 'discover-external-post-asset');
@@ -202,6 +213,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/media-assets
      * @return TPAsset
+     * @param array $params array(id => string)
      */
     function postToMediaAssets($params) {
         $path_chunks = array('blogs', $params['id'], 'media-assets');
@@ -213,6 +225,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/page-assets
      * @return TPPage
+     * @param array $params array(id => string)
      */
     function postToPageAssets($params) {
         $path_chunks = array('blogs', $params['id'], 'page-assets');
@@ -224,6 +237,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/page-assets
      * @return TPList TPList of TPPage
+     * @param array $params array(id => string)
      */
     function getPageAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -239,6 +253,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets
      * @return TPPost
+     * @param array $params array(id => string)
      */
     function postToPostAssets($params) {
         $path_chunks = array('blogs', $params['id'], 'post-assets');
@@ -250,6 +265,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string)
      */
     function getPostAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -265,6 +281,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@by-category/<id>
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string, category => string)
      */
     function getPostAssetsByCategory($params) {
         $path_chunks = array('blogs', $params['id'], 'post-assets', '@by-category', $params['category']);
@@ -279,6 +296,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@by-filename/<id>
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string, fileRef => string)
      */
     function getPostAssetsByFilename($params) {
         $path_chunks = array('blogs', $params['id'], 'post-assets', '@by-filename', $params['fileRef']);
@@ -293,6 +311,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@by-month/<id>
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string, month => string)
      */
     function getPostAssetsByMonth($params) {
         $path_chunks = array('blogs', $params['id'], 'post-assets', '@by-month', $params['month']);
@@ -307,6 +326,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@published/@by-category/<id>
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string, category => string)
      */
     function getPublishedPostAssetsByCategory($params) {
         $path_chunks = array('blogs', $params['id'], 'post-assets', '@published', '@by-category', $params['category']);
@@ -321,6 +341,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@published/@by-month/<id>
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string, month => string)
      */
     function getPublishedPostAssetsByMonth($params) {
         $path_chunks = array('blogs', $params['id'], 'post-assets', '@published', '@by-month', $params['month']);
@@ -335,6 +356,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@published/@recent
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string)
      */
     function getPublishedRecentPostAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -350,6 +372,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets/@recent
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string)
      */
     function getRecentPostAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -365,6 +388,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-by-email-settings/@by-user/<id>
      * @return TPPostByEmailAddress
+     * @param array $params array(id => string, userId => string)
      */
     function getPostByEmailSettingsByUser($params) {
         $path_chunks = array('blogs', $params['id'], 'post-by-email-settings', '@by-user', $params['userId']);
@@ -378,6 +402,7 @@ class TPBlogs extends TPNoun {
      * Send label argument to remove a category from the blog
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/remove-category
+     * @param array $params array(id => string)
      */
     function removeCategory($params) {
         $path_chunks = array('blogs', $params['id'], 'remove-category');
@@ -389,6 +414,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/stats
      * @return TPBlogStats
+     * @param array $params array(id => string)
      */
     function getStats($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -411,6 +437,7 @@ class TPRelationships extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/relationships/<id>
      * @return TPRelationship
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -424,6 +451,7 @@ class TPRelationships extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/relationships/<id>/status
      * @return TPRelationshipStatus
+     * @param array $params array(id => string)
      */
     function getStatus($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -437,6 +465,7 @@ class TPRelationships extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/relationships/<id>/status
      * @return TPRelationshipStatus
+     * @param array $params array(id => string)
      */
     function putStatus($params) {
         $path_chunks = array('relationships', $params['id'], 'status');
@@ -457,6 +486,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>
      * @return TPApplication
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -470,6 +500,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/badges
      * @return TPList TPList of TPBadge
+     * @param array $params array(id => string)
      */
     function getBadges($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -485,6 +516,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/badges/@learning
      * @return TPList TPList of TPBadge
+     * @param array $params array(id => string)
      */
     function getLearningBadges($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -500,6 +532,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/badges/@public
      * @return TPList TPList of TPBadge
+     * @param array $params array(id => string)
      */
     function getPublicBadges($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -515,6 +548,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/create-external-feed-subscription
      * @return TPExternalFeedSubscription The subscription object that was created.
+     * @param array $params array(id => string)
      */
     function createExternalFeedSubscription($params) {
         $path_chunks = array('applications', $params['id'], 'create-external-feed-subscription');
@@ -526,6 +560,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/external-feed-subscriptions
      * @return TPList TPList of TPExternalFeedSubscription
+     * @param array $params array(id => string)
      */
     function getExternalFeedSubscriptions($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -541,6 +576,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/groups
      * @return TPList TPList of TPGroup
+     * @param array $params array(id => string)
      */
     function getGroups($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -565,6 +601,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>
      * @return TPUser
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -578,6 +615,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/badges
      * @return TPList TPList of TPUserBadge
+     * @param array $params array(id => string)
      */
     function getBadges($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -593,6 +631,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/badges/@learning
      * @return TPList TPList of TPUserBadge
+     * @param array $params array(id => string)
      */
     function getLearningBadges($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -608,6 +647,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/badges/@public
      * @return TPList TPList of TPUserBadge
+     * @param array $params array(id => string)
      */
     function getPublicBadges($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -623,6 +663,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/blogs
      * @return TPList TPList of TPBlog
+     * @param array $params array(id => string)
      */
     function getBlogs($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -638,6 +679,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/elsewhere-accounts
      * @return TPList TPList of TPAccount
+     * @param array $params array(id => string)
      */
     function getElsewhereAccounts($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -653,6 +695,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/events
      * @return TPStream<Event>
+     * @param array $params array(id => string)
      */
     function getEvents($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -668,6 +711,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/events/@by-group/<id>
      * @return TPList TPList of TPEvent
+     * @param array $params array(id => string, groupId => string)
      */
     function getEventsByGroup($params) {
         $path_chunks = array('users', $params['id'], 'events', '@by-group', $params['groupId']);
@@ -682,6 +726,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/favorites
      * @return TPFavorite
+     * @param array $params array(id => string)
      */
     function postToFavorites($params) {
         $path_chunks = array('users', $params['id'], 'favorites');
@@ -693,6 +738,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/favorites
      * @return TPList TPList of TPFavorite
+     * @param array $params array(id => string)
      */
     function getFavorites($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -708,6 +754,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/memberships
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getMemberships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -723,6 +770,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/memberships/@admin
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getAdminMemberships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -738,6 +786,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/memberships/@by-group/<id>
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string, groupId => string)
      */
     function getMembershipsByGroup($params) {
         $path_chunks = array('users', $params['id'], 'memberships', '@by-group', $params['groupId']);
@@ -752,6 +801,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/memberships/@member
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getMemberMemberships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -767,6 +817,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/notifications
      * @return TPList TPList of TPEvent
+     * @param array $params array(id => string)
      */
     function getNotifications($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -782,6 +833,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/notifications/@by-group/<id>
      * @return TPList TPList of TPEvent
+     * @param array $params array(id => string, groupId => string)
      */
     function getNotificationsByGroup($params) {
         $path_chunks = array('users', $params['id'], 'notifications', '@by-group', $params['groupId']);
@@ -796,6 +848,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/profile
      * @return TPUserProfile
+     * @param array $params array(id => string)
      */
     function getProfile($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -811,6 +864,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/relationships
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getRelationships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -826,6 +880,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/relationships/@by-group/<id>
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string, groupId => string)
      */
     function getRelationshipsByGroup($params) {
         $path_chunks = array('users', $params['id'], 'relationships', '@by-group', $params['groupId']);
@@ -840,6 +895,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/relationships/@by-user/<id>
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string, userId => string)
      */
     function getRelationshipsByUser($params) {
         $path_chunks = array('users', $params['id'], 'relationships', '@by-user', $params['userId']);
@@ -854,6 +910,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/relationships/@follower
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getFollowerRelationships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -869,6 +926,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/relationships/@follower/@by-group/<id>
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string, groupId => string)
      */
     function getFollowerRelationshipsByGroup($params) {
         $path_chunks = array('users', $params['id'], 'relationships', '@follower', '@by-group', $params['groupId']);
@@ -883,6 +941,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/relationships/@following
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getFollowingRelationships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -898,6 +957,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/relationships/@following/@by-group/<id>
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string, groupId => string)
      */
     function getFollowingRelationshipsByGroup($params) {
         $path_chunks = array('users', $params['id'], 'relationships', '@following', '@by-group', $params['groupId']);
@@ -920,6 +980,7 @@ class TPImportJobs extends TPNoun {
      * Terminates a blog import job.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/import-jobs/<id>/close-job
+     * @param array $params array(id => string)
      */
     function closeJob($params) {
         $path_chunks = array('import-jobs', $params['id'], 'close-job');
@@ -931,6 +992,7 @@ class TPImportJobs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/import-jobs/<id>/media-assets
      * @return TPAsset
+     * @param array $params array(id => string)
      */
     function postToMediaAssets($params) {
         $path_chunks = array('import-jobs', $params['id'], 'media-assets');
@@ -941,6 +1003,7 @@ class TPImportJobs extends TPNoun {
      * Imports a selection of items into a blog import job.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/import-jobs/<id>/submit-items
+     * @param array $params array(id => string)
      */
     function submitItems($params) {
         $path_chunks = array('import-jobs', $params['id'], 'submit-items');
@@ -961,6 +1024,7 @@ class TPBadges extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/badges/<id>
      * @return TPBadge
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -983,6 +1047,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets
      * @return TPStream<Asset>
+     * @param array $params array()
      */
     function search($params) {
         $path_chunks = array('assets');
@@ -1005,6 +1070,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>
      * @return TPAsset
+     * @param array $params array(id => string)
      */
     function delete($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1017,6 +1083,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>
      * @return TPAsset
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1030,6 +1097,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>
      * @return TPAsset
+     * @param array $params array(id => string)
      */
     function put($params) {
         $path_chunks = array('assets', $params['id']);
@@ -1040,6 +1108,7 @@ class TPAssets extends TPNoun {
      * Send label argument to add a category to an asset
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/add-category
+     * @param array $params array(id => string)
      */
     function addCategory($params) {
         $path_chunks = array('assets', $params['id'], 'add-category');
@@ -1051,6 +1120,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/categories
      * @return TPList TPList of string
+     * @param array $params array(id => string)
      */
     function getCategories($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1066,6 +1136,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/comment-tree
      * @return TPList TPList of TPCommentTreeItem
+     * @param array $params array(id => string)
      */
     function getCommentTree($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1082,6 +1153,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/comments
      * @return TPComment
+     * @param array $params array(id => string)
      */
     function postToComments($params) {
         $path_chunks = array('assets', $params['id'], 'comments');
@@ -1093,6 +1165,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/comments
      * @return TPList TPList of TPComment
+     * @param array $params array(id => string)
      */
     function getComments($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1109,6 +1182,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/extended-content
      * @return TPAssetExtendedContent
+     * @param array $params array(id => string)
      */
     function getExtendedContent($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1124,6 +1198,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/favorites
      * @return TPList TPList of TPFavorite
+     * @param array $params array(id => string)
      */
     function getFavorites($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1139,6 +1214,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/feedback-status
      * @return TPFeedbackStatus
+     * @param array $params array(id => string)
      */
     function getFeedbackStatus($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1152,6 +1228,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/feedback-status
      * @return TPFeedbackStatus
+     * @param array $params array(id => string)
      */
     function putFeedbackStatus($params) {
         $path_chunks = array('assets', $params['id'], 'feedback-status');
@@ -1163,6 +1240,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/make-comment-preview
      * @return TPAsset A mockup of the future comment.
+     * @param array $params array(id => string)
      */
     function makeCommentPreview($params) {
         $path_chunks = array('assets', $params['id'], 'make-comment-preview');
@@ -1174,6 +1252,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/media-assets
      * @return TPList TPList of TPAsset
+     * @param array $params array(id => string)
      */
     function getMediaAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1189,6 +1268,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/publication-status
      * @return TPPublicationStatus
+     * @param array $params array(id => string)
      */
     function getPublicationStatus($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1202,6 +1282,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/publication-status
      * @return TPPublicationStatus
+     * @param array $params array(id => string)
      */
     function putPublicationStatus($params) {
         $path_chunks = array('assets', $params['id'], 'publication-status');
@@ -1213,6 +1294,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/reblogs
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string)
      */
     function getReblogs($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1227,6 +1309,7 @@ class TPAssets extends TPNoun {
      * Send label argument to remove a category from an asset
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/remove-category
+     * @param array $params array(id => string)
      */
     function removeCategory($params) {
         $path_chunks = array('assets', $params['id'], 'remove-category');
@@ -1237,6 +1320,7 @@ class TPAssets extends TPNoun {
      * Adjust publication status of an asset
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/update-publication-status
+     * @param array $params array(id => string)
      */
     function updatePublicationStatus($params) {
         $path_chunks = array('assets', $params['id'], 'update-publication-status');
@@ -1257,6 +1341,7 @@ class TPApiKeys extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/api-keys/<id>
      * @return TPApiKey
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1279,6 +1364,7 @@ class TPEvents extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/events/<id>
      * @return TPEvent
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1301,6 +1387,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>
      * @return TPGroup
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1313,6 +1400,7 @@ class TPGroups extends TPNoun {
      * Add a given user as a member of the selected group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/add-member
+     * @param array $params array(id => string)
      */
     function addMember($params) {
         $path_chunks = array('groups', $params['id'], 'add-member');
@@ -1324,6 +1412,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/audio-assets
      * @return TPAudio
+     * @param array $params array(id => string)
      */
     function postToAudioAssets($params) {
         $path_chunks = array('groups', $params['id'], 'audio-assets');
@@ -1335,6 +1424,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/audio-assets
      * @return TPList TPList of TPAudio
+     * @param array $params array(id => string)
      */
     function getAudioAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1349,6 +1439,7 @@ class TPGroups extends TPNoun {
      * Block the given user from joining the selected group, removing that user as a member in the process.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/block-user
+     * @param array $params array(id => string)
      */
     function blockUser($params) {
         $path_chunks = array('groups', $params['id'], 'block-user');
@@ -1360,6 +1451,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/create-external-feed-subscription
      * @return TPExternalFeedSubscription The subscription object that was created.
+     * @param array $params array(id => string)
      */
     function createExternalFeedSubscription($params) {
         $path_chunks = array('groups', $params['id'], 'create-external-feed-subscription');
@@ -1371,6 +1463,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/events
      * @return TPList TPList of TPEvent
+     * @param array $params array(id => string)
      */
     function getEvents($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1386,6 +1479,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/external-feed-subscriptions
      * @return TPList TPList of TPExternalFeedSubscription
+     * @param array $params array(id => string)
      */
     function getExternalFeedSubscriptions($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1401,6 +1495,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/link-assets
      * @return TPLink
+     * @param array $params array(id => string)
      */
     function postToLinkAssets($params) {
         $path_chunks = array('groups', $params['id'], 'link-assets');
@@ -1412,6 +1507,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/link-assets
      * @return TPList TPList of TPLink
+     * @param array $params array(id => string)
      */
     function getLinkAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1427,6 +1523,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/memberships
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getMemberships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1442,6 +1539,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/memberships/@admin
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getAdminMemberships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1457,6 +1555,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/memberships/@blocked
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getBlockedMemberships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1472,6 +1571,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/memberships/@member
      * @return TPList TPList of TPRelationship
+     * @param array $params array(id => string)
      */
     function getMemberMemberships($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1487,6 +1587,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/photo-assets
      * @return TPPhoto
+     * @param array $params array(id => string)
      */
     function postToPhotoAssets($params) {
         $path_chunks = array('groups', $params['id'], 'photo-assets');
@@ -1498,6 +1599,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/photo-assets
      * @return TPList TPList of TPPhoto
+     * @param array $params array(id => string)
      */
     function getPhotoAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1513,6 +1615,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/post-assets
      * @return TPPost
+     * @param array $params array(id => string)
      */
     function postToPostAssets($params) {
         $path_chunks = array('groups', $params['id'], 'post-assets');
@@ -1524,6 +1627,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/post-assets
      * @return TPList TPList of TPPost
+     * @param array $params array(id => string)
      */
     function getPostAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1538,6 +1642,7 @@ class TPGroups extends TPNoun {
      * Remove a given user as a member of the selected group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/remove-member
+     * @param array $params array(id => string)
      */
     function removeMember($params) {
         $path_chunks = array('groups', $params['id'], 'remove-member');
@@ -1548,6 +1653,7 @@ class TPGroups extends TPNoun {
      * Remove the block preventing the given user from joining the selected group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/unblock-user
+     * @param array $params array(id => string)
      */
     function unblockUser($params) {
         $path_chunks = array('groups', $params['id'], 'unblock-user');
@@ -1559,6 +1665,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/video-assets
      * @return TPVideo
+     * @param array $params array(id => string)
      */
     function postToVideoAssets($params) {
         $path_chunks = array('groups', $params['id'], 'video-assets');
@@ -1570,6 +1677,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/video-assets
      * @return TPList TPList of TPVideo
+     * @param array $params array(id => string)
      */
     function getVideoAssets($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1594,6 +1702,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>
      * @return TPExternalFeedSubscription
+     * @param array $params array(id => string)
      */
     function delete($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1606,6 +1715,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>
      * @return TPExternalFeedSubscription
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1618,6 +1728,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Add one or more feed identifiers to the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/add-feeds
+     * @param array $params array(id => string)
      */
     function addFeeds($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'add-feeds');
@@ -1629,6 +1740,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/feeds
      * @return TPList TPList of string
+     * @param array $params array(id => string)
      */
     function getFeeds($params) {
        if (!is_array($params)) $params = array('id' => $params);
@@ -1643,6 +1755,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Remove one or more feed identifiers from the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/remove-feeds
+     * @param array $params array(id => string)
      */
     function removeFeeds($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'remove-feeds');
@@ -1653,6 +1766,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Change the filtering rules for the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/update-filters
+     * @param array $params array(id => string)
      */
     function updateFilters($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'update-filters');
@@ -1663,6 +1777,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Change the callback URL and/or secret for the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/update-notification-settings
+     * @param array $params array(id => string)
      */
     function updateNotificationSettings($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'update-notification-settings');
@@ -1673,6 +1788,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Change the "post as" user for a subscription owned by a group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/update-user
+     * @param array $params array(id => string)
      */
     function updateUser($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'update-user');
@@ -1693,6 +1809,7 @@ class TPAuthTokens extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/auth-tokens/<id>
      * @return TPAuthToken
+     * @param array $params array(id => string)
      */
     function get($params) {
        if (!is_array($params)) $params = array('id' => $params);
