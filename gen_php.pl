@@ -82,9 +82,10 @@ for my $noun (keys %$map) {
             defined($_) ? $_ : '<id>'
         } @$path_chunks);
         my $param_doc = join(', ',
-            map {"$_ => string" }
+            (map {"$_ => string" }
             sort { $endpoint->{pathParams}->{$a} <=> $endpoint->{pathParams}->{$b} }
-            keys %{$endpoint->{pathParams}}
+            keys %{$endpoint->{pathParams}}),
+            ($endpoint->{httpMethod} =~ /^(POST|PUT)$/) ? ('payload => array') : ()
         );
 
         my $query_params = '';

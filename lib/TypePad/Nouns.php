@@ -99,7 +99,7 @@ class TPBlogs extends TPNoun {
      * Send label argument to remove a category from the blog
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/add-category
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function addCategory($params) {
         $path_chunks = array('blogs', $params['id'], 'add-category');
@@ -111,7 +111,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/begin-import
      * @return TPImporterJob The O<ImporterJob> object representing the job that was created.
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function beginImport($params) {
         $path_chunks = array('blogs', $params['id'], 'begin-import');
@@ -201,7 +201,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/discover-external-post-asset
      * @return TPAsset The asset that acts as a stub for the given permalink.
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function discoverExternalPostAsset($params) {
         $path_chunks = array('blogs', $params['id'], 'discover-external-post-asset');
@@ -213,7 +213,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/media-assets
      * @return TPAsset
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToMediaAssets($params) {
         $path_chunks = array('blogs', $params['id'], 'media-assets');
@@ -225,7 +225,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/page-assets
      * @return TPPage
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToPageAssets($params) {
         $path_chunks = array('blogs', $params['id'], 'page-assets');
@@ -253,7 +253,7 @@ class TPBlogs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/post-assets
      * @return TPPost
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToPostAssets($params) {
         $path_chunks = array('blogs', $params['id'], 'post-assets');
@@ -402,7 +402,7 @@ class TPBlogs extends TPNoun {
      * Send label argument to remove a category from the blog
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/blogs/<id>/remove-category
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function removeCategory($params) {
         $path_chunks = array('blogs', $params['id'], 'remove-category');
@@ -465,7 +465,7 @@ class TPRelationships extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/relationships/<id>/status
      * @return TPRelationshipStatus
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function putStatus($params) {
         $path_chunks = array('relationships', $params['id'], 'status');
@@ -548,7 +548,7 @@ class TPApplications extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/applications/<id>/create-external-feed-subscription
      * @return TPExternalFeedSubscription The subscription object that was created.
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function createExternalFeedSubscription($params) {
         $path_chunks = array('applications', $params['id'], 'create-external-feed-subscription');
@@ -726,7 +726,7 @@ class TPUsers extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/users/<id>/favorites
      * @return TPFavorite
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToFavorites($params) {
         $path_chunks = array('users', $params['id'], 'favorites');
@@ -980,7 +980,7 @@ class TPImportJobs extends TPNoun {
      * Terminates a blog import job.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/import-jobs/<id>/close-job
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function closeJob($params) {
         $path_chunks = array('import-jobs', $params['id'], 'close-job');
@@ -992,7 +992,7 @@ class TPImportJobs extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/import-jobs/<id>/media-assets
      * @return TPAsset
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToMediaAssets($params) {
         $path_chunks = array('import-jobs', $params['id'], 'media-assets');
@@ -1003,7 +1003,7 @@ class TPImportJobs extends TPNoun {
      * Imports a selection of items into a blog import job.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/import-jobs/<id>/submit-items
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function submitItems($params) {
         $path_chunks = array('import-jobs', $params['id'], 'submit-items');
@@ -1097,7 +1097,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>
      * @return TPAsset
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function put($params) {
         $path_chunks = array('assets', $params['id']);
@@ -1108,7 +1108,7 @@ class TPAssets extends TPNoun {
      * Send label argument to add a category to an asset
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/add-category
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function addCategory($params) {
         $path_chunks = array('assets', $params['id'], 'add-category');
@@ -1153,7 +1153,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/comments
      * @return TPComment
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToComments($params) {
         $path_chunks = array('assets', $params['id'], 'comments');
@@ -1228,7 +1228,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/feedback-status
      * @return TPFeedbackStatus
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function putFeedbackStatus($params) {
         $path_chunks = array('assets', $params['id'], 'feedback-status');
@@ -1240,7 +1240,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/make-comment-preview
      * @return TPAsset A mockup of the future comment.
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function makeCommentPreview($params) {
         $path_chunks = array('assets', $params['id'], 'make-comment-preview');
@@ -1282,7 +1282,7 @@ class TPAssets extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/publication-status
      * @return TPPublicationStatus
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function putPublicationStatus($params) {
         $path_chunks = array('assets', $params['id'], 'publication-status');
@@ -1309,7 +1309,7 @@ class TPAssets extends TPNoun {
      * Send label argument to remove a category from an asset
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/remove-category
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function removeCategory($params) {
         $path_chunks = array('assets', $params['id'], 'remove-category');
@@ -1320,7 +1320,7 @@ class TPAssets extends TPNoun {
      * Adjust publication status of an asset
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/assets/<id>/update-publication-status
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function updatePublicationStatus($params) {
         $path_chunks = array('assets', $params['id'], 'update-publication-status');
@@ -1400,7 +1400,7 @@ class TPGroups extends TPNoun {
      * Add a given user as a member of the selected group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/add-member
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function addMember($params) {
         $path_chunks = array('groups', $params['id'], 'add-member');
@@ -1412,7 +1412,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/audio-assets
      * @return TPAudio
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToAudioAssets($params) {
         $path_chunks = array('groups', $params['id'], 'audio-assets');
@@ -1439,7 +1439,7 @@ class TPGroups extends TPNoun {
      * Block the given user from joining the selected group, removing that user as a member in the process.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/block-user
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function blockUser($params) {
         $path_chunks = array('groups', $params['id'], 'block-user');
@@ -1451,7 +1451,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/create-external-feed-subscription
      * @return TPExternalFeedSubscription The subscription object that was created.
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function createExternalFeedSubscription($params) {
         $path_chunks = array('groups', $params['id'], 'create-external-feed-subscription');
@@ -1495,7 +1495,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/link-assets
      * @return TPLink
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToLinkAssets($params) {
         $path_chunks = array('groups', $params['id'], 'link-assets');
@@ -1587,7 +1587,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/photo-assets
      * @return TPPhoto
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToPhotoAssets($params) {
         $path_chunks = array('groups', $params['id'], 'photo-assets');
@@ -1615,7 +1615,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/post-assets
      * @return TPPost
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToPostAssets($params) {
         $path_chunks = array('groups', $params['id'], 'post-assets');
@@ -1642,7 +1642,7 @@ class TPGroups extends TPNoun {
      * Remove a given user as a member of the selected group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/remove-member
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function removeMember($params) {
         $path_chunks = array('groups', $params['id'], 'remove-member');
@@ -1653,7 +1653,7 @@ class TPGroups extends TPNoun {
      * Remove the block preventing the given user from joining the selected group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/unblock-user
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function unblockUser($params) {
         $path_chunks = array('groups', $params['id'], 'unblock-user');
@@ -1665,7 +1665,7 @@ class TPGroups extends TPNoun {
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/groups/<id>/video-assets
      * @return TPVideo
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function postToVideoAssets($params) {
         $path_chunks = array('groups', $params['id'], 'video-assets');
@@ -1728,7 +1728,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Add one or more feed identifiers to the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/add-feeds
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function addFeeds($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'add-feeds');
@@ -1755,7 +1755,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Remove one or more feed identifiers from the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/remove-feeds
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function removeFeeds($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'remove-feeds');
@@ -1766,7 +1766,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Change the filtering rules for the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/update-filters
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function updateFilters($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'update-filters');
@@ -1777,7 +1777,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Change the callback URL and/or secret for the subscription.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/update-notification-settings
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function updateNotificationSettings($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'update-notification-settings');
@@ -1788,7 +1788,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * Change the "post as" user for a subscription owned by a group.
      *
      * @link http://www.typepad.com/services/apidocs/endpoints/external-feed-subscriptions/<id>/update-user
-     * @param array $params array(id => string)
+     * @param array $params array(id => string, payload => array)
      */
     function updateUser($params) {
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'update-user');
