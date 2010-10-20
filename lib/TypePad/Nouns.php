@@ -1899,9 +1899,9 @@ TypePad::addNoun('apiKeys');
 
 /**
  * @package TypePad-Nouns
- * @subpackage TPRequestProperties
+ * @subpackage TPNounRequestProperties
  */
-class TPRequestProperties extends TPNoun {
+class TPNounRequestProperties extends TPNoun {
 
     /**
      * Retrieve some request properties. This can be useful for debugging authentication issues.
@@ -1917,7 +1917,7 @@ class TPRequestProperties extends TPNoun {
     }
 
 }
-TypePad::addNoun('requestProperties');
+TypePad::addNoun('requestProperties', 'TPNounRequestProperties');
 
 /**
  * @package TypePad-Nouns

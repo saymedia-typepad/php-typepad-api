@@ -83,8 +83,10 @@ class TypePad {
      *
      * @param string $noun The name of the noun (without 'TP')
      */
-    static function addNoun($noun) {
-        $class = 'TP' . ucfirst($noun);
+    static function addNoun($noun, $class = null) {
+        if (!$class) {
+            $class = 'TP' . ucfirst($noun);
+        }
         if (!isset(self::$noun_classes)) self::$noun_classes = array();
         if (isset(self::$noun_classes[$class])) return;
         self::$noun_classes[$noun] = $class;

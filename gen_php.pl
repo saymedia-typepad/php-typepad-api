@@ -64,6 +64,10 @@ EOPHP
 my $raw_map = get("$api_base/client-library-helpers/method-mappings.json");
 my $map = $j->decode($raw_map);
 
+# get these up front so we can check for conflicts
+my $raw_types = get("$api_base/client-library-helpers/object-types.json");
+my $types = $j->decode($raw_types);
+
 my $idget = "       if (!is_array(\$params)) \$params = array('id' => \$params);\n";
 for my $noun (keys %$map) {
     my $functions = '';
@@ -148,7 +152,16 @@ EOPHP
         }
         $functions .= "    }\n\n";
     }
-    my $class = 'TP' . ucfirst($noun);
+    my $class;
+    my $class_param = '';
+    my $ucnoun = ucfirst($noun);
+    # check for a conflict with an object type
+    if (grep { $_->{name} eq $ucnoun } @{$types->{entries}}) {
+        $class = 'TPNoun' . $ucnoun;
+        $class_param = ", '$class'";
+    } else {
+        $class = 'TP' . $ucnoun;
+    }
     $nouns_php .= <<EOPHP;
 /**
  * \@package TypePad-Nouns
@@ -157,15 +170,12 @@ EOPHP
 class $class extends TPNoun {
 
 $functions}
-TypePad::addNoun('$noun');
+TypePad::addNoun('$noun'$class_param);
 
 EOPHP
 }
 
 write_file('Nouns', $nouns_php);
-
-my $raw_types = get("$api_base/client-library-helpers/object-types.json");
-my $types = $j->decode($raw_types);
 
 my %types_php;
 my %children;
