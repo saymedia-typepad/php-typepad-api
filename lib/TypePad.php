@@ -88,7 +88,7 @@ class TypePad {
             $class = 'TP' . ucfirst($noun);
         }
         if (!isset(self::$noun_classes)) self::$noun_classes = array();
-        if (isset(self::$noun_classes[$class])) return;
+        if (isset(self::$noun_classes[$noun])) return;
         self::$noun_classes[$noun] = $class;
     }
 
