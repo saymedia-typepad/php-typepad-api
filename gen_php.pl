@@ -68,7 +68,7 @@ my $map = $j->decode($raw_map);
 my $raw_types = get("$api_base/client-library-helpers/object-types.json");
 my $types = $j->decode($raw_types);
 
-my $idget = "       if (!is_array(\$params)) \$params = array('id' => \$params);\n";
+my $idget = "        if (!is_array(\$params)) \$params = array('id' => \$params);\n";
 for my $noun (keys %$map) {
     my $functions = '';
     my $url_noun = lcfirst($noun);
@@ -114,6 +114,10 @@ for my $noun (keys %$map) {
             ($endpoint->{httpMethod} =~ /GET|DELETE/)
             && (scalar(keys %{$endpoint->{pathParams}}) == 1)
         ) ? $idget : '';
+        my $params = (
+            ($endpoint->{httpMethod} eq 'GET')
+            && (scalar(keys %{$endpoint->{pathParams}}) == 0)
+        ) ? '' : '$params';
         $endpoint->{docString} ||= '';
         $return ||= $return_type || '';
         if ($return) {
@@ -133,7 +137,7 @@ for my $noun (keys %$map) {
      * \@link http://www.typepad.com/services/apidocs/endpoints/$doc_path$return
      * \@param array \$params array($param_doc)
      */
-    function $endpoint->{methodName}(\$params) {
+    function $endpoint->{methodName}($params) {
 $idcase        \$path_chunks = array($php_chunks);
 EOPHP
         if ($endpoint->{httpMethod} =~ /^POST|PUT$/) {

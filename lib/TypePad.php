@@ -68,7 +68,7 @@ class TypePad {
     function __get($name) {
         if (isset($this->nouns[$name])) return $this->nouns[$name];
         if (isset(self::$noun_classes[$name])) {
-            $class = 'TP' . ucfirst($name);
+            $class = self::$noun_classes[$name];
             $this->nouns[$name] = new $class($this);
             return $this->nouns[$name];
         }
@@ -270,7 +270,7 @@ EOT;
         } elseif (preg_match('/(.*)<([^>]+)>/', $result_type, $matches)) {
             $class = $matches[1];
             $of_class = $matches[2];
-        } elseif ($fulfill_with && $fulfill_with->objectType) {
+        } elseif ($fulfill_with && isset($fulfill_with->objectType)) {
             $class = $fulfill_with->objectType;
         } else {
             $class = $result_type;

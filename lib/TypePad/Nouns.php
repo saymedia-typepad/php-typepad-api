@@ -53,7 +53,7 @@ class TPFavorites extends TPNoun {
      * @param array $params array(id => string)
      */
     function delete($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('favorites', $params['id']);
         return $this->typepad->delete($path_chunks, 'Favorite');
     }
@@ -66,7 +66,7 @@ class TPFavorites extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('favorites', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Favorite');
@@ -89,7 +89,7 @@ class TPRelationships extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('relationships', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Relationship');
@@ -103,7 +103,7 @@ class TPRelationships extends TPNoun {
      * @param array $params array(id => string)
      */
     function getStatus($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('relationships', $params['id'], 'status');
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'RelationshipStatus');
@@ -138,7 +138,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'User');
@@ -152,7 +152,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getBadges($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'badges');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -168,7 +168,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getLearningBadges($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'badges', '@learning');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -184,7 +184,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPublicBadges($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'badges', '@public');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -200,7 +200,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getBlogs($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'blogs');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -216,7 +216,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getElsewhereAccounts($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'elsewhere-accounts');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -232,7 +232,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getEvents($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'events');
         $query_params = array();
         if (array_key_exists('startToken', $params)) $query_params['start-token'] = $params['startToken'];
@@ -275,7 +275,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getFavorites($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'favorites');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -291,7 +291,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getMemberships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'memberships');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -307,7 +307,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getAdminMemberships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'memberships', '@admin');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -338,7 +338,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getMemberMemberships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'memberships', '@member');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -354,7 +354,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getNotifications($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'notifications');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -385,7 +385,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getProfile($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'profile');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -401,7 +401,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getRelationships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'relationships');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -447,7 +447,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getFollowerRelationships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'relationships', '@follower');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -478,7 +478,7 @@ class TPUsers extends TPNoun {
      * @param array $params array(id => string)
      */
     function getFollowingRelationships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('users', $params['id'], 'relationships', '@following');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -518,7 +518,7 @@ class TPBadges extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('badges', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Badge');
@@ -541,7 +541,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Group');
@@ -578,7 +578,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getAudioAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'audio-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -617,7 +617,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getEvents($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'events');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -633,7 +633,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getExternalFeedSubscriptions($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'external-feed-subscriptions');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -661,7 +661,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getLinkAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'link-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -677,7 +677,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getMemberships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'memberships');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -693,7 +693,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getAdminMemberships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'memberships', '@admin');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -709,7 +709,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getBlockedMemberships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'memberships', '@blocked');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -725,7 +725,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getMemberMemberships($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'memberships', '@member');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -753,7 +753,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPhotoAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'photo-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -781,7 +781,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPostAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'post-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -831,7 +831,7 @@ class TPGroups extends TPNoun {
      * @param array $params array(id => string)
      */
     function getVideoAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('groups', $params['id'], 'video-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -856,7 +856,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Blog');
@@ -905,7 +905,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getCategories($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'categories');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -921,7 +921,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getCommentingSettings($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'commenting-settings');
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'BlogCommentingSettings');
@@ -935,7 +935,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPublishedComments($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'comments', '@published');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -951,7 +951,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPublishedRecentComments($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'comments', '@published', '@recent');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -967,7 +967,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getCrosspostAccounts($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'crosspost-accounts');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1019,7 +1019,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPageAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'page-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1047,7 +1047,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPostAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'post-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1138,7 +1138,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPublishedRecentPostAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'post-assets', '@published', '@recent');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1154,7 +1154,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getRecentPostAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'post-assets', '@recent');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1196,7 +1196,7 @@ class TPBlogs extends TPNoun {
      * @param array $params array(id => string)
      */
     function getStats($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('blogs', $params['id'], 'stats');
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'BlogStats');
@@ -1218,7 +1218,7 @@ class TPConversations extends TPNoun {
      * @return TPList TPList of TPConversation
      * @param array $params array()
      */
-    function getAll($params) {
+    function getAll() {
         $path_chunks = array('conversations');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1234,7 +1234,7 @@ class TPConversations extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('conversations', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Conversation');
@@ -1247,7 +1247,7 @@ class TPConversations extends TPNoun {
      * @return TPList TPList of TPConversation
      * @param array $params array()
      */
-    function getFeatured($params) {
+    function getFeatured() {
         $path_chunks = array('conversations', 'featured');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1272,7 +1272,7 @@ class TPApplications extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('applications', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Application');
@@ -1286,7 +1286,7 @@ class TPApplications extends TPNoun {
      * @param array $params array(id => string)
      */
     function getBadges($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('applications', $params['id'], 'badges');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1302,7 +1302,7 @@ class TPApplications extends TPNoun {
      * @param array $params array(id => string)
      */
     function getLearningBadges($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('applications', $params['id'], 'badges', '@learning');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1318,7 +1318,7 @@ class TPApplications extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPublicBadges($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('applications', $params['id'], 'badges', '@public');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1346,7 +1346,7 @@ class TPApplications extends TPNoun {
      * @param array $params array(id => string)
      */
     function getExternalFeedSubscriptions($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('applications', $params['id'], 'external-feed-subscriptions');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1362,7 +1362,7 @@ class TPApplications extends TPNoun {
      * @param array $params array(id => string)
      */
     function getGroups($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('applications', $params['id'], 'groups');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1429,7 +1429,7 @@ class TPAssets extends TPNoun {
      * @return TPStream<Asset>
      * @param array $params array()
      */
-    function search($params) {
+    function search() {
         $path_chunks = array('assets');
         $query_params = array();
         if (array_key_exists('filterByGroup', $params)) $query_params['filter.group'] = $params['filterByGroup'];
@@ -1453,7 +1453,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function delete($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id']);
         return $this->typepad->delete($path_chunks, 'Asset');
     }
@@ -1466,7 +1466,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Asset');
@@ -1503,7 +1503,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getCategories($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'categories');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1519,7 +1519,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getCommentTree($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'comment-tree');
         $query_params = array();
         if (array_key_exists('selectedItem', $params)) $query_params['selected-item'] = $params['selectedItem'];
@@ -1548,7 +1548,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getComments($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'comments');
         $query_params = array();
         if (array_key_exists('selectedItem', $params)) $query_params['selected-item'] = $params['selectedItem'];
@@ -1565,7 +1565,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getExtendedContent($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'extended-content');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1581,7 +1581,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getFavorites($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'favorites');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1597,7 +1597,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getFeedbackStatus($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'feedback-status');
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'FeedbackStatus');
@@ -1635,7 +1635,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getMediaAssets($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'media-assets');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1651,7 +1651,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getPublicationStatus($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'publication-status');
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'PublicationStatus');
@@ -1677,7 +1677,7 @@ class TPAssets extends TPNoun {
      * @param array $params array(id => string)
      */
     function getReblogs($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('assets', $params['id'], 'reblogs');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1714,7 +1714,7 @@ class TPAssets extends TPNoun {
      * @return TPStream<Asset>
      * @param array $params array()
      */
-    function getTrending($params) {
+    function getTrending() {
         $path_chunks = array('assets', 'trending');
         $query_params = array();
         if (array_key_exists('startToken', $params)) $query_params['start-token'] = $params['startToken'];
@@ -1739,7 +1739,7 @@ class TPDomains extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('domains', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Domain');
@@ -1785,7 +1785,7 @@ class TPVerticals extends TPNoun {
      * @return TPList TPList of TPVertical
      * @param array $params array()
      */
-    function getAll($params) {
+    function getAll() {
         $path_chunks = array('verticals');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1801,7 +1801,7 @@ class TPVerticals extends TPNoun {
      * @param array $params array(id => string)
      */
     function delete($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('verticals', $params['id']);
         return $this->typepad->delete($path_chunks, 'Vertical');
     }
@@ -1814,7 +1814,7 @@ class TPVerticals extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('verticals', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Vertical');
@@ -1840,7 +1840,7 @@ class TPVerticals extends TPNoun {
      * @param array $params array(id => string)
      */
     function getTags($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('verticals', $params['id'], 'tags');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -1865,7 +1865,7 @@ class TPEvents extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('events', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'Event');
@@ -1888,7 +1888,7 @@ class TPApiKeys extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('api-keys', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'ApiKey');
@@ -1910,7 +1910,7 @@ class TPNounRequestProperties extends TPNoun {
      * @return TPRequestProperties
      * @param array $params array()
      */
-    function get($params) {
+    function get() {
         $path_chunks = array('request-properties');
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'RequestProperties');
@@ -1933,7 +1933,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * @param array $params array(id => string)
      */
     function delete($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('external-feed-subscriptions', $params['id']);
         return $this->typepad->delete($path_chunks, 'ExternalFeedSubscription');
     }
@@ -1946,7 +1946,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('external-feed-subscriptions', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'ExternalFeedSubscription');
@@ -1971,7 +1971,7 @@ class TPExternalFeedSubscriptions extends TPNoun {
      * @param array $params array(id => string)
      */
     function getFeeds($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('external-feed-subscriptions', $params['id'], 'feeds');
         $query_params = array();
         if (array_key_exists('limit', $params)) $query_params['max-results'] = $params['limit'];
@@ -2040,7 +2040,7 @@ class TPAuthTokens extends TPNoun {
      * @param array $params array(id => string)
      */
     function get($params) {
-       if (!is_array($params)) $params = array('id' => $params);
+        if (!is_array($params)) $params = array('id' => $params);
         $path_chunks = array('auth-tokens', $params['id']);
         $query_params = array();
         return $this->typepad->get($path_chunks, $query_params, 'AuthToken');
