@@ -27,7 +27,7 @@
 				<li><span class="field">link:</span> <a href="http://www.typepad.com/services/apidocs/objecttypes/Comment">http://www.typepad.com/services/apidocs/objecttypes/Comment</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_lib---TypePad---ObjectTypes.php.html">/lib/TypePad/ObjectTypes.php</a> (line <span class="field">280</span>)
+			Located in <a class="field" href="_lib---TypePad---ObjectTypes.php.html">/lib/TypePad/ObjectTypes.php</a> (line <span class="field">281</span>)
 		</p>
 		
 				
@@ -144,7 +144,7 @@
 		<span class="var-title">
 			static <span class="var-type">mixed</span>
 			<span class="var-name">$properties</span>
-			 = <span class="var-default">array(<br />        'source' =&gt; array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),'excerpt'=&gt;array('A short, plain-text excerpt of the entry content. This is currently available only for O&lt;Post&gt; assets.','string'),'content'=&gt;array('The raw asset content. The M&lt;textFormat&gt; property describes how to format this data. Use this property to set the asset content in write operations. An asset posted in a group may have a M&lt;content&gt; value up to 10,000 bytes long, while a O&lt;Post&gt; asset in a blog may have up to 65,000 bytes of content.','string'),'favoriteCount'=&gt;array('The number of distinct users who have added this asset as a favorite.','integer'),'author'=&gt;array('The user who created the selected asset.','User'),'isFavoriteForCurrentUser'=&gt;array('C&lt;true&gt; if this asset is a favorite for the currently authenticated user, or C&lt;false&gt; otherwise. This property is omitted from responses to anonymous requests.','boolean'),'suppressEvents'=&gt;array('T&lt;Editable&gt; An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.','boolean'),'publicationStatus'=&gt;array('T&lt;Editable&gt; An object describing the visibility status and publication date for this page. Only visibility status is editable.','PublicationStatus'),'renderedContent'=&gt;array('The content of this asset rendered to HTML. This is currently available only for O&lt;Post&gt; and O&lt;Page&gt; assets.','string'),'crosspostAccounts'=&gt;array('T&lt;Editable&gt; A set of identifiers for O&lt;Account&gt; objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.','set&lt;string&gt;'),'objectType'=&gt;array('The keyword identifying the type of asset this is.','string'),'reblogOf'=&gt;array('T&lt;Deprecated&gt; If this asset was created by \'reblogging\' another asset, this property describes the original asset.','AssetRef'),'groups'=&gt;array('T&lt;Deprecated&gt; An array of strings containing the M&lt;id&gt; URI of the O&lt;Group&gt; object that this asset is mapped into, if any. This property has been superseded by the M&lt;container&gt; property.','array&lt;string&gt;'),'id'=&gt;array('A URI that serves as a globally unique identifier for the user.','string'),'root'=&gt;array('A reference to the root asset that this comment is descended from. This will be the same as M&lt;inReplyTo&gt; unless this comment is a reply to another comment.','AssetRef'),'urlId'=&gt;array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.','string'),'inReplyTo'=&gt;array('A reference to the asset that this comment is in reply to.','AssetRef'),'reblogOfUrl'=&gt;array('T&lt;Deprecated&gt; If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.','string'),'objectTypes'=&gt;array('T&lt;Deprecated&gt; An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.','set&lt;string&gt;'),'container'=&gt;array('An object describing the group or blog to which this asset belongs.','ContainerRef'),'description'=&gt;array('The description of the asset.','string'),'commentCount'=&gt;array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.','integer'),'published'=&gt;array('The time at which the asset was created, as a W3CDTF timestamp.','string'),'textFormat'=&gt;array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C&lt;html&gt; for assets the content of which is HTML, C&lt;html_convert_linebreaks&gt; for assets the content of which is HTML but where paragraph tags should be added automatically, or C&lt;markdown&gt; for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.','string'),'permalinkUrl'=&gt;array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.','string'),'title'=&gt;array('The title of the asset.','string'),'isConversationsAnswer'=&gt;array('T&lt;Deprecated&gt; C&lt;true&gt; if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.','boolean'))</span>			(line <span class="line-number">282</span>)
+			 = <span class="var-default">array(<br />        'source' =&gt; array('An object describing the site from which this asset was retrieved, if the asset was obtained from an external source.', 'AssetSource'),'excerpt'=&gt;array('A short, plain-text excerpt of the entry content. This is currently available only for O&lt;Post&gt; assets.','string'),'content'=&gt;array('The raw asset content. The M&lt;textFormat&gt; property describes how to format this data. Use this property to set the asset content in write operations. An asset posted in a group may have a M&lt;content&gt; value up to 10,000 bytes long, while a O&lt;Post&gt; asset in a blog may have up to 65,000 bytes of content.','string'),'favoriteCount'=&gt;array('The number of distinct users who have added this asset as a favorite.','integer'),'author'=&gt;array('The user who created the selected asset.','User'),'isFavoriteForCurrentUser'=&gt;array('C&lt;true&gt; if this asset is a favorite for the currently authenticated user, or C&lt;false&gt; otherwise. This property is omitted from responses to anonymous requests.','boolean'),'suppressEvents'=&gt;array('T&lt;Editable&gt; An optional, write-only flag indicating that asset creation should not trigger notification events such as emails or dashboard entries. Not available to all applications.','boolean'),'publicationStatus'=&gt;array('T&lt;Editable&gt; An object describing the visibility status and publication date for this page. Only visibility status is editable.','PublicationStatus'),'renderedContent'=&gt;array('The content of this asset rendered to HTML. This is currently available only for O&lt;Post&gt; and O&lt;Page&gt; assets.','string'),'crosspostAccounts'=&gt;array('T&lt;Editable&gt; A set of identifiers for O&lt;Account&gt; objects to which to crosspost this asset when it\'s posted. This property is omitted when retrieving existing assets.','set&lt;string&gt;'),'objectType'=&gt;array('The keyword identifying the type of asset this is.','string'),'reblogOf'=&gt;array('T&lt;Deprecated&gt; If this asset was created by \'reblogging\' another asset, this property describes the original asset.','AssetRef'),'groups'=&gt;array('T&lt;Deprecated&gt; An array of strings containing the M&lt;id&gt; URI of the O&lt;Group&gt; object that this asset is mapped into, if any. This property has been superseded by the M&lt;container&gt; property.','array&lt;string&gt;'),'id'=&gt;array('A URI that serves as a globally unique identifier for the user.','string'),'root'=&gt;array('A reference to the root asset that this comment is descended from. This will be the same as M&lt;inReplyTo&gt; unless this comment is a reply to another comment.','AssetRef'),'urlId'=&gt;array('A string containing the canonical identifier that can be used to identify this object in URLs. This can be used to recognise where the same user is returned in response to different requests, and as a mapping key for an application\'s local data store.','string'),'inReplyTo'=&gt;array('A reference to the asset that this comment is in reply to.','AssetRef'),'reblogOfUrl'=&gt;array('T&lt;Deprecated&gt; If this asset was created by \'reblogging\' another asset or some other arbitrary web page, this property contains the URL of the item that was reblogged.','string'),'objectTypes'=&gt;array('T&lt;Deprecated&gt; An array of object type identifier URIs identifying the type of this asset. Only the one object type URI for the particular type of asset this asset is will be present.','set&lt;string&gt;'),'container'=&gt;array('An object describing the group or blog to which this asset belongs.','ContainerRef'),'description'=&gt;array('The description of the asset.','string'),'commentCount'=&gt;array('The number of comments that have been posted in reply to this asset. This number includes comments that have been posted in response to other comments.','integer'),'published'=&gt;array('The time at which the asset was created, as a W3CDTF timestamp.','datetime'),'textFormat'=&gt;array('A keyword that indicates what formatting mode to use for the content of this asset. This can be C&lt;html&gt; for assets the content of which is HTML, C&lt;html_convert_linebreaks&gt; for assets the content of which is HTML but where paragraph tags should be added automatically, or C&lt;markdown&gt; for assets the content of which is Markdown source. Other formatting modes may be added in future. Applications that present assets for editing should use this property to present an appropriate editor.','string'),'permalinkUrl'=&gt;array('The URL that is this asset\'s permalink. This will be omitted if the asset does not have a permalink of its own (for example, if it\'s embedded in another asset) or if TypePad does not know its permalink.','string'),'title'=&gt;array('The title of the asset.','string'),'isConversationsAnswer'=&gt;array('T&lt;Deprecated&gt; C&lt;true&gt; if this asset is an answer to a TypePad Conversations question, or absent otherwise. This property is deprecated and will be replaced with something more useful in future.','boolean'))</span>			(line <span class="line-number">283</span>)
 		</span>
 	</div>
 
@@ -197,7 +197,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">static isAbstract</span> (line <span class="line-number">318</span>)
+		<span class="method-title">static isAbstract</span> (line <span class="line-number">319</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -222,7 +222,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">static propertyDocString</span> (line <span class="line-number">314</span>)
+		<span class="method-title">static propertyDocString</span> (line <span class="line-number">315</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -252,7 +252,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">static propertyType</span> (line <span class="line-number">315</span>)
+		<span class="method-title">static propertyType</span> (line <span class="line-number">316</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -282,7 +282,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">asPayload</span> (line <span class="line-number">316</span>)
+		<span class="method-title">asPayload</span> (line <span class="line-number">317</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -315,7 +315,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">fulfill</span> (line <span class="line-number">320</span>)
+		<span class="method-title">fulfill</span> (line <span class="line-number">321</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -345,7 +345,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">__get</span> (line <span class="line-number">312</span>)
+		<span class="method-title">__get</span> (line <span class="line-number">313</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -375,7 +375,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">__set</span> (line <span class="line-number">313</span>)
+		<span class="method-title">__set</span> (line <span class="line-number">314</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
