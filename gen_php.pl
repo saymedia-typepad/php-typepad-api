@@ -69,7 +69,7 @@ my $raw_types = get("$api_base/client-library-helpers/object-types.json");
 my $types = $j->decode($raw_types);
 
 my $idget = "        if (!is_array(\$params)) \$params = array('id' => \$params);\n";
-for my $noun (keys %$map) {
+for my $noun (sort keys %$map) {
     my $functions = '';
     my $url_noun = lcfirst($noun);
     $url_noun =~ s/([A-Z])/'-' . lc($1)/eg;
@@ -113,6 +113,7 @@ for my $noun (keys %$map) {
         my $idcase = (
             ($endpoint->{httpMethod} =~ /GET|DELETE/)
             && (scalar(keys %{$endpoint->{pathParams}}) == 1)
+            && $endpoint->{pathParams}->{id}
         ) ? $idget : '';
         my $params = (
             ($endpoint->{httpMethod} eq 'GET')
